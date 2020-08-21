@@ -33,3 +33,8 @@ app.use(express.json());
 
 
 // configure to use port 3001 to avoid collision w react's dev server
+const port = process.env.PORT || 3001;
+
+app.listen(port, () => {
+    console.log(`Express is listening on port:${port}`);
+});
