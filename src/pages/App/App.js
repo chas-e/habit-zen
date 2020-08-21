@@ -4,6 +4,7 @@ import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
+import NavBar from '../../components/NavBar/NavBar';
 
 
 class App extends Component {
@@ -34,6 +35,10 @@ class App extends Component {
     return (
       <div className="App" >
         <header className="App-header">Welcome to HabitZen</header>
+        <NavBar
+          user={this.state.user}
+          handleLogout={this.handleLogout}
+        />
         <Switch>
           <Route exact path="/signup" render={({ history }) =>
             <SignupPage
