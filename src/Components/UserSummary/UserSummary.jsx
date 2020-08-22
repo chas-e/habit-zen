@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './UserSummary.css';
+import React from './node_modules/react';
+import './UserSummary.css';
 
 const UserSummary = (props) => (
   <div>
