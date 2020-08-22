@@ -31,7 +31,7 @@ app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'indexedDB.html'));
 });
 
-
+// mount  routes we want to protect with auth
 
 // configure to use port 3001 to avoid collision w react's dev server
 const port = process.env.PORT || 3001;
