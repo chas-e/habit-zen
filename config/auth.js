@@ -7,11 +7,9 @@ module.exports = function (req, res, next) {
     if (token) {	
         token = token.replace("Bearer ", "");	
 
-
         jwt.verify(token, SECRET, function (err, decoded) {	
             if (err) {	
                 next(err);	
-
 
             } else {	
                 req.user = decoded.user;	
