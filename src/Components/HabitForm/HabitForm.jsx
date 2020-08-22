@@ -1,8 +1,8 @@
-import React, { Component } from "./node_modules/react";
-import style from "./HabitForm.css";
+import React, { Component } from 'react';
+import './HabitForm.css';
 
 class HabitForm extends Component {
-    
+
     state = {
         Goal: '',
         Habit: '',

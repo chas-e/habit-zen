@@ -1,5 +1,5 @@
-import React, { Component } from "./node_modules/react";
-import styles from './GoalTracker.css';
+import React, { Component } from 'react';
+import './GoalTracker.css';
 
 
 class GoalTracker extends Component {
