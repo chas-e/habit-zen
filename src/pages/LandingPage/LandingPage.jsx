@@ -4,7 +4,7 @@ import './LandingPage.css';
 
 const LandingPage = (props) => {
     return (
-        <div>
+        <div className="LandingPage">
             <h1>This is Our Landing Page!</h1>
         </div>
     );
