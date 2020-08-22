@@ -8,7 +8,7 @@ const morgan = require('morgan');
 
 
 // create app
-const app = express.app();
+const app = express();
 
 // configure app
 require('dotenv').config();
