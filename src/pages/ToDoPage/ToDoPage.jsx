@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ToDoForm from '../../components/ToDoForm/ToDoForm';
-import './NewToDoPage.css';
+import './ToDoPage.css';
 
-class NewToDoPage extends Component {
+class ToDoPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,7 +11,7 @@ class NewToDoPage extends Component {
     }
     render() {
         return (
-            <div className="NewToDoPage">
+            <div className="ToDoPage">
                 <h1> Enter A New ToDo: </h1>
                 <ToDoForm />
             </div>
@@ -19,4 +19,4 @@ class NewToDoPage extends Component {
     }
 }
 
-export default NewToDoPage;
+export default ToDoPage;
