@@ -12,7 +12,8 @@ class NewToDoPage extends Component {
     render() {
         return (
             <div className="NewToDoPage">
-                <h1> Enter A New ToDo: </h1>
+                <h3> Enter A New ToDo </h3>
+                <br />
                 <ToDoForm />
             </div>
         );

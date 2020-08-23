@@ -9,6 +9,7 @@ import NewToDoPage from '../NewToDoPage/NewToDoPage';
 // import UserSummaryPage from '../UserSummaryPage';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
+// import { getAllQuotes } from '../../services/quote-api';
 import UserSummary from '../../components/UserSummary/UserSummary';
 class App extends Component {
   constructor() {
@@ -80,7 +81,15 @@ class App extends Component {
           />
           }
           />
+          
         </Switch>
+        <footer className='Footer'>
+            <div >
+              Footer
+              {/* this.state<api info>.map((q, idx) =>
+              <h5 className="quotes">{quotes}</h5>) */}
+            </div>
+            </footer>
       </div>
     );
   }
