@@ -38,8 +38,10 @@ class HabitForm extends Component {
                     />
                   </div>
                 </div>
+                <br />
                 <div className="form-group">
-                    <h3>Habits you will do to complete your goal</h3>
+                    <div>Habits you will do to complete your goal</div>
+                  <br />
                   <div className="col-sm-12">
                   <label htmlFor="sDate">Start Date</label>
         <input
