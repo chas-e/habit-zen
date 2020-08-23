@@ -4,8 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import LandingPage from '../LandingPage/LandingPage';
-import NewHabitPage from '../NewHabitPage/NewHabitPage';
-import NewToDoPage from '../NewToDoPage/NewToDoPage';
+import HabitPage from '../NewHabitPage/NewHabitPage';
+import ToDoPage from '../NewToDoPage/NewToDoPage';
 // import UserSummaryPage from '../UserSummaryPage';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
@@ -62,14 +62,14 @@ class App extends Component {
             />
           }
           />
-          <Route exact path='/newtodo' render={({ history, props }) =>
-            <NewToDoPage
+          <Route exact path='/todo' render={({ history, props }) =>
+            <ToDoPage
               {...props}
             />
           }
           />
-          <Route exact path='/newhabit' render={({ history, props }) =>
-            <NewHabitPage
+          <Route exact path='/habit' render={({ history, props }) =>
+            <HabitPage
               {...props}
             />
           }
