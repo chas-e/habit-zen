@@ -63,21 +63,21 @@ class App extends Component {
           }
           />
           <Route exact path='/newtodo' render={({ history, props }) =>
-          <NewToDoPage 
-          {...props}
-          />
+            <NewToDoPage
+              {...props}
+            />
           }
           />
           <Route exact path='/newhabit' render={({ history, props }) =>
-          <NewHabitPage 
-          {...props}
-          />
+            <NewHabitPage
+              {...props}
+            />
           }
           />
           <Route exact path='/user' render={({ history, props }) =>
-          <UserSummary
-          {...props}
-          />
+            <UserSummary
+              {...props}
+            />
           }
           />
         </Switch>
