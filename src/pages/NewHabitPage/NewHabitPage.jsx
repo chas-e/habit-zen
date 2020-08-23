@@ -12,7 +12,8 @@ class NewHabitPage extends Component {
         render() {
             return (
                 <div className="NewHabitPage">
-                    <h1>HabitForm</h1>
+                    <HabitForm />
+                    {/* <h1>HabitForm</h1> */}
                 </div>
             );
         }

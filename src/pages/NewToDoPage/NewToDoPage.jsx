@@ -13,7 +13,10 @@ class NewToDoPage extends Component {
         return (
             <div className="NewToDoPage">
                 <h1> Enter A New ToDo: </h1>
+                <ToDoForm />
             </div>
         );
     }
 }
+
+export default NewToDoPage;
