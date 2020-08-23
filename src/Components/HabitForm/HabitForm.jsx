@@ -40,8 +40,6 @@ class HabitForm extends Component {
                 </div>
                 <br />
                 <div className="form-group">
-                    <div>Habits you will do to complete your goal</div>
-                  <br />
                   <div className="col-sm-12">
                   <label htmlFor="sDate">Start Date</label>
         <input
@@ -56,11 +54,15 @@ class HabitForm extends Component {
           type="date"
           min={(this.state.sDate, "YYYY-MM-DD")}
           onChange={e => this.setState({ eDate: e.target.value })}
-        />                  </div>
+        />                  
+        </div>
                 </div>
                 <div className="form-group">
                   <div className="col-sm-12">
-                    <input type="goal" className="form-control" placeholder="Habit" value={this.state.habit} name="habit" onChange={this.handleChange} />
+                  <br />
+                  <div>Habits you will do to complete your goal</div>
+                  <br />
+                    <input type="habit" className="form-control" placeholder="Habit" value={this.state.habit} name="habit" onChange={this.handleChange} />
                   </div>
                 </div>
                 <div className="form-group">

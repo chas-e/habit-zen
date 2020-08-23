@@ -13,7 +13,6 @@ class NewHabitPage extends Component {
             return (
                 <div className="NewHabitPage">
                     <HabitForm />
-                    {/* <h1>HabitForm</h1> */}
                 </div>
             );
         }

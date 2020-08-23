@@ -9,6 +9,7 @@ import NewToDoPage from '../NewToDoPage/NewToDoPage';
 // import UserSummaryPage from '../UserSummaryPage';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
+import UserSummary from '../../components/UserSummary/UserSummary';
 class App extends Component {
   constructor() {
     super();
@@ -73,7 +74,12 @@ class App extends Component {
           />
           }
           />
-          <Route />
+          <Route exact path='/user' render={({ history, props }) =>
+          <UserSummary
+          {...props}
+          />
+          }
+          />
         </Switch>
       </div>
     );

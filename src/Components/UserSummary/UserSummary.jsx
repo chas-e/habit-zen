@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
+// import { Link } from 'react-router-dom';
 import './UserSummary.css';
 
-const UserSummary = (props) => (
+
+class UserSummary extends Component {
+  render() {
+  return(
   <div>
     <h3> UserSummary </h3>
 
   </div>
-);
+  
+  )}
+};
+
 
 export default UserSummary;
