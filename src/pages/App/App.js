@@ -4,15 +4,25 @@ import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
-
+import { getRandomQ  } from '../../utils/qrandom-api';
+import Footer from '../Footer/Footer'
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       // ...this.getInitialState(),
-      user: userService.getUser()
+      user: userService.getUser(),
+      quote: "",
     };
+  }
+
+ async componentDidMount () {
+  const randomQ = await getRandomQ();
+  console.log(randomQ);
+  this.setState({
+    quote: randomQ.quotes.quote,
+});
   }
 
   // getInitialState() {
@@ -48,6 +58,7 @@ class App extends Component {
             />
           } />
         </Switch>
+        <Footer  />
       </div>
     );
   }
