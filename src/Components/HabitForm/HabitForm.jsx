@@ -17,7 +17,7 @@ class HabitForm extends Component {
     };
 
     handleChange = (e) => {
-        this.props.updateMessage('');
+        // this.props.updateMessage('');
         this.setState({
             [e.target.name]: e.target.value
         });
@@ -30,7 +30,8 @@ class HabitForm extends Component {
             await habitService.create(this.state);
             this.props.history.push('/');
         } catch (err) {
-            this.props.updateMessage(err.message);
+            // this.props.updateMessage(err.message);
+            console.log(err);
         }
     }
 
@@ -47,7 +48,7 @@ class HabitForm extends Component {
                         <div className="col-sm-12">
                             <input type="text" className="form-control" placeholder="Future Accomplishment"
                                 value={this.state.goal}
-                                name="name"
+                                name="goal"
                                 onChange={this.handleChange}
                             />
                         </div>
@@ -58,14 +59,16 @@ class HabitForm extends Component {
                             <label htmlFor="sDate">Start Date</label>
                             <input
                                 type="date"
+                                name="sDate"
                                 onChange={e => this.setState({ sDate: e.target.value })}
                             />                  </div>
                     </div>
                     <div className="form-group">
                         <div className="col-sm-12">
-                            <label htmlFor="sDate">End Date:</label>
+                            <label htmlFor="eDate">End Date:</label>
                             <input
                                 type="date"
+                                name="eDate"
                                 min={(this.state.sDate, "YYYY-MM-DD")}
                                 onChange={e => this.setState({ eDate: e.target.value })}
                             />
@@ -77,8 +80,8 @@ class HabitForm extends Component {
                             <div>Habits you will do to complete your goal:</div>
                             <br />
                             <input type="habit" className="form-control" placeholder="Habit"
-                                value={this.state.habit}
                                 name="habit"
+                                value={this.state.habit}
                                 onChange={this.handleChange}
                             />
                         </div>

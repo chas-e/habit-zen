@@ -2,8 +2,8 @@ const router = require('express').Router();
 const habitsCtrl = require('../../controllers/habits');
 
 router.use(require('../../config/auth'));
-router.get('/', checkAuth, habitsCtrl.index);
-router.post('/', checkAuth, habitsCtrl.create);
+router.get('/habit', checkAuth, habitsCtrl.index);
+router.post('/habit', checkAuth, habitsCtrl.create);
 
 
 function checkAuth(req, res, next) {

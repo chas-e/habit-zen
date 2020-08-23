@@ -12,8 +12,10 @@ class HabitPage extends Component {
     }
     render() {
         return (
-            <div className="NewHabitPage">
-                <HabitForm />
+            <div className="HabitPage">
+                <HabitForm
+                    {...this.props}
+                />
             </div>
         );
     }
