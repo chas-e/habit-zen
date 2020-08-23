@@ -7,15 +7,16 @@ class NewHabitPage extends Component {
         super(props);
         this.state = {
 
-        }
+        };
+    }
         render() {
             return (
                 <div className="NewHabitPage">
-                    <h1>HabitForm</h1>
+                    <HabitForm />
                 </div>
             );
         }
     }
-}
+
 
 export default NewHabitPage;

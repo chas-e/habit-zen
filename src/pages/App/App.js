@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch, Redirect, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import LandingPage from '../LandingPage/LandingPage';
 import NewHabitPage from '../NewHabitPage/NewHabitPage';
 import NewToDoPage from '../NewToDoPage/NewToDoPage';
-import UserSummaryPage from '../UserSummaryPage';
+// import UserSummaryPage from '../UserSummaryPage';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
-
-
+import UserSummary from '../../components/UserSummary/UserSummary';
 class App extends Component {
   constructor() {
     super();
@@ -19,26 +18,21 @@ class App extends Component {
       user: userService.getUser()
     };
   }
-
   // getInitialState() {
   //   return {
-
   //   };
   // }
-
   handleSignupOrLogin = () => {
     this.setState({
       user: userService.getUser()
     });
   }
-
   handleLogout = () => {
     userService.logout();
     this.setState({
       user: null
     });
   }
-
   render() {
     return (
       <div className="App">
@@ -68,9 +62,24 @@ class App extends Component {
             />
           }
           />
-          <Route />
-          <Route />
-          <Route />
+          <Route exact path='/newtodo' render={({ history, props }) =>
+          <NewToDoPage 
+          {...props}
+          />
+          }
+          />
+          <Route exact path='/newhabit' render={({ history, props }) =>
+          <NewHabitPage 
+          {...props}
+          />
+          }
+          />
+          <Route exact path='/user' render={({ history, props }) =>
+          <UserSummary
+          {...props}
+          />
+          }
+          />
         </Switch>
       </div>
     );

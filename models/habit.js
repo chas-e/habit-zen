@@ -12,6 +12,9 @@ const habitSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
 },
+    sDate: Date,
+    eDate: Date
+    
 }, {
     timestamps: true
 });

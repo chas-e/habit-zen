@@ -1,6 +1,6 @@
-import React, from 'react';
-import { Link } from 'react-router-dom'
-import './LandingPage.css';
+import React from 'react';
+// import { Link } from 'react-router-dom'
+// import './LandingPage.css';
 
 const LandingPage = (props) => {
     return (
@@ -9,3 +9,5 @@ const LandingPage = (props) => {
         </div>
     );
 }
+
+export default LandingPage;
