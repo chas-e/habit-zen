@@ -10,12 +10,12 @@ assignees: ''
 ### Description of issue
 Our service utils are reading as html. Every resource we find says it's a typo in paths, but we can't find the typo and it's in all of our service utils.
 ### Error messages or screenshots
-![Screenshot](images/ScreenShot2020-08-24.png)
+![Screenshot](/images/ScreenShot2020-08-24.png)
 
 ### Steps attempted to resolve the issue
 We have tried to change the quotes (single, double and back to single).
 
-We have tried to redo fetch and have tried to redo a lot of functions to make the logic still make sense, but fix the error. Nothing has worked and we've stuck on this error since yesterday morning. 
+We have tried to redo fetch and have tried to redo a lot of functions to make the logic still make sense, but fix the error. Nothing has worked and we've been stuck on this error since yesterday morning. 
 
 
 ### Research
