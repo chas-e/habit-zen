@@ -10,7 +10,7 @@ assignees: ''
 ### Description of issue
 Our service utils are reading as html. Every resource we find says it's a typo in paths, but we can't find the typo and it's in all of our service utils.
 ### Error messages or screenshots
-![Screenshot](images/ScreenShot2020-08-24.png)
+![Screenshot](/images/ScreenShot2020-08-24.png)
 
 ### Steps attempted to resolve the issue
 We have tried to change the quotes (single, double and back to single).
