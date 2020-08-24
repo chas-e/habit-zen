@@ -5,14 +5,15 @@ import './UserSummary.css';
 
 class UserSummary extends Component {
   render() {
-  return(
-  <div>
-    <h3> UserSummary </h3>
+    return (
+      <div>
+        <h3> UserSummary </h3>
 
-  </div>
-  
-  )}
+      </div>
+
+    );
+  }
 };
 
 
-export default UserSummary;
+export default UserSummary;      

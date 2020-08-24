@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import { format } from "date-fns";
 import habitService from '../../utils/habitService';
-import './HabitForm.css';
+import './NewHabitForm.css';
 
 
 
-class HabitForm extends Component {
+class NewHabitForm extends Component {
 
     state = {
         goal: '',
@@ -98,4 +98,4 @@ class HabitForm extends Component {
     }
 }
 
-export default HabitForm;
+export default NewHabitForm;
