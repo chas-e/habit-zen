@@ -10,6 +10,7 @@ async function create(req, res) {
     try {
         // also I think we need a way to attach the user to the habit
         await Habit.create(req.body);
+        index(req, res);
     } catch (err) {
         return res.status(401).json({
             err: "Something went wrong"

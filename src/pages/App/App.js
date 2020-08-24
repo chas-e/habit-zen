@@ -64,15 +64,13 @@ class App extends Component {
           />
           <Route exact path='/newtodo' render={({ history, props }) =>
             <NewToDoPage
-              {...props}
               history={history}
             />
           }
           />
-          <Route exact path='/newhabit' render={({ history, props }) => (
+          <Route exact path='/newhabit' render={({ history }) => (
             userService.getUser() ?
               <NewHabitPage
-                {...props}
                 history={history}
               />
               :
@@ -80,7 +78,7 @@ class App extends Component {
           )}
           />
 
-          <Route exact path='/user' render={({ history, props }) =>
+          <Route exact path='/user' render={(props) =>
             <UserSummary
               {...props}
             />

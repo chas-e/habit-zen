@@ -15,7 +15,10 @@ function create(habit) {
         }),
         body: JSON.stringify(habit)
     };
-    return fetch(BASE_URL, options).then(res => res.json());
+    return fetch(BASE_URL, options).then(res => {
+        if (res.ok) return res.json();
+        console.log("failed to create");
+    });
 }
 
 function index() {

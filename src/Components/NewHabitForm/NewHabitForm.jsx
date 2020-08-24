@@ -28,7 +28,8 @@ class NewHabitForm extends Component {
         e.preventDefault();
         try {
             await habitService.create(this.state);
-            this.props.history.push('/');
+            console.log("created habit");
+            this.props.history.push('/user');
         } catch (err) {
             // this.props.updateMessage(err.message);
             console.log(err);
@@ -40,6 +41,7 @@ class NewHabitForm extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <div className="HabitForm card">
                 <header className="header-footer">New Goal</header>
@@ -88,7 +90,7 @@ class NewHabitForm extends Component {
                     </div>
                     <div className="form-group">
                         <div className="col-sm-12 text-center">
-                            <button className="btn btn-default" disabled={this.isFormInvalid()}>Submit Goal</button>&nbsp;&nbsp;
+                            <button className="btn btn-default" disabled={this.isFormInvalid()}>Submit Habit</button>&nbsp;&nbsp;
                     <Link to='/'>Cancel</Link>
                         </div>
                     </div>
