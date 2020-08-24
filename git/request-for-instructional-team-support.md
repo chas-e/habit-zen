@@ -15,7 +15,7 @@ Our service utils are reading as html. Every resource we find says it's a typo i
 ### Steps attempted to resolve the issue
 We have tried to change the quotes (single, double and back to single).
 
-We have tried to redo fetch and have tried to redo a lot of functions to make the logic still make sense, but fix the error. Nothing has worked and we've stuck on this error since yesterday morning. 
+We have tried to redo fetch and have tried to redo a lot of functions to make the logic still make sense, but fix the error. Nothing has worked and we've been stuck on this error since yesterday morning. 
 
 
 ### Research
