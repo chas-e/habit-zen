@@ -9,7 +9,7 @@ import NewToDoPage from '../NewToDoPage/NewToDoPage';
 // import UserSummaryPage from '../UserSummaryPage';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
-import UserSummary from '../../components/UserSummary/UserSummary';
+import UserSummaryPage from '../../pages/UserSummaryPage/UserSummaryPage';
 class App extends Component {
   constructor() {
     super();
@@ -78,9 +78,9 @@ class App extends Component {
           )}
           />
 
-          <Route exact path='/user' render={(props) =>
-            <UserSummary
-              {...props}
+          <Route exact path='/user' render={({ history }) =>
+            <UserSummaryPage
+              history={history}
             />
           }
           />
