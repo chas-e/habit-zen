@@ -4,8 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import LandingPage from '../LandingPage/LandingPage';
-import NewHabitPage from '../NewHabitPage/NewHabitPage';
-import NewToDoPage from '../NewToDoPage/NewToDoPage';
+import HabitPage from '../HabitPage/HabitPage';
+import ToDoPage from '../ToDoPage/ToDoPage';
 // import UserSummaryPage from '../UserSummaryPage';
 import userService from '../../utils/userService';
 import { getRandomQ  } from '../../utils/qrandom-api';
@@ -75,22 +75,21 @@ class App extends Component {
             />
           }
           />
-          <Route exact path='/newtodo' render={({ history, props }) =>
-          <NewToDoPage 
-          {...props}
-          />
+          <Route exact path='/todo' render={({ history, props }) =>
+            <ToDoPage
+              {...props}
+            />
           }
           />
-          <Route exact path='/newhabit' render={({ history, props }) =>
-          <NewHabitPage 
-          {...props}
-          />
+          <Route exact path='/habit' render={({ history, props }) =>
+            <HabitPage
+              {...props}
+            />
           }
           />
           <Route exact path='/user' render={({ history, props }) =>
-          <UserSummary
-          {...props}
-          
+            <UserSummary
+              {...props}
           />
           }
           />
