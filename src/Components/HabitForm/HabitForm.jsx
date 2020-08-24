@@ -68,7 +68,7 @@ class HabitForm extends Component {
                 <div className="form-group">
                   <div className="col-sm-12 text-center">
                     <button className="btn btn-default" disabled={this.isFormInvalid()}>Submit Goal</button>&nbsp;&nbsp;
-                    <Link to='/'>Cancel</Link>
+                    <Link to='/user'>Cancel</Link>
                   </div>
                 </div>
               </form>

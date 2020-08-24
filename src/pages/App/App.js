@@ -6,23 +6,27 @@ import LoginPage from '../LoginPage/LoginPage';
 import LandingPage from '../LandingPage/LandingPage';
 import NewHabitPage from '../NewHabitPage/NewHabitPage';
 import NewToDoPage from '../NewToDoPage/NewToDoPage';
-// import UserSummaryPage from '../UserSummaryPage';
+import UserSummaryPage from '..//UserSummaryPage/UserSummaryPage';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
 // import { getAllQuotes } from '../../services/quote-api';
-import UserSummary from '../../components/UserSummary/UserSummary';
+// import UserSummary from '../../components/UserSummary/UserSummary';
 class App extends Component {
   constructor() {
     super();
     this.state = {
       // ...this.getInitialState(),
-      user: userService.getUser()
+      user: userService.getUser(),
+      todos: [{ todo: '', done: false }],
     };
   }
-  // getInitialState() {
-  //   return {
-  //   };
-  // }
+
+  handleChangeToDo = (e) => {
+    let newToDo ={ ...this.state.newTodo };
+    newToDo[e.target.name] = e.target.value;
+    this.setState({ newToDo, formInvalid: true });
+  }
+
   handleSignupOrLogin = () => {
     this.setState({
       user: userService.getUser()
@@ -34,6 +38,14 @@ class App extends Component {
       user: null
     });
   }
+
+  
+
+  // handleTodoClick = () => {
+
+  // }
+
+
   render() {
     return (
       <div className="App">
@@ -63,22 +75,32 @@ class App extends Component {
             />
           }
           />
-          <Route exact path='/newtodo' render={({ history, props }) =>
+          <Route exact path='/newtodo' render={({ history }) =>
           <NewToDoPage 
-          {...props}
+          {...this.props}
+          todos={this.state.todos}
+          handleChangeToDo={this.handleChangeToDo}
+          handleUpdateTodos={this.handleUpdateToDos}
           />
           }
           />
-          <Route exact path='/newhabit' render={({ history, props }) =>
+          <Route exact path='/newhabit' render={({ history }) =>
           <NewHabitPage 
-          {...props}
+          {...this.props}
           />
           }
           />
-          <Route exact path='/user' render={({ history, props }) =>
-          <UserSummary
-          {...props}
+          <Route exact path='/user' render={({ history }) => (
+          // userService.getUser() ?
+          <UserSummaryPage
+          {...this.props}
+          todos={this.state.todos}
+          handleUpdateTodos={this.handleUpdateToDos}
+          // handleTodoClick={this.handleTodoClick}
           />
+          // :
+          // <Redirect to="/login" />
+           )
           }
           />
           

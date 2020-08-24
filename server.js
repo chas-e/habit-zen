@@ -25,13 +25,16 @@ app.use(express.static(path.join(__dirname, 'build')));
 // mount API routes here, before the "catch-all" route
 app.use('/api/users', require('./routes/api/users'));	
 app.use(require('./config/auth'));
+app.use('/api/todos', require('./routes/api/todos'));
+
+
+// mount routes we want to protect with auth
 
 // mount "catch-all" route
 app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'indexedDB.html'));
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-// mount  routes we want to protect with auth
 
 // configure to use port 3001 to avoid collision w react's dev server
 const port = process.env.PORT || 3001;
