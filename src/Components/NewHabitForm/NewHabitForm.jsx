@@ -28,7 +28,6 @@ class NewHabitForm extends Component {
         e.preventDefault();
         try {
             await habitService.create(this.state);
-            console.log("created habit");
             this.props.history.push('/user');
         } catch (err) {
             // this.props.updateMessage(err.message);
@@ -37,7 +36,7 @@ class NewHabitForm extends Component {
     }
 
     isFormInvalid() {
-        return !(this.state.goal && this.state.habit && this.state.sDate !== this.state.eDate); // also need to make sure eDate is after sDate
+        return !(this.state.goal && this.state.habit && this.state.sDate !== this.state.eDate);
     }
 
     render() {
@@ -62,8 +61,10 @@ class NewHabitForm extends Component {
                             <input
                                 type="date"
                                 name="sDate"
-                                onChange={e => this.setState({ sDate: e.target.value })}
-                            />                  </div>
+                                value={this.state.sDate}
+                                onChange={this.handleChange}
+                            />
+                        </div>
                     </div>
                     <div className="form-group">
                         <div className="col-sm-12">
@@ -71,8 +72,9 @@ class NewHabitForm extends Component {
                             <input
                                 type="date"
                                 name="eDate"
+                                value={this.state.eDate}
                                 min={(this.state.sDate, "YYYY-MM-DD")}
-                                onChange={e => this.setState({ eDate: e.target.value })}
+                                onChange={this.handleChange}
                             />
                         </div>
                     </div>

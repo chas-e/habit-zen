@@ -66,69 +66,68 @@ class App extends Component {
           user={this.state.user}
           handleLogout={this.handleLogout}
         />
-        <Switch>
-          <Route exact path="/signup" render={({ history }) =>
-            <SignupPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
+        <main>
+          <Switch>
+            <Route exact path="/signup" render={({ history }) =>
+              <SignupPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            }
             />
-          }
-          />
-          <Route exact path="/login" render={({ history }) =>
-            <LoginPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
+            <Route exact path="/login" render={({ history }) =>
+              <LoginPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            }
             />
-          }
-          />
 
-          <Route exact path="/" render={({ history }) =>
-            <LandingPage
-              history={history}
-            />
-          }
-          />
-          <Route exact path='/newtodo' render={({ history, props }) =>
-            <NewToDoPage
-              history={history}
-            />
-          }
-          />
-          <Route exact path='/newhabit' render={({ history }) => (
-            userService.getUser() ?
-              <NewHabitPage
+            <Route exact path="/" render={({ history }) =>
+              <LandingPage
                 history={history}
               />
-              :
-              <Redirect to="/login" />
-          )}
-          />
-
-          <Route exact path='/newtodo' render={({ history }) =>
-            <NewToDoPage
-              {...this.props}
-              todos={this.state.todos}
-              handleChangeToDo={this.handleChangeToDo}
-              handleUpdateTodos={this.handleUpdateToDos}
+            }
             />
-          }
-          />
-          <Route exact path='/user' render={({ history }) => (
-            // userService.getUser() ?
-            <UserSummaryPage
-              {...this.props}
-              todos={this.state.todos}
-              handleUpdateTodos={this.handleUpdateToDos}
-              history={history}
-            // handleTodoClick={this.handleTodoClick}
+            <Route exact path='/newtodo' render={({ history, props }) =>
+              <NewToDoPage
+                history={history}
+              />
+            }
             />
-            // :
-            // <Redirect to="/login" />
-          )
-          }
-          />
+            <Route exact path='/newhabit' render={({ history }) => (
+              userService.getUser() ?
+                <NewHabitPage
+                  history={history}
+                />
+                :
+                <Redirect to="/login" />
+            )}
+            />
 
-        </Switch>
+            <Route exact path='/newtodo' render={({ history }) =>
+              <NewToDoPage
+                history={history}
+              />
+            }
+            />
+            <Route exact path='/user' render={({ history }) => (
+              // userService.getUser() ?
+              <UserSummaryPage
+                {...this.props}
+                todos={this.state.todos}
+                handleUpdateTodos={this.handleUpdateToDos}
+                history={history}
+              // handleTodoClick={this.handleTodoClick}
+              />
+              // :
+              // <Redirect to="/login" />
+            )
+            }
+            />
+
+          </Switch>
+        </main>
         <footer id="sticky-footer">
           <div>{this.state.quotes}</div>
         </footer>
