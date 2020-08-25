@@ -1,5 +1,4 @@
 import tokenService from './tokenService';
-
 const BASE_URL = '/api/todos';
 
 export default {
@@ -13,8 +12,8 @@ function create(todo) {
   const options = {
     method: "POST",
     headers: {
-      "Content-type" : "application/json",
-      "Authorization" : "Bearer " + tokenService.getToken()
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + tokenService.getToken()
     },
     body: JSON.stringify(todo)
   };
@@ -27,7 +26,6 @@ function index() {
 }
 
 function deleteToDo(todo) {
-  console.log("todo", todo)
   const options = {
     method: "DELETE",
     headers: {
