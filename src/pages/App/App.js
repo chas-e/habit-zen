@@ -17,8 +17,8 @@ class App extends Component {
     this.state = {
       // ...this.getInitialState(),
       user: userService.getUser(),
-      todos: [{ todo: '', done: false }],
-
+      todos: [{ text: '', done: '' }],
+      habits: [{ goal: '', habit: ''}],
       quotes: [],
     };
   }
@@ -54,12 +54,13 @@ class App extends Component {
     });
   }
 
+  handleUpdateTodos = ( todos ) => {
+    this.setState({ todos });
+  }
 
-
-  // handleTodoClick = () => {
-
-  // }
-
+  handleUpdateHabits = ( habits ) => {
+    this.setState({ habits });
+  }
 
   render() {
     return (
@@ -74,10 +75,9 @@ class App extends Component {
             <SignupPage
               history={history}
               handleSignupOrLogin={this.handleSignupOrLogin}
-              />
+            />
             }
             />
-
             <Route exact path="/login" render={({ history }) =>
               <LoginPage
                 history={history}
@@ -114,8 +114,9 @@ class App extends Component {
               <UserSummaryPage
                 {...this.props}
                 todos={this.state.todos}
-                habits
-                handleUpdateTodos={this.handleUpdateToDos}
+                habits={this.state.habits}
+                handleUpdateTodos={this.handleUpdateTodos}
+                handleUpdateHabits={this.handleUpdateHabits}
                 history={history}
               // handleTodoClick={this.handleTodoClick}
               />

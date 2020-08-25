@@ -9,16 +9,19 @@ import "./UserSummaryPage.css";
 // import todoService from '../../utils/todoService';
 
 class UserSummaryPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    };
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {};
+    // };
     render() {
         return (
             <div className="UserSummaryPage">
                 <UserSummary
                     {...this.props}
                     todos={this.props.todos}
+                    habits={this.props.habits}
+                    handleUpdateTodos={this.props.handleUpdateTodos}
+                    handleUpdateHabits={this.props.handleUpdateHabits}
                 />
             </div>
         );

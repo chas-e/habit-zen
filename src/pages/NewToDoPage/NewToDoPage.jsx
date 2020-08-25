@@ -9,9 +9,6 @@ class NewToDoPage extends Component {
     }
     
 
-    updateToDo = (todo) => {
-        this.setState({ newTodo: todo });
-    }
 
    
     // getInitialState = () => {
