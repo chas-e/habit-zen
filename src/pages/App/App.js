@@ -18,7 +18,7 @@ class App extends Component {
       // ...this.getInitialState(),
       user: userService.getUser(),
       todos: [{ text: '', done: '' }],
-      habits: [{ goal: '', habit: ''}],
+      habits: [{ goal: '', habit: '' }],
       quotes: [],
     };
   }
@@ -54,11 +54,11 @@ class App extends Component {
     });
   }
 
-  handleUpdateTodos = ( todos ) => {
+  handleUpdateTodos = (todos) => {
     this.setState({ todos });
   }
 
-  handleUpdateHabits = ( habits ) => {
+  handleUpdateHabits = (habits) => {
     this.setState({ habits });
   }
 
@@ -70,12 +70,12 @@ class App extends Component {
           handleLogout={this.handleLogout}
         />
         <div id="App-Parent">
-        <Switch>
-          <Route exact path="/signup" render={({ history }) =>
-            <SignupPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
+          <Switch>
+            <Route exact path="/signup" render={({ history }) =>
+              <SignupPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
             }
             />
             <Route exact path="/login" render={({ history }) =>
@@ -86,13 +86,13 @@ class App extends Component {
             }
             />
 
-          <Route exact path="/" render={({ history }) =>
-            <LandingPage
-              history={history}
+            <Route exact path="/" render={({ history }) =>
+              <LandingPage
+                history={history}
+              />
+            }
             />
-          }
-          />
-   
+
             <Route exact path='/newhabit' render={({ history }) => (
               userService.getUser() ?
                 <NewHabitPage
@@ -125,8 +125,8 @@ class App extends Component {
             )
             }
             />
-        </Switch>
-      </div>
+          </Switch>
+        </div>
         <footer id="sticky-footer">
           <div>{this.state.quotes}</div>
         </footer>
