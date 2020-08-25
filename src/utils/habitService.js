@@ -24,7 +24,6 @@ function index() {
 }
 
 function deleteHabit(habit) {
-    console.log("habit", habit)
     const options = {
       method: "DELETE",
       headers: {

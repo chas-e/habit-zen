@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './UserSummary.css';
+import  './UserSummary.css';
 import todoService from '../../utils/todoService';
 import habitService from '../../utils/habitService';
 // import user from '../../../models/user';
@@ -44,28 +44,28 @@ handleDeleteHabit = async (habit) => {
 
   render() {
     const todoRows = this.props.todos.map((todo, idx) => (
-      <tr key={idx}>
+      <ul> 
+      <li className="ToDoList" key={idx}>
         
-        <button type="checkbox" name="done" value={this.props.NewToDo ? 'checked' : '' } onChange={this.handleChange}>Done</button>
-        <td><span className="badge">{idx + 1}</span></td>
-        <td>{todo.text}</td>
-        <td>{todo.done}</td>
-        {/* <button onClick={() => this.props.deleteTodos(todos.id)}
-        className="button muted-button">
-          Delete
-        </button> */}
-        <td><button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button></td>
-        <td><button onClick={() => this.handleEditToDo(todo)}><span role="img" aria-label="edit">✏️</span></button></td>
-
-      </tr>
+        <button type="checkbox" name="done" value={this.props.NewToDo ? 'checked' : '' } onChange={this.handleChange}>Done</button>&nbsp;&nbsp;
+        <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
+        <button onClick={() => this.handleEditToDo(todo)}><span role="img" aria-label="edit">✏️</span></button>&nbsp;&nbsp;
+        <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        {todo.text}&nbsp;&nbsp;
+        {todo.done}&nbsp;&nbsp;
+      </li>
+        </ul>
     ));
     const habitRows = this.props.habits.map((habit, idx) => (
-      <tr key={idx}>
-          <button className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange}>Done</button>
-        <td><span className="badge">{idx + 1}</span></td>
-        <td>{habit.habit}</td>
-        <td><button onClick={() => this.handleDeleteHabit(habit)}><span role="img" aria-label="delete">🚯</span></button></td>
-      </tr>
+      <ul> 
+      <li className="HabitList" key={idx}>
+        <button type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange}>Done</button>&nbsp;&nbsp;
+        <button onClick={() => this.handleDeleteHabit(habit)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
+        <button onClick={() => this.handleEditHabit(habit)}><span role="img" aria-label="edit">✏️</span></button>&nbsp;&nbsp;
+        <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        {habit.habit}&nbsp;&nbsp;
+      </li>
+        </ul>
     ));
       const goalRows = this.props.habits.map((habit, idx) => (
         <tr key={idx}>
@@ -81,18 +81,12 @@ handleDeleteHabit = async (habit) => {
         <header className='header-footer'>To Do List</header>
         <Link to="/newtodo">Add New To Do</Link>
         {this.props.todos.length ? 
-          <table>
-            <thead>
-              <tr><th width={100}>List</th><th width={100}>Done?</th></tr>
-            </thead>
-            <tbody>
-              
-              {todoRows}
-            </tbody>
-          </table>
-          :
-          <h5 className='text-info'>No To Do List Items Yet</h5>
-        }
+       
+            [todoRows] 
+            : 
+            <h5 className='text-info'>No To Do List Items Yet</h5>
+          
+             }
         </div>
     <br />
     <br />
@@ -101,14 +95,7 @@ handleDeleteHabit = async (habit) => {
         <header className='header-footer'>Habits</header>
         <Link to="/newhabit">Add New Goal</Link>
         {this.props.habits.length ? 
-          <table>
-            <thead>
-              <tr><th width={100}>Habits</th></tr>
-            </thead>
-            <tbody>
-              {habitRows}
-            </tbody>
-          </table>
+          [habitRows] 
           :
           <h5 className='text-info'>No Habits Yet</h5>
         }
