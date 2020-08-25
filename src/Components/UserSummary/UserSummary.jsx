@@ -10,7 +10,7 @@ class UserSummary extends Component {
   async componentDidMount() {
     const todos = await todoService.index();
     const habits = await habitService.index();
-    this.props.handleUpdateTodos(todos);  
+    this.props.handleUpdateTodos(todos);
     this.props.handleUpdateHabits(habits);
   }
 
@@ -42,6 +42,10 @@ handleDeleteHabit = async (habit) => {
 
 
 
+  handleDeleteToDo = (todo) => {
+    todoService.deleteToDo();
+  }
+
   render() {
     const todoRows = this.props.todos.map((todo, idx) => (
       <ul> 
@@ -67,12 +71,14 @@ handleDeleteHabit = async (habit) => {
       </li>
         </ul>
     ));
+
       const goalRows = this.props.habits.map((habit, idx) => (
         <tr key={idx}>
             {/* <button className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange}>Done</button> */}
           <td><span className="badge">{idx + 1}</span></td>
           <td>{habit.goal}</td>
         </tr>
+
     ));
   return(
   <div>
@@ -100,26 +106,26 @@ handleDeleteHabit = async (habit) => {
           <h5 className='text-info'>No Habits Yet</h5>
         }
         </div>
-    <br />
-    <br />
-    <div id='GoalList'>
-        <header className='header-footer'>Goals</header>
-        {this.props.habits.length ? 
-          <table>
-            <thead>
-              <tr><th width={100}>Goals</th></tr>
-            </thead>
-            <tbody>
-              
-              {goalRows}
-            </tbody>
-          </table>
-          :
-          <h5 className='text-info'>No Goals Yet</h5>
-        }
+        <br />
+        <br />
+        <div id='GoalList'>
+          <header className='header-footer'>Goals</header>
+          {this.props.habits.length ?
+            <table>
+              <thead>
+                <tr><th width={100}>Goals</th></tr>
+              </thead>
+              <tbody>
+
+                {goalRows}
+              </tbody>
+            </table>
+            :
+            <h5 className='text-info'>No Goals Yet</h5>
+          }
         </div>
-    <br />
-    <br />
+        <br />
+        <br />
       </div>
 
     );
