@@ -7,7 +7,7 @@ export default {
 
 function removeToken() {
     localStorage.removeItem('token');
-}
+};
 
 function setToken(token) {
     if (token) {
@@ -16,7 +16,7 @@ function setToken(token) {
     } else {
         localStorage.removeItem('token');
     }
-}
+};
 
 function getToken() {
     let token = localStorage.getItem('token');
@@ -28,9 +28,9 @@ function getToken() {
         }
     }
     return token;
-}
+};
 
 function getUserFromToken() {
     const token = getToken();
     return token ? JSON.parse(atob(token.split('.')[1])).user : null;
-}
+};
