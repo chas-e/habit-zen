@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-
 }
 
 .App-header {
@@ -14,8 +13,9 @@
   color: white;
 }
 
-main {
-  flex: 1 0 auto;
+#App-Parent {
+  /* display: flex; */
+  flex: 1 0 auto
 }
 
 .App-link {

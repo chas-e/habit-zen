@@ -7,10 +7,32 @@ class NewToDoPage extends Component {
         super(props);
         this.state = { newTodo: '', done: false }
     }
+    
 
-    updateToDo = (todo) => {
-        this.setState({ newTodo: todo });
-    }
+
+   
+    // getInitialState = () => {
+    //       return {checked: true}
+    //     }
+        // handleCheck= () => {
+        //   this.setState({checked: !this.state.checked});
+        // }
+        // render = () => {
+        //   var msg;
+        //   if (this.state.checked) {
+        //     msg = "Checked";
+        //   } else {
+        //     msg = "Un-checked";
+        //   }
+        //   return (
+        //     <div>
+        //       <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+        //       <p>Checkbox: {msg}</p>
+        //     </div>
+        //   );
+        // );
+
+    // }
 
     render() {
         return (
@@ -28,5 +50,7 @@ class NewToDoPage extends Component {
         );
     }
 }
+
+// }
 
 export default NewToDoPage;
