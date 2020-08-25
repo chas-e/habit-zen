@@ -1,9 +1,9 @@
-var Todo = require('../models/todo');
+const Todo = require('../models/todo');
 
 module.exports = {
   create,
   show,
-  //   delete: deleteTodo
+  delete: deleteTodo
 };
 
 async function create(req, res) {
@@ -19,14 +19,11 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-  console.log(req.user);
-  const todos = await Todo.find({})
-    .sort({
-      todos: '',
-      done: ''
-    })
-  // Default to a limit of 20 high scores
-  // if not specified in a query string
-  // .limit(req.query.limit || 20);
+  const todos = await Todo.find({});
   res.json(todos);
+}
+
+async function deleteTodo(req, res) {
+  const todo = await Todo.findByIdAndRemove(req.params.id);
+  res.json(todo);
 }
