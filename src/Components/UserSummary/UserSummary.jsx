@@ -30,9 +30,15 @@ class UserSummary extends Component {
       <tr key={idx}>
           <input className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange} />
         <td><span className="badge">{idx + 1}</span></td>
-        <td>{habit.goal}</td>
         <td>{habit.habit}</td>
       </tr>
+    ));
+      const goalRows = this.props.habits.map((habit, idx) => (
+        <tr key={idx}>
+            <input className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange} />
+          <td><span className="badge">{idx + 1}</span></td>
+          <td>{habit.goal}</td>
+        </tr>
     ));
   return(
   <div>
@@ -56,21 +62,39 @@ class UserSummary extends Component {
         </div>
     <br />
     <br />
+
     <div id='HabitList'>
         <header className='header-footer'>Habits</header>
-        <Link to="/newtodo">Add New Goal</Link>
+        <Link to="/newhabit">Add New Goal</Link>
         {this.props.habits.length ? 
           <table>
             <thead>
-              <tr><th width={100}>List</th><th width={100}>Done?</th></tr>
+              <tr><th width={100}>Habits</th></tr>
             </thead>
             <tbody>
-              
               {habitRows}
             </tbody>
           </table>
           :
-          <h5 className='text-info'>No Habit List Items Yet</h5>
+          <h5 className='text-info'>No Habits Yet</h5>
+        }
+        </div>
+    <br />
+    <br />
+    <div id='GoalList'>
+        <header className='header-footer'>Goals</header>
+        {this.props.habits.length ? 
+          <table>
+            <thead>
+              <tr><th width={100}>Goals</th></tr>
+            </thead>
+            <tbody>
+              
+              {goalRows}
+            </tbody>
+          </table>
+          :
+          <h5 className='text-info'>No Goals Yet</h5>
         }
         </div>
     <br />
