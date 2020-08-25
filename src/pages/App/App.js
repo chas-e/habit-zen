@@ -17,7 +17,8 @@ class App extends Component {
     this.state = {
       // ...this.getInitialState(),
       user: userService.getUser(),
-      todos: [{ todo: '', done: false }],
+      todos: [{ text: '', done: '' }],
+      habits: [{ goal: '', habit: ''}],
       quotes: [],
     };
   }
@@ -40,6 +41,7 @@ class App extends Component {
   //   return {
   //   };
   // }
+
   handleSignupOrLogin = () => {
     this.setState({
       user: userService.getUser()
@@ -52,12 +54,13 @@ class App extends Component {
     });
   }
 
+  handleUpdateTodos = ( todos ) => {
+    this.setState({ todos });
+  }
 
-
-  // handleTodoClick = () => {
-
-  // }
-
+  handleUpdateHabits = ( habits ) => {
+    this.setState({ habits });
+  }
 
   render() {
     return (
@@ -66,13 +69,13 @@ class App extends Component {
           user={this.state.user}
           handleLogout={this.handleLogout}
         />
-        <main>
-          <Switch>
-            <Route exact path="/signup" render={({ history }) =>
-              <SignupPage
-                history={history}
-                handleSignupOrLogin={this.handleSignupOrLogin}
-              />
+        <div id="App-Parent">
+        <Switch>
+          <Route exact path="/signup" render={({ history }) =>
+            <SignupPage
+              history={history}
+              handleSignupOrLogin={this.handleSignupOrLogin}
+            />
             }
             />
             <Route exact path="/login" render={({ history }) =>
@@ -83,18 +86,13 @@ class App extends Component {
             }
             />
 
-            <Route exact path="/" render={({ history }) =>
-              <LandingPage
-                history={history}
-              />
-            }
+          <Route exact path="/" render={({ history }) =>
+            <LandingPage
+              history={history}
             />
-            <Route exact path='/newtodo' render={({ history, props }) =>
-              <NewToDoPage
-                history={history}
-              />
-            }
-            />
+          }
+          />
+   
             <Route exact path='/newhabit' render={({ history }) => (
               userService.getUser() ?
                 <NewHabitPage
@@ -116,7 +114,9 @@ class App extends Component {
               <UserSummaryPage
                 {...this.props}
                 todos={this.state.todos}
-                handleUpdateTodos={this.handleUpdateToDos}
+                habits={this.state.habits}
+                handleUpdateTodos={this.handleUpdateTodos}
+                handleUpdateHabits={this.handleUpdateHabits}
                 history={history}
               // handleTodoClick={this.handleTodoClick}
               />
@@ -125,9 +125,8 @@ class App extends Component {
             )
             }
             />
-
-          </Switch>
-        </main>
+        </Switch>
+      </div>
         <footer id="sticky-footer">
           <div>{this.state.quotes}</div>
         </footer>

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const todoSchema = new Schema({
     text: String,
-    done: false,
+    done: Boolean,
     user: {
         type: Schema.Types.ObjectId,
         ref: "User"

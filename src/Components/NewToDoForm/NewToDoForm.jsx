@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import './NewToDoForm.css';
 import todoService from '../../utils/todoService';
 
-class NewToDoForm extends Component {
+
+class ToDoForm extends Component {
     state = {
         text: '',
         done: false,
@@ -42,7 +43,7 @@ class NewToDoForm extends Component {
                 <form className="form-horizontal" onSubmit={this.handleAddToDo} >
                     <div className="form-group  Todo">
                         <div className="col-sm-12">
-                            <input className='checkbox' type="checkbox" name="done" value={this.state.done ? 'checked' : ''} onChange={this.handleChange} />
+                            
                             <input className="form-control" name="text" placeholder="New ToDo" value={this.state.text} onChange={this.handleChange}
                                 required />
                             <div><button>Edit</button></div>
@@ -64,4 +65,4 @@ class NewToDoForm extends Component {
     }
 }
 
-export default NewToDoForm;
+export default ToDoForm;
