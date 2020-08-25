@@ -1,12 +1,10 @@
-const Todo = require('../models/todo');
+var Todo = require('../models/todo');
 
 module.exports = {
   create,
   show,
-
   deleteTodo,
   // editTodo
-
 };
 
 async function create(req, res) {
@@ -22,23 +20,24 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
+  const todos = await Todo.find({})
+    .sort({
+      text: '',
+      done: '',
+      date: ''
+    })
+  
+  res.json(todos);
+}
 
-    const todos = await Todo.find({})
-      .sort({
-        text: '',
-        done: '',
-        date: ''
-      })
+async function deleteTodo(req, res) {
+   await Todo.findByIdAndDelete(req.params.id);
+show(req, res);
+}
 
+// async function editTodo(req, res) {
+//   console.log("Todo", req.body);
+//    await Todo.findByIdAndUpdate(req.params.id);
+//   show(req, res);
+// }
 
-
-    async function deleteTodo(req, res) {
-      await Todo.findByIdAndDelete(req.params.id);
-      show(req, res);
-    }
-
-    // async function editTodo(req, res) {
-    //   console.log("Todo", req.body);
-    //    await Todo.findByIdAndUpdate(req.params.id);
-    //   show(req, res);
-    //
