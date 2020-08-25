@@ -5,14 +5,16 @@ import todoService from '../../utils/todoService';
 
 class UserSummary extends Component {
 
-  // async componentDidMount() {
-  //   const todos = await todoService.index();
-  //   this.props.updateTodos(todos);
-  // }
+  async componentDidMount() {
+    const todos = await todoService.index();
+    this.props.show(todos);
+  }
 
   render() {
     const todoRows = this.props.todos.map((todo, idx) => (
       <tr key={idx}>
+            <input className='checkbox' type="checkbox" name="done" value={this.props.NewToDo ? 'checked' : '' } onChange={this.handleChange} />
+
         <td><span className="badge">{idx + 1}</span></td>
         <td>{todo.todo}</td>
         <td>{todo.done}</td>
@@ -30,6 +32,7 @@ class UserSummary extends Component {
               <tr><th width={100}>List</th><th width={100}>Done?</th></tr>
             </thead>
             <tbody>
+              
               {todoRows}
             </tbody>
           </table>

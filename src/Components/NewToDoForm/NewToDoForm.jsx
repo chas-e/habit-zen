@@ -50,7 +50,6 @@ class ToDoForm extends Component {
         <form className="form-horizontal"  onSubmit={this.addToDo} >
           <div className="form-group  Todo">
             <div className="col-sm-12">
-            <input className='checkbox' type="checkbox" name="done" value={this.props.NewToDo ? 'checked' : '' } onChange={this.handleChange} />
               <input className="form-control" name="todo" placeholder="New Item" value={this.props.newToDo} onChange={this.handleChange} 
               required/>
               <div><button>Edit</button></div>

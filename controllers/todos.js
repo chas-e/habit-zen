@@ -10,9 +10,11 @@ async function create(req, res) {
   try {
     await Todo.create(req.body);
     // Use the highScores action to return the list
-    todos(req, res);
+    show(req, res);
   } catch (err) {
-    res.json({err});
+    return res.status(401).json({
+      err: "Something went wrong"
+  });
   }
 }
 

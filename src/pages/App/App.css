@@ -1,16 +1,8 @@
-.LoadingPage {
-  background-color: grey;
-  /* background: cover; */
-}
 
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 .App-header {
   background-color: #282c34;

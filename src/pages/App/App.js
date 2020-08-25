@@ -40,6 +40,7 @@ class App extends Component {
   //   return {
   //   };
   // }
+
   handleSignupOrLogin = () => {
     this.setState({
       user: userService.getUser()
@@ -89,14 +90,7 @@ class App extends Component {
             />
           }
           />
-          <Route exact path='/newtodo' render={({ history }) =>
-          <NewToDoPage 
-          {...this.props}
-          todos={this.state.todos}
-          handleChangeToDo={this.handleChangeToDo}
-          />
-          }
-          />
+          
           <Route exact path='/newhabit' render={({ history }) => (
             userService.getUser() ?
               <NewHabitPage
