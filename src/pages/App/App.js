@@ -17,17 +17,15 @@ class App extends Component {
     this.state = {
       // ...this.getInitialState(),
       user: userService.getUser(),
-      todos: [{ text: '', done: '' }],
-      habits: [{ goal: '', habit: '' }],
+
+      todos: [{ text: '', done: '' , date: ''}],
+      habits: [{ 
+        goal: '', 
+        habit: '',}],
       quotes: [],
     };
   }
 
-  handleChangeToDo = (e) => {
-    let newToDo = { ...this.state.newTodo };
-    newToDo[e.target.name] = e.target.value;
-    this.setState({ newToDo, formInvalid: true });
-  }
 
   async componentDidMount() {
     const randomQ = await getRandomQ();
@@ -110,7 +108,7 @@ class App extends Component {
             }
             />
             <Route exact path='/user' render={({ history }) => (
-              // userService.getUser() ?
+              userService.getUser() ?
               <UserSummaryPage
                 {...this.props}
                 todos={this.state.todos}
@@ -120,8 +118,8 @@ class App extends Component {
                 history={history}
               // handleTodoClick={this.handleTodoClick}
               />
-              // :
-              // <Redirect to="/login" />
+              :
+              <Redirect to="/login" />
             )
             }
             />

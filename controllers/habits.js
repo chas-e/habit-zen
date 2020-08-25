@@ -3,7 +3,8 @@ const Habit = require('../models/habit');
 
 module.exports = {
     index,
-    create
+    create,
+    deleteHabit
 };
 
 async function create(req, res) {
@@ -21,6 +22,11 @@ async function create(req, res) {
 // IDK if this will actually work or not, idea is to get/ render habits associated with the logged in user
 async function index(req, res) {
     const habits = await Habit.find({})
-        .limit(req.query.limit || 10);
+        // .limit(req.query.limit || 10);
     res.json(habits);
 };
+
+async function deleteHabit(req, res) {
+    await Habit.findByIdAndDelete(req.params.id);
+ index(req, res);
+ }

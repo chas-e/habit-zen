@@ -4,9 +4,9 @@ const BASE_URL = '/api/todos';
 export default {
   index,
   create,
-  deleteToDo
+  deleteToDo,
+  editToDo
 };
-
 
 function create(todo) {
   const options = {
@@ -28,6 +28,19 @@ function index() {
 function deleteToDo(todo) {
   const options = {
     method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + tokenService.getToken()
+    },
+    body: JSON.stringify(todo)
+  };
+  return fetch(BASE_URL + `/${todo._id}`, options).then(res => res.json());
+}
+
+function editToDo(todo) {
+  console.log("todo", todo)
+  const options = {
+    method: "PUT",
     headers: {
       "Content-type": "application/json",
       "Authorization": "Bearer " + tokenService.getToken()
