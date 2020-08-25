@@ -3,7 +3,8 @@ const Habit = require('../models/habit');
 
 module.exports = {
     index,
-    create
+    create,
+    deleteHabit
 };
 
 async function create(req, res) {
@@ -24,3 +25,8 @@ async function index(req, res) {
         // .limit(req.query.limit || 10);
     res.json(habits);
 };
+
+async function deleteHabit(req, res) {
+    await Habit.findByIdAndDelete(req.params.id);
+ index(req, res);
+ }

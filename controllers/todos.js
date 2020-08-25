@@ -3,7 +3,8 @@ var Todo = require('../models/todo');
 module.exports = {
   create,
   show,
-  deleteTodo
+  deleteTodo,
+  // editTodo
 };
 
 async function create(req, res) {
@@ -19,7 +20,6 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-  console.log(req.user);
   const todos = await Todo.find({})
     .sort({
       text: '',
@@ -31,6 +31,12 @@ async function show(req, res) {
 }
 
 async function deleteTodo(req, res) {
-  const todo = await Todo.findByIdAndRemove(req.params.id);
-  res.jason(todo);
+   await Todo.findByIdAndDelete(req.params.id);
+show(req, res);
 }
+
+// async function editTodo(req, res) {
+//   console.log("Todo", req.body);
+//    await Todo.findByIdAndUpdate(req.params.id);
+//   show(req, res);
+// }

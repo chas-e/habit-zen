@@ -108,7 +108,7 @@ class App extends Component {
             }
             />
             <Route exact path='/user' render={({ history }) => (
-              // userService.getUser() ?
+              userService.getUser() ?
               <UserSummaryPage
                 {...this.props}
                 todos={this.state.todos}
@@ -118,8 +118,8 @@ class App extends Component {
                 history={history}
               // handleTodoClick={this.handleTodoClick}
               />
-              // :
-              // <Redirect to="/login" />
+              :
+              <Redirect to="/login" />
             )
             }
             />
