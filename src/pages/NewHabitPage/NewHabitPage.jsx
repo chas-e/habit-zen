@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import HabitForm from '../../components/HabitForm/HabitForm';
+import NewHabitForm from '../../components/NewHabitForm/NewHabitForm';
 // import habitService from '../../utils/habitService';
-import './HabitPage.css';
+import './NewHabitPage.css';
 
-class HabitPage extends Component {
+class NewHabitPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,8 +12,8 @@ class HabitPage extends Component {
     }
     render() {
         return (
-            <div className="HabitPage">
-                <HabitForm
+            <div className="NewHabitPage">
+                <NewHabitForm
                     {...this.props}
                 />
             </div>
@@ -22,4 +22,4 @@ class HabitPage extends Component {
 }
 
 
-export default HabitPage;
+export default NewHabitPage;

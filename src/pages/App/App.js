@@ -1,36 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import LandingPage from '../LandingPage/LandingPage';
-import HabitPage from '../HabitPage/HabitPage';
-import ToDoPage from '../ToDoPage/ToDoPage';
+import NewHabitPage from '../NewHabitPage/NewHabitPage';
+import NewToDoPage from '../NewToDoPage/NewToDoPage';
 // import UserSummaryPage from '../UserSummaryPage';
 import userService from '../../utils/userService';
-import { getRandomQ  } from '../../utils/qrandom-api';
-
-
 import NavBar from '../../components/NavBar/NavBar';
-import UserSummary from '../../components/UserSummary/UserSummary';
+import UserSummaryPage from '../../pages/UserSummaryPage/UserSummaryPage';
 class App extends Component {
   constructor() {
     super();
     this.state = {
       // ...this.getInitialState(),
-      user: userService.getUser(),
-      quotes: [],
+      user: userService.getUser()
     };
   }
-
- async componentDidMount () {
-  const randomQ = await getRandomQ();
- console.log(randomQ);
-  this.setState({
-    quotes: randomQ.contents.quote,
-});
-  }
-
   // getInitialState() {
   //   return {
   //   };
@@ -75,28 +62,29 @@ class App extends Component {
             />
           }
           />
-          <Route exact path='/todo' render={({ history, props }) =>
-            <ToDoPage
-              {...props}
+          <Route exact path='/newtodo' render={({ history, props }) =>
+            <NewToDoPage
+              history={history}
             />
           }
           />
-          <Route exact path='/habit' render={({ history, props }) =>
-            <HabitPage
-              {...props}
-            />
-          }
+          <Route exact path='/newhabit' render={({ history }) => (
+            userService.getUser() ?
+              <NewHabitPage
+                history={history}
+              />
+              :
+              <Redirect to="/login" />
+          )}
           />
-          <Route exact path='/user' render={({ history, props }) =>
-            <UserSummary
-              {...props}
+
+          <Route exact path='/user' render={({ history }) =>
+            <UserSummaryPage
+              history={history}
             />
           }
           />
         </Switch>
-          <footer id="sticky-footer">
-          <div>{this.state.quotes}</div>
-          </footer>
       </div>
     );
   }

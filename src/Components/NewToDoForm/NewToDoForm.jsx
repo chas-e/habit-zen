@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './ToDoForm.css';
+import './NewToDoForm.css';
 
-class ToDoForm extends Component {
+class NewToDoForm extends Component {
     state = {
         Goal: '',
         Habit: '',
@@ -33,4 +33,4 @@ class ToDoForm extends Component {
     }
 }
 
-export default ToDoForm;
+export default NewToDoForm;
