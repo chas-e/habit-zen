@@ -35,7 +35,7 @@ class ToDoForm extends Component {
         // Successfully signed up - show GamePage
         // programattically reroute the user
         this.props.create();
-        this.props.history.push('/');
+        this.props.history.push('/user');
       } catch (err) {
         // Invalid user data (probably duplicate email)
         this.props.updateToDo(err.message);
