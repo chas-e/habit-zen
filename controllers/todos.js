@@ -9,7 +9,6 @@ module.exports = {
 async function create(req, res) {
   try {
     await Todo.create(req.body);
-    // Use the highScores action to return the list
     show(req, res);
   } catch (err) {
     res.json({
