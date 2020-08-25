@@ -41,10 +41,11 @@ class UserSummary extends Component {
     <br />
     <Link to="/newhabit">Add New Habits</Link>
 
-  </div>
-  
-  )}
+      </div>
+
+    );
+  }
 };
 
 
-export default UserSummary;
+export default UserSummary;      

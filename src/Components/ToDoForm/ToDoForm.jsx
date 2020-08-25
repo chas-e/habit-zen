@@ -24,8 +24,6 @@ class ToDoForm extends Component {
     }
   
    
-
-    
     isFormInvalid() {
       return !(this.props.newToDo.todo);
     }

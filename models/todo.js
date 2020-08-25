@@ -5,9 +5,9 @@ const todoSchema = new Schema({
     text: String,
     done: false,
     user: {
-    type: Schema.Types.ObjectId,
-    ref: "User"
-}, 
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    }
 }, {
     timestamps: true
 });

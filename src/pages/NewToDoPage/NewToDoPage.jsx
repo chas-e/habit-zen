@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import ToDoForm from '../../components/ToDoForm/ToDoForm';
+import NewToDoForm from '../../components/NewToDoForm/NewToDoForm';
 import './NewToDoPage.css';
 
 class NewToDoPage extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            newTodo: '', checked,
-            
-        }
+        this.state = { newTodo: '', done: false }
     }
     
 
@@ -45,14 +42,14 @@ class NewToDoPage extends Component {
             <div className="NewToDoPage">
                 <h4> Enter A New To Do List Item</h4>
                 <br />
-                <ToDoForm 
-                {...this.props}
-                todos={this.props.todos}
-                handleUpdateToDos={this.props.handleUpdateToDos}
-                handleChangeToDo={this.props.handleChangeToDo}
-                updateToDo={this.updateToDo}
+                <NewToDoForm
+                    {...this.props}
+                    todos={this.props.todos}
+                    handleUpdateToDos={this.props.handleUpdateToDos}
+                    handleChangeToDo={this.props.handleChangeToDo}
+                    updateToDo={this.updateToDo}
                 />
-            </div>
+            </div >
         );
     }
 }

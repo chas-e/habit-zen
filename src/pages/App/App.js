@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -8,9 +8,9 @@ import NewHabitPage from '../NewHabitPage/NewHabitPage';
 import NewToDoPage from '../NewToDoPage/NewToDoPage';
 import UserSummaryPage from '..//UserSummaryPage/UserSummaryPage';
 import userService from '../../utils/userService';
+import { getRandomQ } from '../../utils/qrandom-api';
 import NavBar from '../../components/NavBar/NavBar';
-// import { getAllQuotes } from '../../services/quote-api';
-// import UserSummary from '../../components/UserSummary/UserSummary';
+
 class App extends Component {
   constructor() {
     super();
@@ -18,15 +18,28 @@ class App extends Component {
       // ...this.getInitialState(),
       user: userService.getUser(),
       todos: [{ todo: '', done: false }],
+      quotes: [],
     };
   }
 
   handleChangeToDo = (e) => {
-    let newToDo ={ ...this.state.newTodo };
+    let newToDo = { ...this.state.newTodo };
     newToDo[e.target.name] = e.target.value;
     this.setState({ newToDo, formInvalid: true });
   }
 
+  async componentDidMount() {
+    const randomQ = await getRandomQ();
+    console.log(randomQ);
+    this.setState({
+      quotes: randomQ.contents.quote,
+    });
+  }
+
+  // getInitialState() {
+  //   return {
+  //   };
+  // }
   handleSignupOrLogin = () => {
     this.setState({
       user: userService.getUser()
@@ -39,7 +52,7 @@ class App extends Component {
     });
   }
 
-  
+
 
   // handleTodoClick = () => {
 
@@ -83,35 +96,45 @@ class App extends Component {
           />
           }
           />
-          <Route exact path='/newhabit' render={({ history }) =>
-          <NewHabitPage 
-          {...this.props}
+          <Route exact path='/newhabit' render={({ history }) => (
+            userService.getUser() ?
+              <NewHabitPage
+                history={history}
+              />
+              :
+              <Redirect to="/login" />
+          )}
           />
+
+          <Route exact path='/newtodo' render={({ history }) =>
+            <NewToDoPage
+              {...this.props}
+              todos={this.state.todos}
+              handleChangeToDo={this.handleChangeToDo}
+              handleUpdateTodos={this.handleUpdateToDos}
+            />
           }
           />
           <Route exact path='/user' render={({ history }) => (
-          // userService.getUser() ?
-          <UserSummaryPage
-          {...this.props}
-          todos={this.state.todos}
-          handleUpdateTodos={this.handleUpdateToDos}
-          // handleTodoClick={this.handleTodoClick}
-          />
-          // :
-          // <Redirect to="/login" />
-           )
+            // userService.getUser() ?
+            <UserSummaryPage
+              {...this.props}
+              todos={this.state.todos}
+              handleUpdateTodos={this.handleUpdateToDos}
+              history={history}
+            // handleTodoClick={this.handleTodoClick}
+            />
+            // :
+            // <Redirect to="/login" />
+          )
           }
           />
-          
+
         </Switch>
-        <footer className='Footer'>
-            <div >
-              Footer
-              {/* this.state<api info>.map((q, idx) =>
-              <h5 className="quotes">{quotes}</h5>) */}
-            </div>
-            </footer>
-      </div>
+        <footer id="sticky-footer">
+          <div>{this.state.quotes}</div>
+        </footer>
+      </div >
     );
   }
 }

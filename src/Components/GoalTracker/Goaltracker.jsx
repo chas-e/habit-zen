@@ -6,7 +6,8 @@ class GoalTracker extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            progress: ''
+            goal: '',
+            progress: null
         }
     }
 
@@ -15,7 +16,7 @@ class GoalTracker extends Component {
             <div className='GoalTracker'>
                 <h3>GoalTracker</h3>
             </div>
-        )
+        );
     }
 }
 
