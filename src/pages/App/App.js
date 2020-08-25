@@ -80,7 +80,6 @@ class App extends Component {
           {...this.props}
           todos={this.state.todos}
           handleChangeToDo={this.handleChangeToDo}
-          handleUpdateTodos={this.handleUpdateToDos}
           />
           }
           />
