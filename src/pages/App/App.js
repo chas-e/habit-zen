@@ -26,6 +26,7 @@ class App extends Component {
     let newToDo = { ...this.state.newTodo };
     newToDo[e.target.name] = e.target.value;
     this.setState({ newToDo, formInvalid: true });
+    console.log(newToDo);
   }
 
   async componentDidMount() {
@@ -114,6 +115,7 @@ class App extends Component {
           }
           />
           <Route exact path='/user' render={({ history }) => (
+            
             // userService.getUser() ?
             <UserSummaryPage
               {...this.props}
