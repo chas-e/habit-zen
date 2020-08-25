@@ -14,15 +14,15 @@ class UserSummary extends Component {
     this.props.handleUpdateHabits(habits);
   }
 
-  // setTodos =
 
-//  deleteTodos = (idx) => {
-//    todos(todos.filter((todos) => todos.id !== idx))
-//  }
-
-handleDeleteToDo = (todo) => {
-  todoService.deleteToDo();
+handleDeleteToDo = async (todo) => {
+  await todoService.deleteToDo(todo);
+    const todos = await todoService.index();
+    const habits = await habitService.index();
+    this.props.handleUpdateTodos(todos);  
+    this.props.handleUpdateHabits(habits);
 }
+
 
 
   render() {
@@ -37,7 +37,7 @@ handleDeleteToDo = (todo) => {
         className="button muted-button">
           Delete
         </button> */}
-        <td><button onClick={this.handleDeleteToDo}><span role="img" aria-label="delete">🚯</span></button></td>
+        <td><button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button></td>
       </tr>
     ));
     const habitRows = this.props.habits.map((habit, idx) => (

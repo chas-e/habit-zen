@@ -27,6 +27,7 @@ function index() {
 }
 
 function deleteToDo(todo) {
+  console.log("todo", todo)
   const options = {
     method: "DELETE",
     headers: {
@@ -35,5 +36,5 @@ function deleteToDo(todo) {
     },
     body: JSON.stringify(todo)
   };
-  return fetch(BASE_URL, options).then(res => res.json);
+  return fetch(BASE_URL + `/${todo._id}`, options).then(res => res.json());
 }
