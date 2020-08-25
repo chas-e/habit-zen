@@ -23,6 +23,10 @@ app.use(express.static(path.join(__dirname, 'build')));
 // mount API routes here, before the "catch-all" route
 app.use('/api/users', require('./routes/api/users'));
 app.use(require('./config/auth'));
+app.use('/api/todos', require('./routes/api/todos'));
+
+
+// mount routes we want to protect with auth
 
 // mount  routes we want to protect with auth (this might need to go under catch all, in case it throws errors)
 app.use('/api/habits', require('./routes/api/habits'));
