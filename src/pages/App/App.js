@@ -17,7 +17,8 @@ class App extends Component {
     this.state = {
       // ...this.getInitialState(),
       user: userService.getUser(),
-      todos: [{ todo: '', done: false }],
+      todos: [{ text: '', done: '' }],
+      habits: [{ goal: '', habit: ''}],
       quotes: [],
     };
   }
@@ -41,6 +42,7 @@ class App extends Component {
   //   return {
   //   };
   // }
+
   handleSignupOrLogin = () => {
     this.setState({
       user: userService.getUser()
@@ -53,12 +55,13 @@ class App extends Component {
     });
   }
 
+  handleUpdateTodos = ( todos ) => {
+    this.setState({ todos });
+  }
 
-
-  // handleTodoClick = () => {
-
-  // }
-
+  handleUpdateHabits = ( habits ) => {
+    this.setState({ habits });
+  }
 
   render() {
     return (
@@ -67,21 +70,22 @@ class App extends Component {
           user={this.state.user}
           handleLogout={this.handleLogout}
         />
+        <div id="App-Parent">
         <Switch>
           <Route exact path="/signup" render={({ history }) =>
             <SignupPage
               history={history}
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
-          }
-          />
-          <Route exact path="/login" render={({ history }) =>
-            <LoginPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
+            }
             />
-          }
-          />
+            <Route exact path="/login" render={({ history }) =>
+              <LoginPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            }
+            />
 
           <Route exact path="/" render={({ history }) =>
             <LandingPage
@@ -89,48 +93,41 @@ class App extends Component {
             />
           }
           />
-          <Route exact path='/newtodo' render={({ history, props }) =>
-            <NewToDoPage
-              history={history}
+   
+            <Route exact path='/newhabit' render={({ history }) => (
+              userService.getUser() ?
+                <NewHabitPage
+                  history={history}
+                />
+                :
+                <Redirect to="/login" />
+            )}
             />
-          }
-          />
-          <Route exact path='/newhabit' render={({ history }) => (
-            userService.getUser() ?
-              <NewHabitPage
+
+            <Route exact path='/newtodo' render={({ history }) =>
+              <NewToDoPage
                 history={history}
               />
-              :
-              <Redirect to="/login" />
-          )}
-          />
-
-          <Route exact path='/newtodo' render={({ history }) =>
-            <NewToDoPage
-              {...this.props}
-              todos={this.state.todos}
-              handleChangeToDo={this.handleChangeToDo}
-              handleUpdateTodos={this.handleUpdateToDos}
+            }
             />
-          }
-          />
-          <Route exact path='/user' render={({ history }) => (
-            
-            // userService.getUser() ?
-            <UserSummaryPage
-              {...this.props}
-              todos={this.state.todos}
-              handleUpdateTodos={this.handleUpdateToDos}
-              history={history}
-            // handleTodoClick={this.handleTodoClick}
+            <Route exact path='/user' render={({ history }) => (
+              // userService.getUser() ?
+              <UserSummaryPage
+                {...this.props}
+                todos={this.state.todos}
+                habits={this.state.habits}
+                handleUpdateTodos={this.handleUpdateTodos}
+                handleUpdateHabits={this.handleUpdateHabits}
+                history={history}
+              // handleTodoClick={this.handleTodoClick}
+              />
+              // :
+              // <Redirect to="/login" />
+            )
+            }
             />
-            // :
-            // <Redirect to="/login" />
-          )
-          }
-          />
-
         </Switch>
+      </div>
         <footer id="sticky-footer">
           <div>{this.state.quotes}</div>
         </footer>

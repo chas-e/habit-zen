@@ -3,41 +3,35 @@ import { Link } from 'react-router-dom';
 import './NewToDoForm.css';
 import todoService from '../../utils/todoService';
 
-class NewToDoForm extends Component {
+
+class ToDoForm extends Component {
     state = {
-        todos: [{ todo: "", done: false }],
-        newToDo: {
-            todo: '',
-            done: false
-        },
+        text: '',
+        done: false,
         formInvalid: true
     };
+
+    // need to get checked to mean true
 
     // formRef = React.createRef();
 
     handleChange = (e) => {
-        this.props.updateToDo('');
         this.setState({
             [e.target.name]: e.target.value
         });
     }
 
-
     isFormInvalid() {
-        return !(this.props.newToDo.todo);
+        return !(this.state.text);
     }
 
-    addToDo = async (e) => {
+    handleAddToDo = async (e) => {
         e.preventDefault();
         try {
-            await todoService.index(this.state);
-            // Successfully signed up - show GamePage
-            // programattically reroute the user
-            this.props.create();
-            this.props.history.push('/');
+            await todoService.create(this.state);
+            this.props.history.push('/user');
         } catch (err) {
-            // Invalid user data (probably duplicate email)
-            this.props.updateToDo(err.message);
+            console.log(err);
         }
     };
 
@@ -46,11 +40,11 @@ class NewToDoForm extends Component {
             <div className="NewToDoForm">
                 <header className="header-footer">New To Do List Item</header>
                 <br />
-                <form className="form-horizontal" onSubmit={this.addToDo} >
+                <form className="form-horizontal" onSubmit={this.handleAddToDo} >
                     <div className="form-group  Todo">
                         <div className="col-sm-12">
-                            <input className='checkbox' type="checkbox" name="done" value={this.props.NewToDo ? 'checked' : ''} onChange={this.handleChange} />
-                            <input className="form-control" name="todo" placeholder="New Item" value={this.props.newToDo} onChange={this.handleChange}
+                            
+                            <input className="form-control" name="text" placeholder="New ToDo" value={this.state.text} onChange={this.handleChange}
                                 required />
                             <div><button>Edit</button></div>
                         </div>
@@ -71,4 +65,4 @@ class NewToDoForm extends Component {
     }
 }
 
-export default NewToDoForm;
+export default ToDoForm;
