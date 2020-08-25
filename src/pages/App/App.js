@@ -20,9 +20,7 @@ class App extends Component {
       todos: [{ text: '', done: '' , date: ''}],
       habits: [{ 
         goal: '', 
-        habit: '',
-        sDate: '',
-        eDate: ''}],
+        habit: '',}],
       quotes: [],
     };
   }
