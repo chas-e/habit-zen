@@ -1,0 +1,7 @@
+div.col-sm-12 {
+    display: inline-flex;
+}
+
+input {
+    margin: 0 6px 0 6px;
+}
