@@ -28,7 +28,7 @@
 }
 
 #App-Parent {
-  /* height: 70vh; */
+  /* display: flex; */
   flex: 1 0 auto
 }
 
