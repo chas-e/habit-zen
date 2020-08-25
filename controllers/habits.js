@@ -21,6 +21,6 @@ async function create(req, res) {
 // IDK if this will actually work or not, idea is to get/ render habits associated with the logged in user
 async function index(req, res) {
     const habits = await Habit.find({})
-        .limit(req.query.limit || 10);
+        // .limit(req.query.limit || 10);
     res.json(habits);
 };

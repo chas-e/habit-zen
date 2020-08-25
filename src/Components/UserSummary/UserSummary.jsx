@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './UserSummary.css';
 import todoService from '../../utils/todoService';
 import habitService from '../../utils/habitService';
+// import user from '../../../models/user';
 
 class UserSummary extends Component {
 
@@ -13,18 +14,30 @@ class UserSummary extends Component {
     this.props.handleUpdateHabits(habits);
   }
 
-  // async componentDidMount(props) {
-  //   
-  // }
+  // setTodos =
+
+//  deleteTodos = (idx) => {
+//    todos(todos.filter((todos) => todos.id !== idx))
+//  }
+
+handleDeleteToDo = (todo) => {
+  todoService.deleteToDo();
+}
+
 
   render() {
     const todoRows = this.props.todos.map((todo, idx) => (
       <tr key={idx}>
         
-          <button type="checkbox" name="done" value={this.props.NewToDo ? 'checked' : '' } onChange={this.handleChange}>Done</button>
+        <button type="checkbox" name="done" value={this.props.NewToDo ? 'checked' : '' } onChange={this.handleChange}>Done</button>
         <td><span className="badge">{idx + 1}</span></td>
         <td>{todo.text}</td>
         <td>{todo.done}</td>
+        {/* <button onClick={() => this.props.deleteTodos(todos.id)}
+        className="button muted-button">
+          Delete
+        </button> */}
+        <td><button onClick={this.handleDeleteToDo}><span role="img" aria-label="delete">🚯</span></button></td>
       </tr>
     ));
     const habitRows = this.props.habits.map((habit, idx) => (

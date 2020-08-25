@@ -3,7 +3,7 @@ var Todo = require('../models/todo');
 module.exports = {
   create,
   show,
-  //   delete: deleteTodo
+  deleteTodo
 };
 
 async function create(req, res) {
@@ -28,4 +28,9 @@ async function show(req, res) {
     })
   
   res.json(todos);
+}
+
+async function deleteTodo(req, res) {
+  const todo = await Todo.findByIdAndRemove(req.params.id);
+  res.jason(todo);
 }
