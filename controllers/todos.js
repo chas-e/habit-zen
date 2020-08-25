@@ -24,6 +24,6 @@ async function show(req, res) {
 }
 
 async function deleteTodo(req, res) {
-  const todo = await Todo.findByIdAndRemove(req.params.id);
-  res.json(todo);
+  await Todo.findByIdAndDelete(req.params.id);
+  show(req, res);
 }

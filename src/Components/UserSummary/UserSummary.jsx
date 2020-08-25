@@ -13,12 +13,15 @@ class UserSummary extends Component {
     this.props.handleUpdateHabits(habits);
   }
 
-  // async componentDidMount(props) {
-  //   
-  // }
 
   handleDeleteToDo = (todo) => {
-    todoService.deleteToDo();
+    todoService.deleteToDo(todo);
+    this.props.history.push('/user');
+  }
+
+  handleDeleteHabit = (habit) => {
+    habitService.deleteHabit(habit);
+    this.props.history.push('/user');
   }
 
   render() {
@@ -36,6 +39,7 @@ class UserSummary extends Component {
         <input className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : ''} onChange={this.handleChange} />
         <td><span className="badge">{idx + 1}</span></td>
         <td>{habit.habit}</td>
+        <td><button><span role="img" aria-label="delete">🚮</span></button></td>
       </tr>
     ));
     const goalRows = this.props.habits.map((habit, idx) => (
