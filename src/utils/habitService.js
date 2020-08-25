@@ -3,8 +3,7 @@ const BASE_URL = '/api/habits';
 
 export default {
     create,
-    index,
-    deleteHabit
+    index
 };
 
 function create(habit) {
@@ -22,17 +21,3 @@ function create(habit) {
 function index() {
     return fetch(BASE_URL).then(res => res.json());
 }
-
-function deleteHabit(habit) {
-    console.log("habit", habit)
-    const options = {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json",
-        "Authorization": "Bearer " + tokenService.getToken()
-      },
-      body: JSON.stringify(habit)
-    };
-    return fetch(BASE_URL + `/${habit._id}`, options).then(res => res.json());
-  }
-  
