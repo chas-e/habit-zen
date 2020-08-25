@@ -29,7 +29,7 @@ class App extends Component {
     this.setState({ newToDo, formInvalid: true });
     console.log(newToDo);
   }
-
+// Test //
   async componentDidMount() {
     const randomQ = await getRandomQ();
     console.log(randomQ);
