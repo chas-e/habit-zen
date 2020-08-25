@@ -8,8 +8,9 @@ import NewHabitPage from '../NewHabitPage/NewHabitPage';
 import NewToDoPage from '../NewToDoPage/NewToDoPage';
 import UserSummaryPage from '..//UserSummaryPage/UserSummaryPage';
 import userService from '../../utils/userService';
+import { getRandomQ } from '../../utils/qrandom-api';
 import NavBar from '../../components/NavBar/NavBar';
-import UserSummaryPage from '../../pages/UserSummaryPage/UserSummaryPage';
+
 class App extends Component {
   constructor() {
     super();
@@ -17,6 +18,7 @@ class App extends Component {
       // ...this.getInitialState(),
       user: userService.getUser(),
       todos: [{ todo: '', done: false }],
+      quotes: [],
     };
   }
 
@@ -26,6 +28,18 @@ class App extends Component {
     this.setState({ newToDo, formInvalid: true });
   }
 
+  async componentDidMount() {
+    const randomQ = await getRandomQ();
+    console.log(randomQ);
+    this.setState({
+      quotes: randomQ.contents.quote,
+    });
+  }
+
+  // getInitialState() {
+  //   return {
+  //   };
+  // }
   handleSignupOrLogin = () => {
     this.setState({
       user: userService.getUser()
@@ -115,14 +129,10 @@ class App extends Component {
           />
 
         </Switch>
-        <footer className='Footer'>
-          <div >
-            Footer
-              {/* this.state<api info>.map((q, idx) =>
-              <h5 className="quotes">{quotes}</h5>) */}
-          </div>
+        <footer id="sticky-footer">
+          <div>{this.state.quotes}</div>
         </footer>
-      </div>
+      </div >
     );
   }
 }
