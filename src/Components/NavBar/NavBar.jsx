@@ -21,8 +21,8 @@ const NavBar = (props) => {
         <div className="NavBar">
             {nav}
         </div>
-    )
-};
+    );
+}
 
 
 
