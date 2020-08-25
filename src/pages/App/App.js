@@ -27,8 +27,9 @@ class App extends Component {
     let newToDo = { ...this.state.newTodo };
     newToDo[e.target.name] = e.target.value;
     this.setState({ newToDo, formInvalid: true });
+    console.log(newToDo);
   }
-
+// Test //
   async componentDidMount() {
     const randomQ = await getRandomQ();
     console.log(randomQ);
