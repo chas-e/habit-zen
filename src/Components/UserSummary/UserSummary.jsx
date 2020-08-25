@@ -20,7 +20,8 @@ class UserSummary extends Component {
   render() {
     const todoRows = this.props.todos.map((todo, idx) => (
       <tr key={idx}>
-          <input className='checkbox' type="checkbox" name="done" value={this.props.NewToDo ? 'checked' : '' } onChange={this.handleChange} />
+        
+          <button type="checkbox" name="done" value={this.props.NewToDo ? 'checked' : '' } onChange={this.handleChange}>Done</button>
         <td><span className="badge">{idx + 1}</span></td>
         <td>{todo.text}</td>
         <td>{todo.done}</td>
@@ -28,14 +29,14 @@ class UserSummary extends Component {
     ));
     const habitRows = this.props.habits.map((habit, idx) => (
       <tr key={idx}>
-          <input className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange} />
+          <button className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange}>Done</button>
         <td><span className="badge">{idx + 1}</span></td>
         <td>{habit.habit}</td>
       </tr>
     ));
       const goalRows = this.props.habits.map((habit, idx) => (
         <tr key={idx}>
-            <input className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange} />
+            {/* <button className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange}>Done</button> */}
           <td><span className="badge">{idx + 1}</span></td>
           <td>{habit.goal}</td>
         </tr>

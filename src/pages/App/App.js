@@ -17,17 +17,17 @@ class App extends Component {
     this.state = {
       // ...this.getInitialState(),
       user: userService.getUser(),
-      todos: [{ text: '', done: '' }],
-      habits: [{ goal: '', habit: ''}],
+      todos: [{ text: '', done: '' , date: ''}],
+      habits: [{ 
+        goal: '', 
+        habit: '',
+        sDate: '',
+        eDate: ''}],
       quotes: [],
     };
   }
 
-  handleChangeToDo = (e) => {
-    let newToDo = { ...this.state.newTodo };
-    newToDo[e.target.name] = e.target.value;
-    this.setState({ newToDo, formInvalid: true });
-  }
+  
 
   async componentDidMount() {
     const randomQ = await getRandomQ();

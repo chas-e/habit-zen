@@ -22,11 +22,10 @@ async function show(req, res) {
   console.log(req.user);
   const todos = await Todo.find({})
     .sort({
-      todos: '',
-      done: ''
+      text: '',
+      done: '',
+      date: ''
     })
-  // Default to a limit of 20 high scores
-  // if not specified in a query string
-  // .limit(req.query.limit || 20);
+  
   res.json(todos);
 }
