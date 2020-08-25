@@ -66,6 +66,7 @@ class App extends Component {
           user={this.state.user}
           handleLogout={this.handleLogout}
         />
+        <div id="App-Parent">
         <Switch>
           <Route exact path="/signup" render={({ history }) =>
             <SignupPage
@@ -131,6 +132,7 @@ class App extends Component {
           />
 
         </Switch>
+      </div>
         <footer id="sticky-footer">
           <div>{this.state.quotes}</div>
         </footer>

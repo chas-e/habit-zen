@@ -27,6 +27,11 @@
   color: #61dafb;
 }
 
+#App-Parent {
+  /* height: 70vh; */
+  flex: 1 0 auto
+}
+
 #sticky-footer {
   flex-shrink: none;
   background-color: #282C34;

@@ -43,6 +43,7 @@ class NewHabitForm extends Component {
     render() {
         console.log(this.props);
         return (
+
             <div className="HabitForm card">
                 <header className="header-footer">New Goal</header>
                 <form className="form-horizontal" onSubmit={this.handleSubmit} >
@@ -96,6 +97,7 @@ class NewHabitForm extends Component {
                     </div>
                 </form>
             </div>
+          
         );
     }
 }
