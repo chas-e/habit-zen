@@ -18,6 +18,7 @@ class App extends Component {
       // ...this.getInitialState(),
       user: userService.getUser(),
       todos: [{ todo: '', done: false }],
+
       quotes: [],
     };
   }
@@ -73,16 +74,17 @@ class App extends Component {
             <SignupPage
               history={history}
               handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            }
             />
-          }
-          />
-          <Route exact path="/login" render={({ history }) =>
-            <LoginPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
+
+            <Route exact path="/login" render={({ history }) =>
+              <LoginPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            }
             />
-          }
-          />
 
           <Route exact path="/" render={({ history }) =>
             <LandingPage
@@ -90,41 +92,38 @@ class App extends Component {
             />
           }
           />
-          
-          <Route exact path='/newhabit' render={({ history }) => (
-            userService.getUser() ?
-              <NewHabitPage
+   
+            <Route exact path='/newhabit' render={({ history }) => (
+              userService.getUser() ?
+                <NewHabitPage
+                  history={history}
+                />
+                :
+                <Redirect to="/login" />
+            )}
+            />
+
+            <Route exact path='/newtodo' render={({ history }) =>
+              <NewToDoPage
                 history={history}
               />
-              :
-              <Redirect to="/login" />
-          )}
-          />
-
-          <Route exact path='/newtodo' render={({ history }) =>
-            <NewToDoPage
-              {...this.props}
-              todos={this.state.todos}
-              handleChangeToDo={this.handleChangeToDo}
-              handleUpdateTodos={this.handleUpdateToDos}
+            }
             />
-          }
-          />
-          <Route exact path='/user' render={({ history }) => (
-            // userService.getUser() ?
-            <UserSummaryPage
-              {...this.props}
-              todos={this.state.todos}
-              handleUpdateTodos={this.handleUpdateToDos}
-              history={history}
-            // handleTodoClick={this.handleTodoClick}
+            <Route exact path='/user' render={({ history }) => (
+              // userService.getUser() ?
+              <UserSummaryPage
+                {...this.props}
+                todos={this.state.todos}
+                habits
+                handleUpdateTodos={this.handleUpdateToDos}
+                history={history}
+              // handleTodoClick={this.handleTodoClick}
+              />
+              // :
+              // <Redirect to="/login" />
+            )
+            }
             />
-            // :
-            // <Redirect to="/login" />
-          )
-          }
-          />
-
         </Switch>
       </div>
         <footer id="sticky-footer">
