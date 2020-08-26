@@ -5,8 +5,16 @@ module.exports = {
   show,
   deleteTodo,
   // editTodo
+  updateToDo
 };
 
+async function updateToDo(req, res) {
+  await Todo.findByIdAndUpdate(req.params.id, req.body, { new: true },function(err, todo) {
+      console.log('🙂', res.body)
+      res.json(todo);
+      
+   })};
+   
 async function create(req, res) {
   try {
     await Todo.create(req.body);

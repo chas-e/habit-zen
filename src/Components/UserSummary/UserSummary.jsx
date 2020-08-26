@@ -16,7 +16,7 @@ class UserSummary extends Component {
 
 
 handleDeleteToDo = async (todo) => {
-  await todoService.deleteToDo(todo);
+  await todoService.deleteTodo(todo);
     const todos = await todoService.index();
     const habits = await habitService.index();
     this.props.handleUpdateTodos(todos);  
@@ -39,19 +39,41 @@ handleDeleteHabit = async (habit) => {
     this.props.handleUpdateHabits(habits);
 }
 
+handleUpdateHabit = async (habit) => {
+let update = habit;
+if(update.done) {
+  update.done = false
+}else{
+  update.done = true
+}
+  await habitService.doneHabit(update);
+    const habits = await habitService.index();
+    this.props.handleUpdateHabits(habits);
+}
 
+handleUpdateToDo = async (todo) => {
+let update = todo;
+if(update.done) {
+  update.done = false
+}else{
+  update.done = true
+}
+  await todoService.doneToDo(todo);
+    const todos = await todoService.index();
+    this.props.handleUpdateTodos(todos);  
+}
 
-
-  handleDeleteToDo = (todo) => {
-    todoService.deleteToDo();
+  handleDeleteTodo = (todo) => {
+    todoService.deleteTodo();
   }
 
   render() {
     const todoRows = this.props.todos.map((todo, idx) => (
+     
       <ul> 
       <li className="ToDoList" key={idx}>
         
-        <button type="checkbox" name="done" value={this.props.NewToDo ? 'checked' : '' } onChange={this.handleChange}>Done</button>&nbsp;&nbsp;
+        <input type="checkbox" name="done" checked={todo.done} onChange={() => this.handleUpdateToDo(todo)}/>Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
         <button onClick={() => this.handleEditToDo(todo)}><span role="img" aria-label="edit">✏️</span></button>&nbsp;&nbsp;
         <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -63,7 +85,7 @@ handleDeleteHabit = async (habit) => {
     const habitRows = this.props.habits.map((habit, idx) => (
       <ul> 
       <li className="HabitList" key={idx}>
-        <button type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange}>Done</button>&nbsp;&nbsp;
+      <input type="checkbox" name="done" checked={habit.done} onChange={() => this.handleUpdateHabit(habit)}/>Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteHabit(habit)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
         <button onClick={() => this.handleEditHabit(habit)}><span role="img" aria-label="edit">✏️</span></button>&nbsp;&nbsp;
         <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -74,7 +96,6 @@ handleDeleteHabit = async (habit) => {
 
       const goalRows = this.props.habits.map((habit, idx) => (
         <tr key={idx}>
-            {/* <button className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange}>Done</button> */}
           <td><span className="badge">{idx + 1}</span></td>
           <td>{habit.goal}</td>
         </tr>
