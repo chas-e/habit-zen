@@ -4,7 +4,8 @@ const BASE_URL = '/api/habits';
 export default {
     create,
     index,
-    deleteHabit
+    deleteHabit,
+    doneHabit
 };
 
 function create(habit) {
@@ -26,6 +27,18 @@ function index() {
 function deleteHabit(habit) {
     const options = {
       method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": "Bearer " + tokenService.getToken()
+      },
+      body: JSON.stringify(habit)
+    };
+    return fetch(BASE_URL + `/${habit._id}`, options).then(res => res.json());
+  }
+
+  function doneHabit(habit) {
+    const options = {
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
         "Authorization": "Bearer " + tokenService.getToken()
