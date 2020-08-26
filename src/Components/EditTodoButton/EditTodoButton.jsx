@@ -16,7 +16,7 @@ class EditTodoButton extends Component {
       }
       
       handleSave() {
-        this.setState({text: this.state.inputText, mode: 'view'});
+        this.setState({text: '', mode: 'view'});
       }
     
       handleEdit() {
@@ -25,6 +25,7 @@ class EditTodoButton extends Component {
 
       onClick = (e) => {
         this.handleSave();
+        this.props.refreshContent();
         this.props.handleEditToDo(this.props.todo, this.state.inputText);
       }
       

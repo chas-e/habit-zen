@@ -48,6 +48,7 @@ handleDeleteHabit = async (habit) => {
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
       <EditTodoButton
         {...this.props}
+        refreshContent={this.refreshContent}
         handleEditToDo={this.handleEditToDo}
         todo={todo}
         todoId={todo._id}/>&nbsp;&nbsp;
