@@ -7,8 +7,9 @@ router.get('/', todosCtrl.show);
 require('../../config/auth');
 router.post('/', checkAuth, todosCtrl.create);
 router.delete('/:id', todosCtrl.deleteTodo);
-// router.put('/:id', todosCtrl.editTodo);
+router.put('/:id', todosCtrl.editTodo);
 router.put('/:id', todosCtrl.updateToDo);
+
 
 function checkAuth(req, res, next) {
     if (req.user) return next();

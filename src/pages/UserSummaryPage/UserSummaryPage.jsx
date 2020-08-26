@@ -6,12 +6,8 @@ import "./UserSummaryPage.css";
 
 
 class UserSummaryPage extends Component {
-
-    // handleToDoDone = (e) => {
-    //     let done = { ...this.props.todo.done };
-    //     done[e.target.name] = e.target.value;
-    //     this.setState({ done });
-    //   }
+        
+  
  
     render() {
         return (
@@ -28,11 +24,7 @@ class UserSummaryPage extends Component {
     }
 }
 
-// <Router>
-//     <Route exact path="/user"  component={TodosList} />
-//     <Route exact path="/edit/:id" component={EditTodo} />
-//     <Route exact path="/create" component={CreateTodo} />
-//     </Router>
+
 
 
 export default UserSummaryPage;
