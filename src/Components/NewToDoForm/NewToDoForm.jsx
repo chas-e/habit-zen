@@ -8,7 +8,6 @@ class ToDoForm extends Component {
     state = {
         text: '',
         done: false,
-        formInvalid: true
     };
 
     // need to get checked to mean true
@@ -19,10 +18,6 @@ class ToDoForm extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-    }
-
-    isFormInvalid() {
-        return !(this.state.text);
     }
 
     handleAddToDo = async (e) => {
@@ -43,18 +38,13 @@ class ToDoForm extends Component {
                 <form className="form-horizontal" onSubmit={this.handleAddToDo} >
                     <div className="form-group  Todo">
                         <div className="col-sm-12">
-                            
                             <input className="form-control" name="text" placeholder="New ToDo" value={this.state.text} onChange={this.handleChange}
                                 required />
-                            <div><button>Edit</button></div>
                         </div>
                     </div>
                     <div className="form-group">
                         <div className="col-sm-12 text-center">
-                            {/* <NewToDoButton 
-              todos={this.state.todos}/> */}
                             <button className="btn btn-default">Save</button>&nbsp;&nbsp;&nbsp;
-              {/* disabled={this.isFormInvalid()} */}
                             <Link to='/user'>Cancel</Link>
                         </div>
                     </div>

@@ -15,9 +15,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      // ...this.getInitialState(),
       user: userService.getUser(),
-
       todos: [{ text: '', done: '' , date: ''}],
       habits: [{ 
         goal: '', 
@@ -35,10 +33,6 @@ class App extends Component {
     });
   }
 
-  // getInitialState() {
-  //   return {
-  //   };
-  // }
 
   handleSignupOrLogin = () => {
     this.setState({
@@ -59,6 +53,8 @@ class App extends Component {
   handleUpdateHabits = (habits) => {
     this.setState({ habits });
   }
+
+
 
   render() {
     return (
@@ -111,11 +107,12 @@ class App extends Component {
               userService.getUser() ?
               <UserSummaryPage
                 {...this.props}
+                history={history}
                 todos={this.state.todos}
                 habits={this.state.habits}
                 handleUpdateTodos={this.handleUpdateTodos}
                 handleUpdateHabits={this.handleUpdateHabits}
-                history={history}
+                
               // handleTodoClick={this.handleTodoClick}
               />
               :
