@@ -16,7 +16,7 @@ class UserSummary extends Component {
 
 
 handleDeleteToDo = async (todo) => {
-  await todoService.deleteToDo(todo);
+  await todoService.deleteTodo(todo);
     const todos = await todoService.index();
     const habits = await habitService.index();
     this.props.handleUpdateTodos(todos);  
@@ -40,25 +40,31 @@ handleDeleteHabit = async (habit) => {
 }
 
 handleUpdateHabit = async (habit) => {
-  console.log({habit});
 let update = habit;
 if(update.done) {
   update.done = false
 }else{
   update.done = true
 }
-
-
-console.log({update});
   await habitService.doneHabit(update);
-    const todos = await todoService.index();
     const habits = await habitService.index();
-    this.props.handleUpdateTodos(todos);  
     this.props.handleUpdateHabits(habits);
 }
 
-  handleDeleteToDo = (todo) => {
-    todoService.deleteToDo();
+handleUpdateToDo = async (todo) => {
+let update = todo;
+if(update.done) {
+  update.done = false
+}else{
+  update.done = true
+}
+  await todoService.doneToDo(todo);
+    const todos = await todoService.index();
+    this.props.handleUpdateTodos(todos);  
+}
+
+  handleDeleteTodo = (todo) => {
+    todoService.deleteTodo();
   }
 
   render() {
@@ -67,7 +73,7 @@ console.log({update});
       <ul> 
       <li className="ToDoList" key={idx}>
         
-        <input type="checkbox" name="done" checked={todo.done} onChange={() => this.handleUpdateHabit(todo)}/>Done&nbsp;&nbsp;
+        <input type="checkbox" name="done" checked={todo.done} onChange={() => this.handleUpdateToDo(todo)}/>Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
         <button onClick={() => this.handleEditToDo(todo)}><span role="img" aria-label="edit">✏️</span></button>&nbsp;&nbsp;
         <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -90,7 +96,6 @@ console.log({update});
 
       const goalRows = this.props.habits.map((habit, idx) => (
         <tr key={idx}>
-            <button className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : 'true' } onChange={this.handleChange}>Done</button>
           <td><span className="badge">{idx + 1}</span></td>
           <td>{habit.goal}</td>
         </tr>
