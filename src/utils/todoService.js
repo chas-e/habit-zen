@@ -1,20 +1,20 @@
 import tokenService from './tokenService';
-
 const BASE_URL = '/api/todos';
 
 export default {
   index,
   create,
-  deleteToDo
+  deleteTodo,
+  editToDo,
+  doneToDo
 };
-
 
 function create(todo) {
   const options = {
     method: "POST",
     headers: {
-      "Content-type" : "application/json",
-      "Authorization" : "Bearer " + tokenService.getToken()
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + tokenService.getToken()
     },
     body: JSON.stringify(todo)
   };
@@ -26,8 +26,7 @@ function index() {
   return fetch(BASE_URL).then(res => res.json());
 }
 
-function deleteToDo(todo) {
-  console.log("todo", todo)
+function deleteTodo(todo) {
   const options = {
     method: "DELETE",
     headers: {
@@ -38,3 +37,30 @@ function deleteToDo(todo) {
   };
   return fetch(BASE_URL + `/${todo._id}`, options).then(res => res.json());
 }
+
+function doneToDo(todo) {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + tokenService.getToken()
+    },
+    body: JSON.stringify(todo)
+  };
+  return fetch(BASE_URL + `/${todo._id}`, options).then(res => res.json());
+}
+
+
+function editToDo(todo) {
+  console.log("todo", todo)
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + tokenService.getToken()
+    },
+    body: JSON.stringify(todo)
+  };
+  return fetch(BASE_URL + `/${todo._id}`, options).then(res => res.json());
+}
+

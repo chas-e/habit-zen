@@ -17,6 +17,7 @@ class App extends Component {
     this.state = {
       // ...this.getInitialState(),
       user: userService.getUser(),
+
       todos: [{ text: '', done: '' , date: ''}],
       habits: [{ 
         goal: '', 
@@ -25,7 +26,6 @@ class App extends Component {
     };
   }
 
-  
 
   async componentDidMount() {
     const randomQ = await getRandomQ();
@@ -52,11 +52,11 @@ class App extends Component {
     });
   }
 
-  handleUpdateTodos = ( todos ) => {
+  handleUpdateTodos = (todos) => {
     this.setState({ todos });
   }
 
-  handleUpdateHabits = ( habits ) => {
+  handleUpdateHabits = (habits) => {
     this.setState({ habits });
   }
 
@@ -68,12 +68,12 @@ class App extends Component {
           handleLogout={this.handleLogout}
         />
         <div id="App-Parent">
-        <Switch>
-          <Route exact path="/signup" render={({ history }) =>
-            <SignupPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
+          <Switch>
+            <Route exact path="/signup" render={({ history }) =>
+              <SignupPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
             }
             />
             <Route exact path="/login" render={({ history }) =>
@@ -84,13 +84,13 @@ class App extends Component {
             }
             />
 
-          <Route exact path="/" render={({ history }) =>
-            <LandingPage
-              history={history}
+            <Route exact path="/" render={({ history }) =>
+              <LandingPage
+                history={history}
+              />
+            }
             />
-          }
-          />
-   
+
             <Route exact path='/newhabit' render={({ history }) => (
               userService.getUser() ?
                 <NewHabitPage
@@ -108,7 +108,7 @@ class App extends Component {
             }
             />
             <Route exact path='/user' render={({ history }) => (
-              // userService.getUser() ?
+              userService.getUser() ?
               <UserSummaryPage
                 {...this.props}
                 todos={this.state.todos}
@@ -118,13 +118,13 @@ class App extends Component {
                 history={history}
               // handleTodoClick={this.handleTodoClick}
               />
-              // :
-              // <Redirect to="/login" />
+              :
+              <Redirect to="/login" />
             )
             }
             />
-        </Switch>
-      </div>
+          </Switch>
+        </div>
         <footer id="sticky-footer">
           <div>{this.state.quotes}</div>
         </footer>

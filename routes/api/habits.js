@@ -4,6 +4,9 @@ const habitsCtrl = require('../../controllers/habits');
 router.get('/', habitsCtrl.index);
 router.use(require('../../config/auth'));
 router.post('/', checkAuth, habitsCtrl.create);
+router.delete('/:id', habitsCtrl.deleteHabit);
+router.put('/:id', habitsCtrl.update);
+
 
 function checkAuth(req, res, next) {
     if (req.user) return next();
