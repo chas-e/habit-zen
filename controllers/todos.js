@@ -36,7 +36,6 @@ show(req, res);
 }
 
 async function editTodo(req, res) {
-  console.log("todo controller", req.body);
-   await Todo.findByIdAndUpdate(req.params.id);
+   await Todo.findByIdAndUpdate(req.params.id, req.body);
   show(req, res);
 }

@@ -4,7 +4,6 @@ import  './UserSummary.css';
 import todoService from '../../utils/todoService';
 import habitService from '../../utils/habitService';
 import EditTodoButton from '../EditTodoButton/EditTodoButton';
-// import EditTodoModal from '../EditTodoModal/EditTodoModal';
 // import user from '../../../models/user';
 
 
@@ -12,7 +11,6 @@ class UserSummary extends Component {
   constructor(props) {
   super(props);
   this.state = {todos: {text: '', done: false}}
-  
   }
 
   async componentDidMount() {
@@ -31,9 +29,8 @@ handleDeleteToDo = async (todo) => {
   this.refreshContent(); 
 }
 
-handleEditToDo = async (todo) => {
-  console.log("handle", todo)
-  await todoService.editToDo(todo);
+handleEditToDo = async (todo, updatedTodo) => {
+  await todoService.editToDo(todo, updatedTodo);
   this.refreshContent();
 }
 
@@ -47,23 +44,16 @@ handleDeleteHabit = async (habit) => {
     const todoRows = this.props.todos.map((todo, idx) => (
       <ul> 
       <li className="ToDoList" key={idx}>
-      <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-      {/* <button onClick={this.handleEditToDo}><span role="img" aria-label="edit">✏️</span></button> */}
         <button type="checkbox" name="done" >Done</button>&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
-        
       <EditTodoButton
         {...this.props}
         handleEditToDo={this.handleEditToDo}
         todo={todo}
         todoId={todo._id}/>&nbsp;&nbsp;
+      <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
         {todo.text}&nbsp;&nbsp;
         {todo.done}&nbsp;&nbsp;
-
-        {/* <EditTodoModal 
-        {...this.props}
-        handleEditToDo={this.handleEditToDo}
-        todo={todo}/>&nbsp;&nbsp; */}
       </li>
     </ul>
     ));
@@ -82,7 +72,6 @@ handleDeleteHabit = async (habit) => {
 
       const goalRows = this.props.habits.map((habit, idx) => (
         <tr key={idx}>
-            {/* <button className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange}>Done</button> */}
           <td><span className="badge">{idx + 1}</span></td>
           <td>{habit.goal}</td>
         </tr>

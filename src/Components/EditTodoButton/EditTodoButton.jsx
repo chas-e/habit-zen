@@ -25,7 +25,7 @@ class EditTodoButton extends Component {
 
       onClick = (e) => {
         this.handleSave();
-        this.props.handleEditToDo();
+        this.props.handleEditToDo(this.props.todo, this.state.inputText);
       }
       
       renderInputField() {

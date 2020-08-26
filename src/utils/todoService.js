@@ -37,15 +37,14 @@ function deleteToDo(todo) {
   return fetch(BASE_URL + `/${todo._id}`, options).then(res => res.json());
 }
 
-function editToDo(todo) {
-  console.log("todoservice", todo)
+function editToDo(todo, updatedTodo) {
   const options = {
     method: "PUT",
     headers: {
       "Content-type": "application/json",
       "Authorization": "Bearer " + tokenService.getToken()
     },
-    body: JSON.stringify(todo)
+    body: JSON.stringify({text: updatedTodo})
   };
   return fetch(BASE_URL + `/${todo._id}`, options).then(res => res.json());
 }

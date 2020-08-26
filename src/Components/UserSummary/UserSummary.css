@@ -6,8 +6,10 @@
 ul {
     list-style: none;
     text-align: left;
+    
 }
 
-/* .ToDoList {
-
-} */
+.ToDoList {
+    display: inline-flex;
+    /* line-height: 50%; */
+}
