@@ -28,5 +28,11 @@ class GoalTracker extends Component {
     }
 }
 
+// track the start day, current day, and end day - that lets you know percentag of time elapsed and time left
+
+// need current progress piece of state - update as it changes, then re-render for the user
+
+// also need when user marks a habit done to be in state
+
 
 export default GoalTracker;
