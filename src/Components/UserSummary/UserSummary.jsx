@@ -3,63 +3,71 @@ import { Link } from 'react-router-dom';
 import  './UserSummary.css';
 import todoService from '../../utils/todoService';
 import habitService from '../../utils/habitService';
+import EditTodoButton from '../EditTodoButton/EditTodoButton';
+// import EditTodoModal from '../EditTodoModal/EditTodoModal';
 // import user from '../../../models/user';
 
+
 class UserSummary extends Component {
+  constructor(props) {
+  super(props);
+  this.state = {todos: {text: '', done: false}}
+  
+  }
 
   async componentDidMount() {
+    this.refreshContent();
+  }
+
+  refreshContent = async () => {
     const todos = await todoService.index();
     const habits = await habitService.index();
     this.props.handleUpdateTodos(todos);
     this.props.handleUpdateHabits(habits);
   }
 
-
 handleDeleteToDo = async (todo) => {
   await todoService.deleteToDo(todo);
-    const todos = await todoService.index();
-    const habits = await habitService.index();
-    this.props.handleUpdateTodos(todos);  
-    this.props.handleUpdateHabits(habits);
+  this.refreshContent(); 
 }
 
 handleEditToDo = async (todo) => {
-  await todoService.deleteToDo(todo);
-    const todos = await todoService.index();
-    const habits = await habitService.index();
-    this.props.handleUpdateTodos(todos);  
-    this.props.handleUpdateHabits(habits);
+  console.log("handle", todo)
+  await todoService.editToDo(todo);
+  this.refreshContent();
 }
 
 handleDeleteHabit = async (habit) => {
   await habitService.deleteHabit(habit);
-    const todos = await todoService.index();
-    const habits = await habitService.index();
-    this.props.handleUpdateTodos(todos);  
-    this.props.handleUpdateHabits(habits);
+  this.refreshContent();
 }
 
-
-
-
-  handleDeleteToDo = (todo) => {
-    todoService.deleteToDo();
-  }
 
   render() {
     const todoRows = this.props.todos.map((todo, idx) => (
       <ul> 
       <li className="ToDoList" key={idx}>
-        
-        <button type="checkbox" name="done" value={this.props.NewToDo ? 'checked' : '' } onChange={this.handleChange}>Done</button>&nbsp;&nbsp;
+      <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+      {/* <button onClick={this.handleEditToDo}><span role="img" aria-label="edit">✏️</span></button> */}
+        <button type="checkbox" name="done" >Done</button>&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
-        <button onClick={() => this.handleEditToDo(todo)}><span role="img" aria-label="edit">✏️</span></button>&nbsp;&nbsp;
-        <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        
+      <EditTodoButton
+        {...this.props}
+        handleEditToDo={this.handleEditToDo}
+        todo={todo}
+        todoId={todo._id}/>&nbsp;&nbsp;
         {todo.text}&nbsp;&nbsp;
         {todo.done}&nbsp;&nbsp;
+
+        {/* <EditTodoModal 
+        {...this.props}
+        handleEditToDo={this.handleEditToDo}
+        todo={todo}/>&nbsp;&nbsp; */}
       </li>
-        </ul>
+    </ul>
     ));
+
     const habitRows = this.props.habits.map((habit, idx) => (
       <ul> 
       <li className="HabitList" key={idx}>
@@ -131,6 +139,7 @@ handleDeleteHabit = async (habit) => {
     );
   }
 };
+
 
 
 export default UserSummary;      

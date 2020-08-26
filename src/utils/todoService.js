@@ -38,7 +38,7 @@ function deleteToDo(todo) {
 }
 
 function editToDo(todo) {
-  console.log("todo", todo)
+  console.log("todoservice", todo)
   const options = {
     method: "PUT",
     headers: {

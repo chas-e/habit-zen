@@ -60,6 +60,8 @@ class App extends Component {
     this.setState({ habits });
   }
 
+
+
   render() {
     return (
       <div className="App">
@@ -111,11 +113,12 @@ class App extends Component {
               userService.getUser() ?
               <UserSummaryPage
                 {...this.props}
+                history={history}
                 todos={this.state.todos}
                 habits={this.state.habits}
                 handleUpdateTodos={this.handleUpdateTodos}
                 handleUpdateHabits={this.handleUpdateHabits}
-                history={history}
+                
               // handleTodoClick={this.handleTodoClick}
               />
               :

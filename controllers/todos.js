@@ -4,7 +4,7 @@ module.exports = {
   create,
   show,
   deleteTodo,
-  // editTodo
+  editTodo
 };
 
 async function create(req, res) {
@@ -35,8 +35,8 @@ async function deleteTodo(req, res) {
 show(req, res);
 }
 
-// async function editTodo(req, res) {
-//   console.log("Todo", req.body);
-//    await Todo.findByIdAndUpdate(req.params.id);
-//   show(req, res);
-// }
+async function editTodo(req, res) {
+  console.log("todo controller", req.body);
+   await Todo.findByIdAndUpdate(req.params.id);
+  show(req, res);
+}
