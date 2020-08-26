@@ -10,6 +10,7 @@ import UserSummaryPage from '..//UserSummaryPage/UserSummaryPage';
 import userService from '../../utils/userService';
 import { getRandomQ } from '../../utils/qrandom-api';
 import NavBar from '../../components/NavBar/NavBar';
+import GoalTracker from '../../components/GoalTracker'
 
 class App extends Component {
   constructor() {
@@ -17,15 +18,14 @@ class App extends Component {
     this.state = {
       // ...this.getInitialState(),
       user: userService.getUser(),
-
-      todos: [{ text: '', done: '' , date: ''}],
-      habits: [{ 
-        goal: '', 
-        habit: '',}],
+      todos: [{ text: '', done: '', date: '' }],
+      habits: [{
+        goal: '',
+        habit: '',
+      }],
       quotes: [],
     };
   }
-
 
   async componentDidMount() {
     const randomQ = await getRandomQ();
@@ -109,17 +109,17 @@ class App extends Component {
             />
             <Route exact path='/user' render={({ history }) => (
               userService.getUser() ?
-              <UserSummaryPage
-                {...this.props}
-                todos={this.state.todos}
-                habits={this.state.habits}
-                handleUpdateTodos={this.handleUpdateTodos}
-                handleUpdateHabits={this.handleUpdateHabits}
-                history={history}
-              // handleTodoClick={this.handleTodoClick}
-              />
-              :
-              <Redirect to="/login" />
+                <UserSummaryPage
+                  {...this.props}
+                  history={history}
+                  todos={this.state.todos}
+                  habits={this.state.habits}
+                  handleUpdateTodos={this.handleUpdateTodos}
+                  handleUpdateHabits={this.handleUpdateHabits}
+                  GoalTracker={GoalTracker}
+                />
+                :
+                <Redirect to="/login" />
             )
             }
             />

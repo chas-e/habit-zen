@@ -8,49 +8,31 @@ import habitService from '../../utils/habitService';
 class UserSummary extends Component {
 
   async componentDidMount() {
+    this.refreshContent();
+  }
+
+  refreshContent = async () => {
     const todos = await todoService.index();
     const habits = await habitService.index();
     this.props.handleUpdateTodos(todos);
     this.props.handleUpdateHabits(habits);
   }
 
-
   handleDeleteToDo = async (todo) => {
     await todoService.deleteToDo(todo);
-    const todos = await todoService.index();
-    const habits = await habitService.index();
-    this.props.handleUpdateTodos(todos);
-    this.props.handleUpdateHabits(habits);
+    this.refreshContent();
   }
 
   handleEditToDo = async (todo) => {
     await todoService.deleteToDo(todo);
-    const todos = await todoService.index();
-    const habits = await habitService.index();
-    this.props.handleUpdateTodos(todos);
-    this.props.handleUpdateHabits(habits);
+    this.refreshContent();
   }
 
   handleDeleteHabit = async (habit) => {
     await habitService.deleteHabit(habit);
-    const todos = await todoService.index();
-    const habits = await habitService.index();
-    this.props.handleUpdateTodos(todos);
-    this.props.handleUpdateHabits(habits);
+    this.refreshContent();
   }
 
-
-
-
-  handleDeleteToDo = (todo) => {
-    todoService.deleteToDo(todo);
-    this.props.history.push('/user');
-  }
-
-  handleDeleteHabit = (habit) => {
-    habitService.deleteHabit(habit);
-    this.props.history.push('/user');
-  }
 
   render() {
     const todoRows = this.props.todos.map((todo, idx) => (
