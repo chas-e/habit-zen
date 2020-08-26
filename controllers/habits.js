@@ -4,8 +4,18 @@ const Habit = require('../models/habit');
 module.exports = {
     index,
     create,
-    deleteHabit
+    deleteHabit,
+    update
 };
+
+
+async function update(req, res) {
+    await Habit.findByIdAndUpdate(req.params.id, req.body, { new: true },function(err, habit) {
+        console.log('🙂', res.body)
+        res.json(habit);
+        
+     })};
+    
 
 async function create(req, res) {
     try {

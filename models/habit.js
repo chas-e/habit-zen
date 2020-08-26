@@ -22,6 +22,7 @@ const habitSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
+   
     // how can we handle edge cases where a user enters an end date before the start date, etc?
     sDate: Date,
     eDate: Date
