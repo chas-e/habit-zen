@@ -28,6 +28,7 @@ const habitSchema = new Schema({
     sDate: Date,
     eDate: Date
 
+}, 
 }, {
     timestamps: true
 });

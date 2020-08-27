@@ -5,7 +5,8 @@ module.exports = {
     index,
     create,
     deleteHabit,
-    update
+    update,
+    editHabit
 };
 
 
@@ -39,3 +40,9 @@ async function deleteHabit(req, res) {
     await Habit.findByIdAndDelete(req.params.id);
  index(req, res);
  }
+
+ async function editHabit(req, res) {
+    await Habit.findByIdAndUpdate(req.params.id, req.body);
+   show(req, res);
+ }
+ 
