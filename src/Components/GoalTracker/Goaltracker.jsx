@@ -8,7 +8,7 @@ class GoalTracker extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            today: new Date
+            today: new Date()
         };
     }
 
@@ -27,12 +27,14 @@ class GoalTracker extends Component {
         return Math.ceil(new Date(eDate) - new Date(this.state.today) / goalTrackerService.dayInMS());
     }
 
-
     componentDidMount() {
         this.handleNewDay();
         this.totalDays = this.calculateDays(this.props.habit.sDate, this.props.habit.eDate);
+        console.log(this.totalDays);
         this.daysRemaining = this.calculateDaysLeft(this.props.habit.eDate);
+        console.log(this.daysRemaining);
         this.now = Math.abs(1 - this.daysRemaining) / this.totalDays * 100;
+        console.log(this.now);
     }
 
     render() {

@@ -22,7 +22,7 @@ class ToDoForm extends Component {
     handleAddToDo = async (e) => {
         e.preventDefault();
         try {
-            await todoService.create(this.state);
+            await todoService.create(this.state, this.props.user);
             this.props.history.push('/user');
         } catch (err) {
             console.log(err);
@@ -34,11 +34,18 @@ class ToDoForm extends Component {
             <div className="NewToDoForm">
                 <header className="header-footer">New To Do List Item</header>
                 <br />
-                <form className="form-horizontal" onSubmit={this.handleAddToDo} >
+                <form
+                    className="form-horizontal"
+                    onSubmit={this.handleAddToDo} >
                     <div className="form-group  Todo">
                         <div className="col-sm-12">
-                            <input className="form-control" name="text" placeholder="New ToDo" value={this.state.text} onChange={this.handleChange}
-                                required />
+                            <input
+                                className="form-control" placeholder="New ToDo"
+                                name="text"
+                                value={this.state.text}
+                                onChange={this.handleChange}
+                                required
+                            />
                         </div>
                     </div>
                     <div className="form-group">

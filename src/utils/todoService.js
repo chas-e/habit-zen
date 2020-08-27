@@ -9,7 +9,7 @@ export default {
   doneToDo
 };
 
-function create(todo) {
+function create(todo, user) {
   const options = {
     method: "POST",
     headers: {
@@ -18,12 +18,12 @@ function create(todo) {
     },
     body: JSON.stringify(todo)
   };
-  return fetch(BASE_URL, options).then(res => res.json());
+  return fetch(BASE_URL + `/${user._id}`, options).then(res => res.json());
 }
 
 
-function index() {
-  return fetch(BASE_URL).then(res => res.json());
+function index(user) {
+  return fetch(BASE_URL + `/${user._id}`).then(res => res.json());
 }
 
 function deleteToDo(todo) {
@@ -58,8 +58,9 @@ function editToDo(todo, updatedTodo) {
       "Content-type": "application/json",
       "Authorization": "Bearer " + tokenService.getToken()
     },
-    body: JSON.stringify({text: updatedTodo})
+    body: JSON.stringify({
+      text: updatedTodo
+    })
   };
   return fetch(BASE_URL + `/${todo._id}`, options).then(res => res.json());
 }
-

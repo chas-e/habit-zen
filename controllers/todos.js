@@ -20,7 +20,9 @@ async function updateToDo(req, res) {
 
 async function create(req, res) {
   try {
-    await Todo.create(req.body);
+    const todo = new Todo(req.body);
+    todo.user = req.params.userid;
+    await todo.save();
     show(req, res);
   } catch (err) {
     res.json({
@@ -30,7 +32,9 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-  const todos = await Todo.find({});
+  const todos = await Todo.find({
+    user: req.params.userid
+  });
   res.json(todos);
 }
 
