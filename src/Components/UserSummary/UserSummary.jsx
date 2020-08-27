@@ -24,8 +24,8 @@ class UserSummary extends Component {
   }
 
   refreshContent = async () => {
-    const todos = await todoService.index();
-    const habits = await habitService.index();
+    const todos = await todoService.index(this.props.user);
+    const habits = await habitService.index(this.props.user);
     this.props.handleUpdateTodos(todos);
     this.props.handleUpdateHabits(habits);
   }

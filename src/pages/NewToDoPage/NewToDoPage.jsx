@@ -15,6 +15,7 @@ class NewToDoPage extends Component {
                     handleUpdateToDos={this.props.handleUpdateToDos}
                     handleChangeToDo={this.props.handleChangeToDo}
                     updateToDo={this.updateToDo}
+                    user={this.props.user}
                 />
             </div >
         );

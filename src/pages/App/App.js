@@ -12,7 +12,6 @@ import userService from '../../utils/userService';
 import { getRandomQ } from '../../utils/qrandom-api';
 import NavBar from '../../components/NavBar/NavBar';
 import GoalTracker from '../../components/GoalTracker/GoalTracker';
-import goalTrackerService from '../../utils/goalTrackerService';
 
 
 
@@ -42,6 +41,7 @@ class App extends Component {
       user: userService.getUser()
     });
   }
+
   handleLogout = () => {
     userService.logout();
     this.setState({

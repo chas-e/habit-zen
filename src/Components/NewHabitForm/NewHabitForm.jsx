@@ -26,7 +26,7 @@ class NewHabitForm extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await habitService.create(this.state);
+            await habitService.create(this.state, this.props.user);
             this.props.history.push('/user');
         } catch (err) {
             // this.props.updateMessage(err.message);
@@ -47,8 +47,8 @@ class NewHabitForm extends Component {
                     <div className="form-group">
                         <div className="col-sm-12">
                             <input type="text" className="form-control" placeholder="Future Accomplishment"
-                                value={this.state.goal}
                                 name="goal"
+                                value={this.state.goal}
                                 onChange={this.handleChange}
                             />
                         </div>
@@ -82,8 +82,9 @@ class NewHabitForm extends Component {
                             <br />
                             <div>Habits you will do to complete your goal:</div>
                             <br />
-                            <input type="habit" className="form-control" placeholder="Habit"
+                            <input type="text"
                                 name="habit"
+                                className="form-control" placeholder="Habit"
                                 value={this.state.habit}
                                 onChange={this.handleChange}
                             />

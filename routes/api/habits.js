@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const habitsCtrl = require('../../controllers/habits');
 
-router.get('/', habitsCtrl.index);
 router.use(require('../../config/auth'));
-router.post('/', checkAuth, habitsCtrl.create);
+router.get('/:userid', habitsCtrl.show);
+router.post('/:userid', checkAuth, habitsCtrl.create);
 router.delete('/:id', habitsCtrl.deleteHabit);
 router.put('/:id', habitsCtrl.editHabit);
 router.put('/update/:id', habitsCtrl.update);
