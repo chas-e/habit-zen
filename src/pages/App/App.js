@@ -15,7 +15,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      // ...this.getInitialState(),
       user: userService.getUser(),
+
       todos: [{ text: '', done: '' , date: ''}],
       habits: [{ 
         goal: '', 
@@ -33,6 +35,10 @@ class App extends Component {
     });
   }
 
+  // getInitialState() {
+  //   return {
+  //   };
+  // }
 
   handleSignupOrLogin = () => {
     this.setState({

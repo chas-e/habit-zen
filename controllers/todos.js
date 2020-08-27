@@ -44,6 +44,6 @@ show(req, res);
 }
 
 async function editTodo(req, res) {
-   await Todo.findByIdAndUpdate(req.params.id, req.body);
+   await Todo.findByIdAndUpdate(req.params.id);
   show(req, res);
 }

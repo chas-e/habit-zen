@@ -11,6 +11,7 @@ class UserSummary extends Component {
   constructor(props) {
   super(props);
   this.state = {todos: {text: '', done: false}}
+  
   }
 
   async componentDidMount() {
@@ -29,8 +30,9 @@ handleDeleteToDo = async (todo) => {
   this.refreshContent(); 
 }
 
-handleEditToDo = async (todo, updatedTodo) => {
-  await todoService.editToDo(todo, updatedTodo);
+handleEditToDo = async (todo) => {
+  console.log("handle", todo)
+  await todoService.editToDo(todo);
   this.refreshContent();
 }
 
@@ -72,7 +74,7 @@ if(update.done) {
       <ul> 
       <li className="ToDoList" key={idx}>
       <input type="checkbox" name="done" checked={todo.done} onChange={() => this.handleUpdateToDo(todo)}/>Done&nbsp;&nbsp;
-
+      <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
       <EditTodoButton
         {...this.props}
@@ -80,13 +82,11 @@ if(update.done) {
         handleEditToDo={this.handleEditToDo}
         todo={todo}
         todoId={todo._id}/>&nbsp;&nbsp;
-      <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
         {todo.text}&nbsp;&nbsp;
         {todo.done}&nbsp;&nbsp;
       </li>
     </ul>
     ));
-
     const habitRows = this.props.habits.map((habit, idx) => (
       <ul> 
       <li className="HabitList" key={idx}>
