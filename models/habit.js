@@ -5,20 +5,20 @@ const Schema = mongoose.Schema;
 const habitSchema = new Schema({
     goal: {
         type: String,
-        
     },
     status: {
-            type: Number,
-            min: 0,
-            max: 1,
-            default: 0
-        },
+        type: Number,
+        min: 0,
+        max: 1,
+        default: 0
+    },
     habit: {
         type: String,
-        
     },
     done: {
-            type: Boolean,
+        type: Boolean
+
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: "User"
