@@ -4,6 +4,7 @@ import  './UserSummary.css';
 import todoService from '../../utils/todoService';
 import habitService from '../../utils/habitService';
 import EditTodoButton from '../EditTodoButton/EditTodoButton';
+import EditHabitButton from '../EditHabitButton/EditHabitButton';
 // import user from '../../../models/user';
 
 
@@ -31,6 +32,11 @@ handleDeleteToDo = async (todo) => {
 
 handleEditToDo = async (todo, updatedToDo) => {
   await todoService.editToDo(todo, updatedToDo);
+  this.refreshContent();
+}
+
+handleEditHabit = async (habit, updatedHabit) => {
+  await habitService.editHabit(habit, updatedHabit);
   this.refreshContent();
 }
 
@@ -69,7 +75,7 @@ if(update.done) {
      
       <ul> 
       <li className="ToDoList" key={idx}>
-      <input type="checkbox" name="done" checked={todo.done} onChange={() => this.handleUpdateToDo(todo)}/>Done&nbsp;&nbsp;
+      <input type="checkbox" name="done" checked={todo.done} onChange={() => this.handleUpdateToDo(todo)}/>&nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
       <EditTodoButton
         {...this.props}
@@ -85,9 +91,13 @@ if(update.done) {
     const habitRows = this.props.habits.map((habit, idx) => (
       <ul> 
       <li className="HabitList" key={idx}>
-      <input type="checkbox" name="done" checked={habit.done} onChange={() => this.handleUpdateHabit(habit)}/>Done&nbsp;&nbsp;
+      <input type="checkbox" name="done" checked={habit.done} onChange={() => this.handleUpdateHabit(habit)}/> &nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteHabit(habit)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
-        <button onClick={() => this.handleEditHabit(habit)}><span role="img" aria-label="edit">✏️</span></button>&nbsp;&nbsp;
+        <EditHabitButton
+        {...this.props}
+        refreshContent={this.refreshContent}
+        handleEditHabit={this.handleEditHabit}
+        habit={habit}/>&nbsp;&nbsp;
         <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
         {habit.habit}&nbsp;&nbsp;
       </li>

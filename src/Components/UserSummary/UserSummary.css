@@ -13,3 +13,18 @@ ul {
     display: inline-flex;
     /* line-height: 50%; */
 }
+
+.HabitList {
+    display: inline-flex;
+    line-height: 30%;
+}
+
+button {
+    background-color: white;
+    border: none;
+}
+
+.badge {
+    color: black;
+    background-color: white;
+}
