@@ -42,7 +42,7 @@ class NewHabitForm extends Component {
     render() {
         return (
 
-            <div className="HabitForm card">
+            <div className="HabitForm Card">
                 <header className="header-footer">New Goal</header>
                 <form className="form-horizontal" onSubmit={this.handleSubmit} >
                     <div className="form-group">

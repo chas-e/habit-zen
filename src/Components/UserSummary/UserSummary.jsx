@@ -5,6 +5,10 @@ import todoService from '../../utils/todoService';
 import habitService from '../../utils/habitService';
 import EditTodoButton from '../EditTodoButton/EditTodoButton';
 import EditHabitButton from '../EditHabitButton/EditHabitButton';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card';
+// import { color, variant } from 'react-bootstrap/types';
+
 
 
 class UserSummary extends Component {
@@ -70,10 +74,11 @@ if(update.done) {
 
 
   render() {
+    // const idx={value.toString()};
     const todoRows = this.props.todos.map((todo, idx) => (
      
       <ul> 
-      <li className="ToDoList" key={idx}>
+      <li className="ToDoList " key={idx}>
       <input type="checkbox" name="done" checked={todo.done} onChange={() => this.handleUpdateToDo(todo)}/>&nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
       <EditTodoButton
@@ -86,6 +91,7 @@ if(update.done) {
         {todo.done}&nbsp;&nbsp;
       </li>
     </ul>
+   
     ));
     const habitRows = this.props.habits.map((habit, idx) => (
       <ul> 
@@ -102,8 +108,7 @@ if(update.done) {
       </li>
         </ul>
     ));
-
-      const goalRows = this.props.habits.map((habit, idx) => (
+     const goalRows = this.props.habits.map((habit, idx) => (
         <tr key={idx}>
           <td><span className="badge">{idx + 1}</span></td>
           <td>{habit.goal}</td>
@@ -111,11 +116,24 @@ if(update.done) {
 
     ));
   return(
-  <div>
-    <h2> UserSummary </h2>
-    <div id='ToDoList'>
-        <header className='header-footer'>To Do List</header>
+  <div className='usersummary'>
+   
+    <h2> {this.props.user.name}'s Plan for Progress </h2>
+    <br />
+  
+    <div className='user-cards'>
+    <Card
+    style={{ width: '35rem'}}
+    className="mb-2">
+    <div id='ToDoList' >
+    <Card.Header 
+    style={{ width: '35rem'}}>
+      <h3 className='header-footer'>To Do List</h3>
         <Link to="/newtodo">Add New To Do</Link>
+      </Card.Header>
+      <br />
+      <Card.Body>       
+        
         {this.props.todos.length ? 
        
             [todoRows] 
@@ -123,23 +141,44 @@ if(update.done) {
             <h5 className='text-info'>No To Do List Items Yet</h5>
           
              }
+             </Card.Body>
         </div>
     <br />
-    <br />
-
+    </Card>
+   
+    <Card
+    style={{ width: '35rem' }}
+    className="mb-2"
+  >
     <div id='HabitList'>
-        <header className='header-footer'>Habits</header>
-        <Link to="/newhabit">Add New Goal</Link>
-        {this.props.habits.length ? 
+    <Card.Header 
+    style={{ width: '35rem'}}>
+        <h3 className='header-footer'>Habits</h3>
+        <Link to="/newhabit" idx>Add New Goal</Link>
+        </Card.Header>
+        <br />
+        <Card.Body>       
+          {this.props.habits.length ? 
           [habitRows] 
           :
           <h5 className='text-info'>No Habits Yet</h5>
         }
+        </Card.Body> 
         </div>
         <br />
         <br />
+        </Card>
+        <br />
+       
+        <Card style={{ width: '35rem' }}
+    className="mb-2">
         <div id='GoalList'>
-          <header className='header-footer'>Goals</header>
+        <Card.Header 
+    style={{ width: '35rem'}}>
+          <h3 className='header-footer'>Goals</h3></Card.Header>
+          <br />
+        <Card.Body>       
+
           {this.props.habits.length ?
             <table>
               <thead>
@@ -153,10 +192,17 @@ if(update.done) {
             :
             <h5 className='text-info'>No Goals Yet</h5>
           }
+          </Card.Body>
         </div>
         <br />
         <br />
+      </Card>
       </div>
+
+      <br />
+      <br />
+      </div>
+      
 
     );
   }

@@ -43,6 +43,6 @@ async function deleteHabit(req, res) {
 
  async function editHabit(req, res) {
     await Habit.findByIdAndUpdate(req.params.id, req.body);
-   show(req, res);
+   index(req, res);
  }
  

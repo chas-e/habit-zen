@@ -1,30 +1,87 @@
+body {
+    background: radial-gradient(#e5e5e5 #ffffff, #e5e5e5);  
+}
 .checkbox, .radio {
     position: relative;
     margin-top: 5px;
     margin-bottom: 0;
 }
+
+/* .usersummary {
+    background-image: url(./newbg1.png);
+    background-position: center;
+    background-size: 180rem;
+} */
+
+h2 {
+    color: rgb(255, 255, 255);
+    background-color:  #84b0da; 
+    padding-bottom: 1rem;    
+}
+
 ul {
     list-style: none;
     text-align: left;
-    
+}
+
+li {
+    padding: 0px .25rem 0px
 }
 
 .ToDoList {
     display: inline-flex;
-    /* line-height: 50%; */
+    padding-right: .75rem;
 }
 
 .HabitList {
     display: inline-flex;
-    line-height: 30%;
+    padding-right: .75rem;
+    vertical-align: top;
 }
 
 button {
     background-color: white;
     border: none;
+    padding: 0 .25rem 0;
 }
 
 .badge {
     color: black;
     background-color: white;
+}
+
+div.card-header {
+    display: flex;
+    background-color: #ffffff;
+    justify-content: space-between;
+    border-bottom: 0;
+    padding: .75rem .75rem .75rem 1.25rem;
+
+}
+
+a {
+    font-size: 1.2rem;
+}
+
+.user-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+div.mb-2.card {
+    box-shadow: 5px 10px 20px 3px rgba(0,0,0, 0.253);
+    margin: 20px;
+    
+
+}
+
+div.mb-2.card:hover {
+    box-shadow: 10px 20px 30px 5px rgba(0,0,0, 0.253);
+}
+
+.card-body {
+    padding: 1rem;
+    font-size: 1.25rem;
+    vertical-align: top;
 }

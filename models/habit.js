@@ -19,6 +19,7 @@ const habitSchema = new Schema({
     },
     done: {
             type: Boolean,
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: "User"
@@ -29,7 +30,7 @@ const habitSchema = new Schema({
     eDate: Date
 
 }, 
-}, {
+ {
     timestamps: true
 });
 

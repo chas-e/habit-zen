@@ -3,18 +3,21 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 15vh;
+  background-color: #5c90aa;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  padding-top: 2vh;
+  color: black;
 }
 
 #App-Parent {
-  /* display: flex; */
+  background-image: url(../../habitzen2.png);
+  background-position: center;
+  background-size: cover;
   flex: 1 0 auto
 }
 
@@ -23,12 +26,19 @@
 }
 
 #sticky-footer {
-  background-color: #282C34;
+  background-color: #b3e6ff;
   display: flex;
   min-height: 10vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+  margin-bottom: 0;
+}
+
+div.NavBar {
+  width: 100rem;
+  justify-self: right;
+  margin-right: 0;
 }

@@ -17,7 +17,6 @@ class App extends Component {
     this.state = {
       // ...this.getInitialState(),
       user: userService.getUser(),
-
       todos: [{ text: '', done: '' , date: ''}],
       habits: [{ 
         goal: '', 
@@ -60,10 +59,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">Welcome to HabitZen</header> <NavBar
+        <header className="App-header">HabitZen<NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
-        />
+        /></header> 
         <div id="App-Parent">
           <Switch>
             <Route exact path="/signup" render={({ history }) =>
@@ -107,6 +106,7 @@ class App extends Component {
             <Route exact path='/user' render={({ history }) => (
               userService.getUser() ?
               <UserSummaryPage
+                user={this.state.user}
                 {...this.props}
                 history={history}
                 todos={this.state.todos}

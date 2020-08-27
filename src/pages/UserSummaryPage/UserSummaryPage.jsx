@@ -14,6 +14,7 @@ class UserSummaryPage extends Component {
             <div className="UserSummaryPage">
                 <UserSummary
                     {...this.props}
+                    user={this.props.user}
                     todos={this.props.todos}
                     habits={this.props.habits}
                     handleUpdateTodos={this.props.handleUpdateTodos}
