@@ -5,7 +5,6 @@ import todoService from '../../utils/todoService';
 import habitService from '../../utils/habitService';
 import EditTodoButton from '../EditTodoButton/EditTodoButton';
 import EditHabitButton from '../EditHabitButton/EditHabitButton';
-// import user from '../../../models/user';
 
 
 class UserSummary extends Component {

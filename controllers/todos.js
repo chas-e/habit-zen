@@ -28,12 +28,6 @@ async function create(req, res) {
 
 async function show(req, res) {
   const todos = await Todo.find({})
-    .sort({
-      text: '',
-      done: '',
-      date: ''
-    })
-  
   res.json(todos);
 }
 
