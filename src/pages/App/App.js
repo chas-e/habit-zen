@@ -35,11 +35,6 @@ class App extends Component {
     });
   }
 
-  // getInitialState() {
-  //   return {
-  //   };
-  // }
-
   handleSignupOrLogin = () => {
     this.setState({
       user: userService.getUser()

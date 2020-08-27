@@ -10,7 +10,6 @@ module.exports = {
 
 async function updateToDo(req, res) {
   await Todo.findByIdAndUpdate(req.params.id, req.body, { new: true },function(err, todo) {
-      console.log('🙂', res.body)
       res.json(todo);
       
    })};
@@ -44,6 +43,6 @@ show(req, res);
 }
 
 async function editTodo(req, res) {
-   await Todo.findByIdAndUpdate(req.params.id);
+   await Todo.findByIdAndUpdate(req.params.id, req.body);
   show(req, res);
 }
