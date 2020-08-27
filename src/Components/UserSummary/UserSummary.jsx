@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import  './UserSummary.css';
 import todoService from '../../utils/todoService';
 import habitService from '../../utils/habitService';
+import GoalTracker from '../GoalTracker/GoalTracker';
 import EditTodoButton from '../EditTodoButton/EditTodoButton';
 // import user from '../../../models/user';
 
@@ -63,6 +64,10 @@ if(update.done) {
     this.props.handleUpdateTodos(todos);  
 }
 
+  handleDeleteToDo = async (todo) => {
+    await todoService.deleteToDo(todo);
+    this.refreshContent();
+  }
 
   render() {
     const todoRows = this.props.todos.map((todo, idx) => (
@@ -98,8 +103,12 @@ if(update.done) {
         <tr key={idx}>
           <td><span className="badge">{idx + 1}</span></td>
           <td>{habit.goal}</td>
+           <td>
+          <GoalTracker
+            {...this.props}
+          />
+        </td>
         </tr>
-
     ));
   return(
   <div>

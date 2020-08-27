@@ -6,9 +6,7 @@ import "./UserSummaryPage.css";
 
 
 class UserSummaryPage extends Component {
-        
-  
- 
+
     render() {
         return (
             <div className="UserSummaryPage">
@@ -18,13 +16,15 @@ class UserSummaryPage extends Component {
                     habits={this.props.habits}
                     handleUpdateTodos={this.props.handleUpdateTodos}
                     handleUpdateHabits={this.props.handleUpdateHabits}
+                    handleNewDay={this.props.handleNewDay}
+                    calculateDays={this.props.calculateDays}
+                    calculateDaysLeft={this.props.calculateDaysLeft}
+                    calculateProgress={this.props.calculateProgress}
                 />
             </div>
         );
     }
 }
-
-
 
 
 export default UserSummaryPage;
