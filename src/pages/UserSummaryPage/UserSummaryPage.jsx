@@ -7,12 +7,7 @@ import "./UserSummaryPage.css";
 
 class UserSummaryPage extends Component {
 
-    // handleToDoDone = (e) => {
-    //     let done = { ...this.props.todo.done };
-    //     done[e.target.name] = e.target.value;
-    //     this.setState({ done });
-    //   }
- 
+
     render() {
         return (
             <div className="UserSummaryPage">
@@ -22,17 +17,15 @@ class UserSummaryPage extends Component {
                     habits={this.props.habits}
                     handleUpdateTodos={this.props.handleUpdateTodos}
                     handleUpdateHabits={this.props.handleUpdateHabits}
+                    handleNewDay={this.props.handleNewDay}
+                    calculateDays={this.props.calculateDays}
+                    calculateDaysLeft={this.props.calculateDaysLeft}
+                    calculateProgress={this.props.calculateProgress}
                 />
             </div>
         );
     }
 }
-
-// <Router>
-//     <Route exact path="/user"  component={TodosList} />
-//     <Route exact path="/edit/:id" component={EditTodo} />
-//     <Route exact path="/create" component={CreateTodo} />
-//     </Router>
 
 
 export default UserSummaryPage;

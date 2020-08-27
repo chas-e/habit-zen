@@ -1,38 +1,52 @@
 import React, { Component } from 'react';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import './GoalTracker.css';
 import goalTrackerService from '../../utils/goalTrackerService'
 
+const now = 75;
 
 class GoalTracker extends Component {
+
+
+    componentDidMount() {
+        this.props.handleNewDay();
+        this.props.calculateDays();
+        this.props.calculateDaysLeft();
+        this.props.calculateProgress();
+    }
 
     render() {
         return (
             <div className='GoalTracker'>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <ProgressBar now={now} label={`${now}%`}
+                    style={{
+                        width: "15vmin",
+                        height: "3vmin",
+                        lineHeight: "10px",
+                    }}
+                />
             </div>
         );
     }
 }
+
+
+
+export default GoalTracker;
+
+// const now = 60;
+
+// const progressInstance = <ProgressBar now={now} label={`${now}%`} />;
+
+// render(progressInstance);
+
 
 // track the start day, current day, and end day - that lets you know percentag of time elapsed and time left
 
 // need current progress piece of state - update as it changes, then re-render for the user
 
 // also need when user marks a habit done to be in state
-
-
-export default GoalTracker;
+// handleNewDay={this.handleNewDay}
+//           calculateDays={this.calculateDays}
+//           calculateDaysLeft={this.calculateDaysLeft}
+//           calculateProgress={this.calculateProgress}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './UserSummary.css';
 import todoService from '../../utils/todoService';
 import habitService from '../../utils/habitService';
+import GoalTracker from '../GoalTracker/GoalTracker';
 // import user from '../../../models/user';
 
 class UserSummary extends Component {
@@ -68,6 +69,11 @@ class UserSummary extends Component {
         {/* <button className='checkbox' type="checkbox" name="done" value={this.props.habit ? 'checked' : '' } onChange={this.handleChange}>Done</button> */}
         <td><span className="badge">{idx + 1}</span></td>
         <td>{habit.goal}</td>
+        <td>
+          <GoalTracker
+            {...this.props}
+          />
+        </td>
       </tr>
 
     ));

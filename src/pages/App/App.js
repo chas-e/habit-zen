@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
@@ -29,7 +30,7 @@ class App extends Component {
         eDate: null
       }],
       quotes: [],
-      today: ""
+      today: "",
     };
   }
 
@@ -72,86 +73,96 @@ class App extends Component {
   }
 
   calculateDays = (sDate, eDate) => {
-    return Math.ceil(this.state.eDate - this.state.sDate / goalTrackerService.daysinMS);
+    Math.ceil(this.state.eDate - this.state.sDate / goalTrackerService.dayinMS);
   }
 
   calculateDaysLeft = (day, eDay) => {
-    return Math.ceil(this.state.eDate - this.state.sDate / goalTrackerService.daysinMS);
+    Math.ceil(this.state.eDate - this.state.today / goalTrackerService.dayinMS);
   }
 
-  calculateProgress =
+  calculateProgress = () => {
+    const daysLeft = this.calculateDaysLeft();
+    const daysTotal = this.calculateDays();
+    const progressRate = Math.abs(1 - daysLeft) / daysTotal * 100;
+    return progressRate;
+  }
 
-    render() {
-  return (
-    <div className="App">
-      <header className="App-header">Welcome to HabitZen</header> <NavBar
-        user={this.state.user}
-        handleLogout={this.handleLogout}
-      />
-      <div id="App-Parent">
-        <Switch>
-          <Route exact path="/signup" render={({ history }) =>
-            <SignupPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">Welcome to HabitZen</header> <NavBar
+          user={this.state.user}
+          handleLogout={this.handleLogout}
+        />
+        <div id="App-Parent">
+          <Switch>
+            <Route exact path="/signup" render={({ history }) =>
+              <SignupPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            }
             />
-          }
-          />
-          <Route exact path="/login" render={({ history }) =>
-            <LoginPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
+            <Route exact path="/login" render={({ history }) =>
+              <LoginPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            }
             />
-          }
-          />
 
-          <Route exact path="/" render={({ history }) =>
-            <LandingPage
-              history={history}
-            />
-          }
-          />
-
-          <Route exact path='/newhabit' render={({ history }) => (
-            userService.getUser() ?
-              <NewHabitPage
+            <Route exact path="/" render={({ history }) =>
+              <LandingPage
                 history={history}
               />
-              :
-              <Redirect to="/login" />
-          )}
-          />
-
-          <Route exact path='/newtodo' render={({ history }) =>
-            <NewToDoPage
-              history={history}
+            }
             />
-          }
-          />
-          <Route exact path='/user' render={({ history }) => (
-            userService.getUser() ?
-              <UserSummaryPage
-                {...this.props}
+
+            <Route exact path='/newhabit' render={({ history }) => (
+              userService.getUser() ?
+                <NewHabitPage
+                  history={history}
+                />
+                :
+                <Redirect to="/login" />
+            )}
+            />
+
+            <Route exact path='/newtodo' render={({ history }) =>
+              <NewToDoPage
                 history={history}
-                todos={this.state.todos}
-                habits={this.state.habits}
-                handleUpdateTodos={this.handleUpdateTodos}
-                handleUpdateHabits={this.handleUpdateHabits}
-                GoalTracker={GoalTracker}
               />
-              :
-              <Redirect to="/login" />
-          )
-          }
-          />
-        </Switch>
-      </div>
-      <footer id="sticky-footer">
-        <div>{this.state.quotes}</div>
-      </footer>
-    </div >
-  );
-}
+            }
+            />
+            <Route exact path='/user' render={({ history }) => (
+              userService.getUser() ?
+                <UserSummaryPage
+                  {...this.props}
+                  history={history}
+                  todos={this.state.todos}
+                  habits={this.state.habits}
+                  handleUpdateTodos={this.handleUpdateTodos}
+                  handleUpdateHabits={this.handleUpdateHabits}
+                  GoalTracker={GoalTracker}
+                  today={this.state.today}
+                  handleNewDay={this.handleNewDay}
+                  calculateDays={this.calculateDays}
+                  calculateDaysLeft={this.calculateDaysLeft}
+                  calculateProgress={this.calculateProgress}
+                />
+                :
+                <Redirect to="/login" />
+            )
+            }
+            />
+          </Switch>
+        </div>
+        <footer id="sticky-footer">
+          <div>{this.state.quotes}</div>
+        </footer>
+      </div >
+    );
+  }
 }
 
 export default App;
