@@ -5,7 +5,8 @@ export default {
   index,
   create,
   deleteToDo,
-  editToDo
+  editToDo,
+  doneToDo
 };
 
 function create(todo) {
@@ -37,8 +38,7 @@ function deleteToDo(todo) {
   return fetch(BASE_URL + `/${todo._id}`, options).then(res => res.json());
 }
 
-function editToDo(todo) {
-  console.log("todo", todo)
+function doneToDo(todo) {
   const options = {
     method: "PUT",
     headers: {
@@ -47,5 +47,19 @@ function editToDo(todo) {
     },
     body: JSON.stringify(todo)
   };
+  return fetch(BASE_URL + `/update/${todo._id}`, options).then(res => res.json());
+}
+
+
+function editToDo(todo, updatedTodo) {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + tokenService.getToken()
+    },
+    body: JSON.stringify({text: updatedTodo})
+  };
   return fetch(BASE_URL + `/${todo._id}`, options).then(res => res.json());
 }
+

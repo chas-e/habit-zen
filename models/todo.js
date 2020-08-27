@@ -3,14 +3,16 @@ const Schema = mongoose.Schema;
 
 const todoSchema = new Schema({
     text: String,
-    done: Boolean,
+    done: {
+        type: Boolean
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: "User"
     },
     date: {
         type: Date,
-        default: new Date()
+        default: new Date().toLocaleDateString(),
     }
 }, {
     timestamps: true

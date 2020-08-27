@@ -18,7 +18,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      // ...this.getInitialState(),
       user: userService.getUser(),
       todos: [{ text: '', done: '', date: '' }],
       habits: [{
@@ -41,11 +40,6 @@ class App extends Component {
       quotes: randomQ.contents.quote,
     });
   }
-
-  // getInitialState() {
-  //   return {
-  //   };
-  // }
 
   handleSignupOrLogin = () => {
     this.setState({
@@ -86,6 +80,8 @@ class App extends Component {
     const progressRate = Math.abs(1 - daysLeft) / daysTotal * 100;
     return progressRate;
   }
+
+
 
   render() {
     return (
@@ -136,6 +132,7 @@ class App extends Component {
             />
             <Route exact path='/user' render={({ history }) => (
               userService.getUser() ?
+
                 <UserSummaryPage
                   {...this.props}
                   history={history}

@@ -7,7 +7,6 @@ import "./UserSummaryPage.css";
 
 class UserSummaryPage extends Component {
 
-
     render() {
         return (
             <div className="UserSummaryPage">

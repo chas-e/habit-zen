@@ -3,7 +3,13 @@
     margin-top: 5px;
     margin-bottom: 0;
 }
+ul {
+    list-style: none;
+    text-align: left;
+    
+}
 
-/* div#ToDoList {
-    width: 400px;
-} */
+.ToDoList {
+    display: inline-flex;
+    /* line-height: 50%; */
+}
