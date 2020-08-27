@@ -15,7 +15,8 @@ const habitSchema = new Schema({
         },
     habit: {
         type: String,
-        done: false
+        done: {
+            type: Boolean
     },
     user: {
         type: Schema.Types.ObjectId,
