@@ -10,11 +10,7 @@ class NewHabitForm extends Component {
 
     state = {
         goal: '',
-        status: null,
         habit: '',
-        done: false,
-        // do we need to attach a user here? or can we do that?
-        user: '',
         sDate: '',
         eDate: ''
     };

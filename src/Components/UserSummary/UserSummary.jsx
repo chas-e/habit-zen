@@ -9,10 +9,15 @@ import EditHabitButton from '../EditHabitButton/EditHabitButton';
 
 
 class UserSummary extends Component {
+
   constructor(props) {
     super(props);
-    this.state = { todos: { text: '', done: false } }
-  }
+    this.state = {
+      todo: {
+        done: false
+      }
+    }
+  };
 
   async componentDidMount() {
     this.refreshContent();
@@ -95,7 +100,7 @@ class UserSummary extends Component {
     const habitRows = this.props.habits.map((habit, idx) => (
       <ul>
         <li className="HabitList" key={idx}>
-          <input type="checkbox" name="done" checked={habit.done} onChange={() => this.handleUpdateHabit(habit)} /> &nbsp;&nbsp;Done&nbsp;&nbsp;
+          <input type="checkbox" name="done" value={this.state.done} checked={habit.done} onChange={() => this.handleUpdateHabit(habit)} /> &nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteHabit(habit)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
         <EditHabitButton
             {...this.props}
@@ -115,6 +120,7 @@ class UserSummary extends Component {
         <td>
           <GoalTracker
             {...this.props}
+            habit={habit}
           />
         </td>
       </tr>
