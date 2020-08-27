@@ -29,8 +29,8 @@ handleDeleteToDo = async (todo) => {
   this.refreshContent(); 
 }
 
-handleEditToDo = async (todo, updatedTodo) => {
-  await todoService.editToDo(todo, updatedTodo);
+handleEditToDo = async (todo, updatedToDo) => {
+  await todoService.editToDo(todo, updatedToDo);
   this.refreshContent();
 }
 
@@ -63,30 +63,25 @@ if(update.done) {
     this.props.handleUpdateTodos(todos);  
 }
 
-  handleDeleteTodo = (todo) => {
-    todoService.deleteTodo();
-  }
+
   render() {
     const todoRows = this.props.todos.map((todo, idx) => (
      
       <ul> 
       <li className="ToDoList" key={idx}>
       <input type="checkbox" name="done" checked={todo.done} onChange={() => this.handleUpdateToDo(todo)}/>Done&nbsp;&nbsp;
-
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
       <EditTodoButton
         {...this.props}
         refreshContent={this.refreshContent}
         handleEditToDo={this.handleEditToDo}
-        todo={todo}
-        todoId={todo._id}/>&nbsp;&nbsp;
-      <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        todo={todo}/>&nbsp;&nbsp;
+        <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
         {todo.text}&nbsp;&nbsp;
         {todo.done}&nbsp;&nbsp;
       </li>
     </ul>
     ));
-
     const habitRows = this.props.habits.map((habit, idx) => (
       <ul> 
       <li className="HabitList" key={idx}>
