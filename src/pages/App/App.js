@@ -14,22 +14,18 @@ import NavBar from '../../components/NavBar/NavBar';
 import GoalTracker from '../../components/GoalTracker/GoalTracker';
 import goalTrackerService from '../../utils/goalTrackerService';
 
+
+
+
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       user: userService.getUser(),
-      todos: [{ text: '', done: '', date: '' }],
-      habits: [{
-        goal: '',
-        status: null,
-        habit: '',
-        done: false,
-        sDate: null,
-        eDate: null
-      }],
+      todos: [],
+      habits: [],
       quotes: [],
-      today: "",
     };
   }
 
@@ -60,28 +56,6 @@ class App extends Component {
   handleUpdateHabits = (habits) => {
     this.setState({ ...this.state.habits, habits });
   }
-
-  handleNewDay = () => {
-    const newDay = new Date().toLocaleDateString();
-    this.setState({ ...this.state.today, newDay });
-  }
-
-  calculateDays = (sDate, eDate) => {
-    Math.ceil(this.state.eDate - this.state.sDate / goalTrackerService.dayinMS);
-  }
-
-  calculateDaysLeft = (day, eDay) => {
-    Math.ceil(this.state.eDate - this.state.today / goalTrackerService.dayinMS);
-  }
-
-  calculateProgress = () => {
-    const daysLeft = this.calculateDaysLeft();
-    const daysTotal = this.calculateDays();
-    const progressRate = Math.abs(1 - daysLeft) / daysTotal * 100;
-    return progressRate;
-  }
-
-
 
   render() {
     return (
@@ -118,6 +92,7 @@ class App extends Component {
               userService.getUser() ?
                 <NewHabitPage
                   history={history}
+                  user={this.state.user}
                 />
                 :
                 <Redirect to="/login" />
@@ -127,6 +102,7 @@ class App extends Component {
             <Route exact path='/newtodo' render={({ history }) =>
               <NewToDoPage
                 history={history}
+                user={this.state.user}
               />
             }
             />
@@ -138,14 +114,10 @@ class App extends Component {
                   history={history}
                   todos={this.state.todos}
                   habits={this.state.habits}
+                  user={this.state.user}
                   handleUpdateTodos={this.handleUpdateTodos}
                   handleUpdateHabits={this.handleUpdateHabits}
                   GoalTracker={GoalTracker}
-                  today={this.state.today}
-                  handleNewDay={this.handleNewDay}
-                  calculateDays={this.calculateDays}
-                  calculateDaysLeft={this.calculateDaysLeft}
-                  calculateProgress={this.calculateProgress}
                 />
                 :
                 <Redirect to="/login" />

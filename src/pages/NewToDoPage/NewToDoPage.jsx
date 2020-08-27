@@ -3,11 +3,7 @@ import NewToDoForm from '../../components/NewToDoForm/NewToDoForm';
 import './NewToDoPage.css';
 
 class NewToDoPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { newTodo: '', done: false}
-    }
-    
+
     render() {
         return (
             <div className="NewToDoPage">
@@ -24,7 +20,5 @@ class NewToDoPage extends Component {
         );
     }
 }
-
-// }
 
 export default NewToDoPage;

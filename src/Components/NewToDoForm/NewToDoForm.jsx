@@ -7,7 +7,6 @@ import todoService from '../../utils/todoService';
 class ToDoForm extends Component {
     state = {
         text: '',
-        done: false,
     };
 
     // need to get checked to mean true

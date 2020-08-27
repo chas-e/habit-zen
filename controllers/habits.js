@@ -26,6 +26,7 @@ async function create(req, res) {
         await Habit.create(req.body);
         index(req, res);
     } catch (err) {
+        console.log(err);
         return res.status(401).json({
             err: "Something went wrong"
         });
