@@ -6,6 +6,9 @@ import habitService from '../../utils/habitService';
 import GoalTracker from '../GoalTracker/GoalTracker';
 import EditTodoButton from '../EditTodoButton/EditTodoButton';
 import EditHabitButton from '../EditHabitButton/EditHabitButton';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card';
+
 
 
 class UserSummary extends Component {
@@ -18,6 +21,7 @@ class UserSummary extends Component {
       }
     }
   };
+
 
   async componentDidMount() {
     this.refreshContent();
@@ -74,12 +78,14 @@ class UserSummary extends Component {
     this.props.handleUpdateTodos(todos);
   }
 
+
   handleDeleteToDo = async (todo) => {
     await todoService.deleteToDo(todo);
     this.refreshContent();
   }
 
   render() {
+
     const todoRows = this.props.todos.map((todo, idx) => (
 
       <ul key={idx}>
@@ -113,7 +119,7 @@ class UserSummary extends Component {
       </ul>
     ));
 
-    const goalRows = this.props.habits.map((habit, idx) => (
+     const goalRows = this.props.habits.map((habit, idx) => (
       <tr key={idx}>
         <td><span className="badge">{idx + 1}</span></td>
         <td>{habit.goal}</td>
@@ -125,36 +131,70 @@ class UserSummary extends Component {
         </td>
       </tr>
     ));
-    return (
-      <div>
-        <h2> UserSummary </h2>
-        <div id='ToDoList'>
-          <header className='header-footer'>To Do List</header>
-          <Link to="/newtodo">Add New To Do</Link>
-          {this.props.todos.length ?
-
-            [todoRows]
-            :
+  return(
+  <div className='usersummary'>
+   
+    <br />
+  
+    <div className='user-cards' style={{ justifyContent: "center", }}>
+    <Card
+    style={{ width: '50rem', height: 'fit-content'}}
+    className="mb-2">
+    <div id='ToDoList' >
+    <Card.Header 
+    >
+      <h3 className='header-footer'>To Do List</h3>
+        <Link to="/newtodo">Add New To Do</Link>
+      </Card.Header>
+      <br />
+      <Card.Body>       
+        
+        {this.props.todos.length ? 
+       
+            [todoRows] 
+            : 
             <h5 className='text-info'>No To Do List Items Yet</h5>
+          
+             }
+             </Card.Body>
+        </div>
+    <br />
+    </Card>
+   
+    <Card
+    style={{ width: '50rem', height: 'fit-content' }}
+    className='mb-2' 
+  >
+    <div id='HabitList'>
+    <Card.Header
+    >
+        <h3 className='header-footer'>Habits</h3>
+        <Link to="/newhabit">Add New Goal</Link>
+        </Card.Header>
+        <br />
+        <Card.Body>       
+          {this.props.habits.length ? 
+          [habitRows] 
+          :
+          <h5 className='text-info'>No Habits Yet</h5>
+        }
+        </Card.Body> 
 
-          }
         </div>
         <br />
         <br />
-
-        <div id='HabitList'>
-          <header className='header-footer'>Habits</header>
-          <Link to="/newhabit">Add New Goal</Link>
-          {this.props.habits.length ?
-            [habitRows]
-            :
-            <h5 className='text-info'>No Habits Yet</h5>
-          }
-        </div>
+        </Card>
         <br />
-        <br />
+        <Card style={{ width: '100%', maxWidth: '100rem', height: 'fit-content' }}
+          className="mb-2">
         <div id='GoalList'>
-          <header className='header-footer'>Goals</header>
+        <Card.Header 
+          
+          >
+          <h3 className='header-footer'>Goals</h3></Card.Header>
+          <br />
+        <Card.Body>       
+
           {this.props.habits.length ?
             <table>
               <thead>
@@ -168,10 +208,17 @@ class UserSummary extends Component {
             :
             <h5 className='text-info'>No Goals Yet</h5>
           }
+          </Card.Body>
         </div>
         <br />
         <br />
+      </Card>
       </div>
+
+      <br />
+      <br />
+      </div>
+      
 
     );
   }

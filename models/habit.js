@@ -16,6 +16,7 @@ const habitSchema = new Schema({
         type: String,
     },
     done: {
+
         type: Boolean
 
     },
@@ -29,6 +30,7 @@ const habitSchema = new Schema({
     eDate: Date
 
 }, {
+
     timestamps: true
 });
 

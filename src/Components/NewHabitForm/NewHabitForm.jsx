@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import { format } from "date-fns";
 import habitService from '../../utils/habitService';
 import './NewHabitForm.css';
-
+import Card from 'react-bootstrap/Card';
 
 
 class NewHabitForm extends Component {
@@ -40,9 +40,15 @@ class NewHabitForm extends Component {
 
     render() {
         return (
-            <div className="HabitForm card">
-                <header className="header-footer">New Goal</header>
-                <form className="form-horizontal" onSubmit={this.handleSubmit} >
+
+
+            <div className="HabitForm">
+                <Card style={{ width: '35rem' }}
+                    className="mb-2">
+                    <Card-Header>
+                <h3 className="header-footer">New Goal</h3></Card-Header>
+                <Card-Body><form className="form-horizontal" onSubmit={this.handleSubmit} >
+
                     <div className="form-group">
                         <div className="col-sm-12">
                             <input type="text" className="form-control" placeholder="Future Accomplishment"
@@ -79,7 +85,7 @@ class NewHabitForm extends Component {
                     <div className="form-group">
                         <div className="col-sm-12">
                             <br />
-                            <div>Habits you will do to complete your goal:</div>
+                            <div>What you will do daily to complete your goal:</div>
                             <br />
                             <input type="text"
                                 name="habit"
@@ -92,10 +98,12 @@ class NewHabitForm extends Component {
                     <div className="form-group">
                         <div className="col-sm-12 text-center">
                             <button className="btn btn-default" disabled={this.isFormInvalid()}>Submit Habit</button>&nbsp;&nbsp;
-                    <Link to='/user'>Cancel</Link>
+                    <Link className="habitLink" to='/user'>Cancel</Link>
                         </div>
                     </div>
                 </form>
+                </Card-Body>
+                </Card>
             </div>
 
         );

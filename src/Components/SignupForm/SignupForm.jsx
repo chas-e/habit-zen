@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
+import './SignupForm.css';
+import Card from 'react-bootstrap/Card';
+
 
 class SignupForm extends Component {
 
@@ -23,7 +26,7 @@ class SignupForm extends Component {
         e.preventDefault();
         try {
             await userService.signup(this.state);
-            // Successfully signed up - show GamePage
+            // Successfully signed up - show UserSummary
             this.props.handleSignupOrLogin();
             this.props.history.push('/');
         } catch (err) {
@@ -39,8 +42,11 @@ class SignupForm extends Component {
     render() {
         return (
             <div>
-                <header className="header-footer">Sign Up</header>
-                <form className="form-horizontal" onSubmit={this.handleSubmit} >
+                <Card style={{ width: '35rem' }}
+                    className="mb-20">
+                <Card-Header><header className="header-footer">Sign Up</header></Card-Header>
+                <Card-Body>
+                    <form className="form-horizontal" onSubmit={this.handleSubmit} >
                     <div className="form-group">
                         <div className="col-sm-12">
                             <input type="text" className="form-control" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} />
@@ -64,10 +70,12 @@ class SignupForm extends Component {
                     <div className="form-group">
                         <div className="col-sm-12 text-center">
                             <button className="btn btn-default" disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
-              <Link to='/'>Cancel</Link>
+              <Link className="SignUpLink" to='/'>Cancel</Link>
                         </div>
                     </div>
                 </form>
+                </Card-Body>
+                </Card>
             </div>
         );
     }

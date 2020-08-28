@@ -37,17 +37,19 @@ function deleteHabit(habit) {
   return fetch(BASE_URL + `/${habit._id}`, options).then(res => res.json());
 }
 
-function doneHabit(habit) {
-  const options = {
-    method: "PUT",
-    headers: {
-      "Content-type": "application/json",
-      "Authorization": "Bearer " + tokenService.getToken()
-    },
-    body: JSON.stringify(habit)
-  };
-  return fetch(BASE_URL + `/${habit._id}`, options).then(res => res.json());
-}
+
+  function doneHabit(habit) {
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": "Bearer " + tokenService.getToken()
+      },
+      body: JSON.stringify(habit)
+    };
+    return fetch(BASE_URL + `/update/${habit._id}`, options).then(res => res.json());
+  }
+
 
 function editHabit(habit, updatedHabit) {
   const options = {

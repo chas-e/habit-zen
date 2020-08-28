@@ -56,14 +56,16 @@ class App extends Component {
   handleUpdateHabits = (habits) => {
     this.setState({ ...this.state.habits, habits });
   }
+  
 
   render() {
     return (
+      
       <div className="App">
-        <header className="App-header">Welcome to HabitZen</header> <NavBar
+        <header className="App-header" style={{ fontSize: "6rem", color: "#ffffff" }}>HabitZen<NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
-        />
+        /></header> 
         <div id="App-Parent">
           <Switch>
             <Route exact path="/signup" render={({ history }) =>
@@ -83,6 +85,7 @@ class App extends Component {
 
             <Route exact path="/" render={({ history }) =>
               <LandingPage
+                user={this.state.user}
                 history={history}
                 user={this.state.user}
               />
@@ -133,7 +136,7 @@ class App extends Component {
         </div>
         <footer id="sticky-footer">
           <div>{this.state.quotes}</div>
-        </footer>
+          </footer>
       </div >
     );
   }

@@ -1,30 +1,87 @@
+body {
+    background: radial-gradient(#e5e5e5 #ffffff, #e5e5e5);  
+}
+
 .checkbox, .radio {
     position: relative;
     margin-top: 5px;
     margin-bottom: 0;
 }
+
+
+h2 {
+    color: rgb(255, 255, 255);
+    background-color: #5c90aa;
+    padding-bottom: 1rem;
+}
+
 ul {
     list-style: none;
     text-align: left;
-    
+}
+
+li {
+    padding: 0px .25rem 1px;
+    display: grid;
+    display: inline;
+    align-items: center;
+
 }
 
 .ToDoList {
     display: inline-flex;
-    /* line-height: 50%; */
+    padding-right: .75rem;
 }
 
 .HabitList {
     display: inline-flex;
-    line-height: 30%;
+    padding-right: .75rem;
+    vertical-align: top;
 }
 
 button {
-    background-color: white;
+    background-color: transparent;
     border: none;
+    padding: 0 .25rem 0;
 }
 
 .badge {
     color: black;
     background-color: white;
+}
+
+
+div.card-header:first-child {
+    display: flex;
+    background-color: #ffffff;
+    justify-content: space-between;
+    border-bottom: 0;
+    border-radius: .5rem;
+    padding: .75rem 1rem .75rem 1.25rem;
+    height: fit-content;
+}
+
+a {
+    font-size: 1.5rem;
+}
+
+.user-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+div.mb-2.card {
+    box-shadow: 10px 15px 25px 1px rgba(0,0,0, 0.253);
+    border-radius: 1rem;
+}
+
+div.mb-2.card:hover {
+    box-shadow: 30px 25px 30px 3px rgba(0,0,0, 0.253);
+}
+
+.card-body {
+    font-size: 1.5rem;
+    margin-left: -1.2rem;
+    
 }

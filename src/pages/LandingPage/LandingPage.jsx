@@ -1,23 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+
+import './LandingPage.css';
 
 const LandingPage = (props) => {
-    return (
-        <div className="LandingPage">
-            <h1>Welcome to Habit-Zen!</h1>
+    let landing = props.user ?
+            <div className="LandingPage" >
+            <Link to="/newtodo" style={{ color: '#5c90aa', fontSize: '2rem'}}>Add New To Do List Item </Link>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Link to="/newhabit" style={{ color: '#5c90aa', fontSize: '2rem'}}>Add New Habits</Link>
+            <br />
+            <br />
+            <Link to="/user" className="LandLink" style={{ fontSize: '3rem', color: '#5c90aa'}}>Click here to see your user profile</Link>
+         </div>
+         :
+           <div>
+           </div>
+         
 
-            {props.user && <Link to="/newtodo" style={{
-                fontSize: "3vmin",
-                fontWeight: "bold"
-            }}
-            >Add New To Do</Link>}
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            {props.user && <Link to="/newhabit" style={{
-                fontSize: "3vmin",
-                fontWeight: "bold"
-            }}
-            >Add New Habit</Link>}
+        
+            
+            
+        
+
+            return (
+                <div>
+                    {landing}
+            <p  id="title" style={{ fontSize: "8rem", color: '#5c90aa'}}> Welcome to HabitZen</p>
+            
+            {/* Need div elements for Goal tracking, habit 'checklist', todo 'checklist' */}
+            
         </div>
     );
 }

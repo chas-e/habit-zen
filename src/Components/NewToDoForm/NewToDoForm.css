@@ -1,7 +1,45 @@
-div.col-sm-12 {
-    display: inline-flex;
+div.mb-2-todo.card {
+    box-shadow: 10px 15px 25px 1px rgba(0,0,0, 0.253);
+    margin: 20px;
+    border-radius: 1em;
+    padding: 1rem;
+    font-size: 1.50rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10rem;
 }
 
-input {
-    margin: 0 6px 0 6px;
+div.mb-2-todo.card:hover {
+    box-shadow: 30px 25px 30px 3px rgba(0,0,0, 0.253);
+}
+
+.card-body {
+    padding: 1rem;
+    font-size: 1.25rem;
+}
+
+input.form-control {
+    font-size: 1.5rem;
+    margin: 10px 0 0 0;
+}
+
+div.col-sm-12.text-center {
+    display: flex;
+    display: inline;
+    align-items: center;
+}
+
+button.btn.btn-default {
+    border: 1px solid grey;
+    border-radius: .5rem;
+    margin: 10px 15px 0 0;
+    font-size: 1.5rem;
+}
+
+div.NewToDo-Form {
+    margin-top: 15rem;
+}
+
+.todoLink {
+    color: #5c90aa;
 }
