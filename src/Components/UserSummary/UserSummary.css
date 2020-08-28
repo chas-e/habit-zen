@@ -74,6 +74,9 @@ a {
 div.mb-2.card {
     box-shadow: 10px 15px 25px 1px rgba(0,0,0, 0.253);
     border-radius: 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+
 }
 
 div.mb-2.card:hover {
