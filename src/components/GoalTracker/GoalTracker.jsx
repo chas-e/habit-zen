@@ -11,29 +11,30 @@ class GoalTracker extends Component {
         };
     }
 
+    // this sets a new date object to the current day in state
     handleNewDay = () => {
         const newDay = new Date();
         this.setState({ today: newDay });
     }
 
+    // this calculates total days based on a goals start and end dates
     calculateDays = (sDate, eDate) => {
         if (!sDate || !eDate) return;
         return Math.ceil(new Date(eDate) - new Date(sDate) / goalTrackerService.dayInMS());
     }
 
+    // this calculates the remaining days based on today and the goals end date
     calculateDaysLeft = (eDate) => {
         if (!eDate) return;
         return Math.ceil(new Date(eDate) - new Date(this.state.today) / goalTrackerService.dayInMS());
     }
 
+    // when the goaltracker mounts, the day updates and calculations run to determine the rate of time remaining and progress
     componentDidMount() {
         this.handleNewDay();
         this.totalDays = this.calculateDays(this.props.habit.sDate, this.props.habit.eDate);
-        console.log(this.totalDays);
         this.daysRemaining = this.calculateDaysLeft(this.props.habit.eDate);
-        console.log(this.daysRemaining);
         this.now = Math.abs(1 - this.daysRemaining) / this.totalDays * 100;
-        console.log(this.now);
     }
 
     render() {
