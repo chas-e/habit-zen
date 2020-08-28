@@ -58,7 +58,7 @@ class UserSummary extends Component {
       update.done = true
     }
     await habitService.doneHabit(update);
-    const habits = await habitService.index();
+    const habits = await habitService.index(this.props.user);
     this.props.handleUpdateHabits(habits);
   }
 
@@ -70,7 +70,7 @@ class UserSummary extends Component {
       update.done = true
     }
     await todoService.doneToDo(todo);
-    const todos = await todoService.index();
+    const todos = await todoService.index(this.props.user);
     this.props.handleUpdateTodos(todos);
   }
 
@@ -82,8 +82,8 @@ class UserSummary extends Component {
   render() {
     const todoRows = this.props.todos.map((todo, idx) => (
 
-      <ul>
-        <li className="ToDoList" key={todo._id}>
+      <ul key={idx}>
+        <li className="ToDoList">
           <input type="checkbox" name="done" checked={todo.done} onChange={() => this.handleUpdateToDo(todo)} />&nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
       <EditTodoButton
@@ -97,9 +97,9 @@ class UserSummary extends Component {
       </li>
       </ul>
     ));
-    const habitRows = this.props.habits.map((habit, idx) => (
-      <ul>
-        <li className="HabitList" key={habit._id}>
+    const habitRows = this.props.habits.map((habit, idr) => (
+      <ul key={idr}>
+        <li className="HabitList">
           <input type="checkbox" name="done" value={this.state.done} checked={habit.done} onChange={() => this.handleUpdateHabit(habit)} /> &nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteHabit(habit)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
         <EditHabitButton
@@ -107,7 +107,7 @@ class UserSummary extends Component {
             refreshContent={this.refreshContent}
             handleEditHabit={this.handleEditHabit}
             habit={habit} />&nbsp;&nbsp;
-        <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span className="badge">{idr + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
         {habit.habit}&nbsp;&nbsp;
       </li>
       </ul>
