@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 // import { format } from "date-fns";
 import habitService from '../../utils/habitService';
 import './NewHabitForm.css';
+import Card from 'react-bootstrap/Card';
+
 
 
 
@@ -42,9 +44,12 @@ class NewHabitForm extends Component {
     render() {
         return (
 
-            <div className="HabitForm Card">
-                <header className="header-footer">New Goal</header>
-                <form className="form-horizontal" onSubmit={this.handleSubmit} >
+            <div className="HabitForm">
+                <Card style={{ width: '35rem' }}
+                    className="mb-2">
+                    <Card-Header>
+                <h3 className="header-footer">New Goal</h3></Card-Header>
+                <Card-Body><form className="form-horizontal" onSubmit={this.handleSubmit} >
                     <div className="form-group">
                         <div className="col-sm-12">
                             <input type="text" className="form-control" placeholder="Future Accomplishment"
@@ -97,6 +102,8 @@ class NewHabitForm extends Component {
                         </div>
                     </div>
                 </form>
+                </Card-Body>
+                </Card>
             </div>
           
         );

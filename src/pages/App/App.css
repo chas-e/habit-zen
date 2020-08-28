@@ -1,24 +1,40 @@
+
 .App {
   text-align: center;
+
+}
+
+div.App {
+  min-height: 100%
 }
 
 .App-header {
   background-color: #5c90aa;
-  min-height: 10vh;
+  font-family: 'Raleway', sans-serif;
+  min-height: 8vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   padding-top: 2vh;
-  color: black;
+  color: #ffffff;
+}
+
+div.header {
+  font-size: 5rem;
+  margin-bottom: -2rem;
+  color: #ffffff;
+  
 }
 
 #App-Parent {
   background-image: url(../../habitzen2.png);
   background-position: center;
   background-size: cover;
-  flex: 1 0 auto
+  background-repeat: no-repeat;
+  flex: 0 1 auto;
+  min-height: 100%
 }
 
 .App-link {
@@ -26,19 +42,30 @@
 }
 
 #sticky-footer {
-  background-color: #b3e6ff;
+  background-color: #5c90aa;
+  font-family: 'Raleway', sans-serif;
   display: flex;
   min-height: 10vh;
+  margin-bottom: -30rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: black;
-  margin-bottom: 0;
-}
+  color: #ffffff;
+  font-weight: bold;
+  /* padding-top: 12vh; */
+  
+ 
+
+/* #footer {
+  /* padding-top: 20vh; */
+  /* background-color: transparent;
+  display: none; */
+} 
 
 div.NavBar {
   width: 100rem;
   justify-self: right;
   margin-right: 0;
+  color: #ffffff;
 }

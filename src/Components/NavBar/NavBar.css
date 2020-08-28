@@ -1,13 +1,17 @@
 .NavBar {
     display: flex;
     margin: 0 0 20px;
+    line-height: .50;
 }
 
 .NavBar-link, .user{
     margin: 0 10px;
-    color: #000000;
+    color: #ffffff;
     font-size: 1.75rem;
+    text-decoration: underline;
 }
+
+
 
 Link:hover {
     text-decoration: underline;
@@ -17,7 +21,7 @@ Link:hover {
 
 
 .NavBar-welcome {
-    color: #000000;
+    color: #ffffff;
     font-size: 1.75rem;
 }
 

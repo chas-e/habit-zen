@@ -17,10 +17,8 @@ class App extends Component {
     this.state = {
       // ...this.getInitialState(),
       user: userService.getUser(),
-      todos: [{ text: '', done: '' , date: ''}],
-      habits: [{ 
-        goal: '', 
-        habit: '',}],
+      todos: [],
+      habits: [],
       quotes: [],
     };
   }
@@ -53,13 +51,15 @@ class App extends Component {
   handleUpdateHabits = (habits) => {
     this.setState({ habits });
   }
+  
 
 
 
   render() {
     return (
+      
       <div className="App">
-        <header className="App-header">HabitZen<NavBar
+        <header className="App-header" style={{ fontSize: "6rem", color: "#ffffff" }}>HabitZen<NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
         /></header> 
@@ -113,8 +113,6 @@ class App extends Component {
                 habits={this.state.habits}
                 handleUpdateTodos={this.handleUpdateTodos}
                 handleUpdateHabits={this.handleUpdateHabits}
-                
-              // handleTodoClick={this.handleTodoClick}
               />
               :
               <Redirect to="/login" />
@@ -125,7 +123,7 @@ class App extends Component {
         </div>
         <footer id="sticky-footer">
           <div>{this.state.quotes}</div>
-        </footer>
+          </footer>
       </div >
     );
   }

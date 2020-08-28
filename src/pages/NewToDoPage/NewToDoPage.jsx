@@ -10,8 +10,7 @@ class NewToDoPage extends Component {
     
     render() {
         return (
-            <div className="NewToDoPage">
-                <h4> Enter A New To Do List Item</h4>
+            <div className="NewToDoPage" style={{  }}>
                 <br />
                 <NewToDoForm
                     {...this.props}

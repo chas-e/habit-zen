@@ -1,0 +1,26 @@
+div.mb-2.card {
+    box-shadow: 10px 15px 25px 1px rgba(0,0,0, 0.253);
+    margin: 20px;
+    border-radius: 1em;
+    padding: 1rem;
+    font-size: 1.50rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-body {
+    padding: 1rem;
+    font-size: 1.25rem;
+}
+
+div.col-sm-12 {
+    display: inline;
+}
+
+button.btn.btn-default {
+    border: 1px solid grey;
+    border-radius: .5rem;
+    margin-right: 15px;
+}
+

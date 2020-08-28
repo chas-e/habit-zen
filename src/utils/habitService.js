@@ -46,7 +46,7 @@ function deleteHabit(habit) {
       },
       body: JSON.stringify(habit)
     };
-    return fetch(BASE_URL + `/${habit._id}`, options).then(res => res.json());
+    return fetch(BASE_URL + `/update/${habit._id}`, options).then(res => res.json());
   }
 
   function editHabit(habit, updatedHabit) {

@@ -1,22 +1,18 @@
 body {
     background: radial-gradient(#e5e5e5 #ffffff, #e5e5e5);  
 }
+
 .checkbox, .radio {
     position: relative;
     margin-top: 5px;
     margin-bottom: 0;
 }
 
-/* .usersummary {
-    background-image: url(./newbg1.png);
-    background-position: center;
-    background-size: 180rem;
-} */
 
 h2 {
     color: rgb(255, 255, 255);
-    background-color:  #84b0da; 
-    padding-bottom: 1rem;    
+    background-color: #5c90aa;
+    padding-bottom: 1rem;
 }
 
 ul {
@@ -25,7 +21,11 @@ ul {
 }
 
 li {
-    padding: 0px .25rem 0px
+    padding: 0px .25rem 1px;
+    display: grid;
+    display: inline;
+    align-items: center;
+
 }
 
 .ToDoList {
@@ -40,7 +40,7 @@ li {
 }
 
 button {
-    background-color: white;
+    background-color: transparent;
     border: none;
     padding: 0 .25rem 0;
 }
@@ -50,38 +50,39 @@ button {
     background-color: white;
 }
 
-div.card-header {
+
+div.card-header:first-child {
     display: flex;
     background-color: #ffffff;
     justify-content: space-between;
     border-bottom: 0;
-    padding: .75rem .75rem .75rem 1.25rem;
-
+    border-radius: .5rem;
+    padding: .75rem 1rem .75rem 1.25rem;
+    height: fit-content;
 }
 
 a {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .user-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 div.mb-2.card {
-    box-shadow: 5px 10px 20px 3px rgba(0,0,0, 0.253);
-    margin: 20px;
-    
-
+    box-shadow: 10px 15px 25px 1px rgba(0,0,0, 0.253);
+    border-radius: 1rem;
 }
 
 div.mb-2.card:hover {
-    box-shadow: 10px 20px 30px 5px rgba(0,0,0, 0.253);
+    box-shadow: 30px 25px 30px 3px rgba(0,0,0, 0.253);
 }
 
 .card-body {
-    padding: 1rem;
     font-size: 1.25rem;
-    vertical-align: top;
+    margin-left: -1.2rem;
+    
+    
 }

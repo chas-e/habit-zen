@@ -1,0 +1,9 @@
+.LandingPage {
+    flex: 1 0 auto;
+    height: 100%;
+}
+
+a {
+    color: #5c90aa;
+    margin-bottom: 50rem;
+}

@@ -14,7 +14,10 @@ import Card from 'react-bootstrap/Card';
 class UserSummary extends Component {
   constructor(props) {
   super(props);
-  this.state = {todos: {text: '', done: false}}
+  this.state = {
+    todos: {text: '', done: ''},
+    habits: {goal: '', habit: '', done: ''} 
+  }
   }
 
   async componentDidMount() {
@@ -78,8 +81,8 @@ if(update.done) {
     const todoRows = this.props.todos.map((todo, idx) => (
      
       <ul> 
-      <li className="ToDoList " key={idx}>
-      <input type="checkbox" name="done" checked={todo.done} onChange={() => this.handleUpdateToDo(todo)}/>&nbsp;&nbsp;Done&nbsp;&nbsp;
+      <li className="ToDoList " style={{ textDecoration: todo.done ? "line-through" : ""}} key={idx}>
+      <input type="checkbox" name="done" checked={todo.done} value={this.state.todos.done} onChange={() => this.handleUpdateToDo(todo)}/>&nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
       <EditTodoButton
         {...this.props}
@@ -93,10 +96,10 @@ if(update.done) {
     </ul>
    
     ));
-    const habitRows = this.props.habits.map((habit, idx) => (
+    const habitRows = this.props.habits.map((habit, idx, id) => (
       <ul> 
-      <li className="HabitList" key={idx}>
-      <input type="checkbox" name="done" checked={habit.done} onChange={() => this.handleUpdateHabit(habit)}/> &nbsp;&nbsp;Done&nbsp;&nbsp;
+      <li className="HabitList" key1={idx} key={idx}>
+      <input type="checkbox" name="done" checked={habit.done}  value={this.state.habits.done} onChange={() => this.handleUpdateHabit(habit)}/> &nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteHabit(habit)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
         <EditHabitButton
         {...this.props}
@@ -108,8 +111,8 @@ if(update.done) {
       </li>
         </ul>
     ));
-     const goalRows = this.props.habits.map((habit, idx) => (
-        <tr key={idx}>
+     const goalRows = this.props.habits.map((habit, idx, index) => (
+        <tr key1={idx} key={index}>
           <td><span className="badge">{idx + 1}</span></td>
           <td>{habit.goal}</td>
         </tr>
@@ -118,12 +121,12 @@ if(update.done) {
   return(
   <div className='usersummary'>
    
-    <h2> {this.props.user.name}'s Plan for Progress </h2>
+    {/* <h3> {this.props.user.name} Profile </h3> */}
     <br />
   
     <div className='user-cards'>
     <Card
-    style={{ width: '35rem'}}
+    style={{ width: '40rem', height: 'fit-content'}}
     className="mb-2">
     <div id='ToDoList' >
     <Card.Header 
@@ -147,8 +150,8 @@ if(update.done) {
     </Card>
    
     <Card
-    style={{ width: '35rem' }}
-    className="mb-2"
+    style={{ width: '40rem', height: 'fit-content' }}
+    className='mb-2' 
   >
     <div id='HabitList'>
     <Card.Header 
@@ -169,12 +172,11 @@ if(update.done) {
         <br />
         </Card>
         <br />
-       
-        <Card style={{ width: '35rem' }}
+        <Card style={{ width: '100%', maxWidth: '100rem', height: 'fit-content' }}
     className="mb-2">
         <div id='GoalList'>
         <Card.Header 
-    style={{ width: '35rem'}}>
+    style={{ width: '30rem'}}>
           <h3 className='header-footer'>Goals</h3></Card.Header>
           <br />
         <Card.Body>       
