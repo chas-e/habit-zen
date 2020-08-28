@@ -12,7 +12,7 @@ To deploy this app, you will need to open your favorite coding program, you can 
 
 # App Inspiration
 
-Having read Charles Duhigg’s <ins>The Power of Habit</ins> and studied kaizen- the Japanese concept of continuous improvement, we wanted to create a place that we could use to build toward our goals and continue to improve our lives. And we want to share that place with the world. 
+Having read Charles Duhigg’s <ins>The Power of Habit</ins> and studied kaizen- the Japanese concept of continuous improvement, we wanted to create a place for ourselves where we could go to build toward our goals and continue to improve our lives. Now we want to share that place with the world. 
 
 # Design Inspiration
 
@@ -35,16 +35,14 @@ There are also quotes included at the bottom of every page to inspire you or mak
 We had a couple of persistant bugs that followed us for most of the week. We spent a lot of time trying to figure them out ourself and doing research. We learned a lot about React during this project. We're all so glad we went through these issues to understand how React works and why things work the way they do. 
 
 * Three features we struggled with and won!
-    1. We wanted to allow the user to able to edit their to do list and habits. To create a place for the user to type in the new info, we came up with the idea of conditionally rendering an input field. After you type in the new info, the field disappears and the new text renders on the page. This took a lot of research and help from instructors.
+    1. As the goal of this project was to help us learn React and how to work with it as a part of developing with a MERN stack, one of the hardest parts was just getting input from UI to the database and back. Each part was a struggle. But working together with the parts we each understood, meant we were able to come together to accomplish this goal.
     
-    2. We wanted to be able to show the user's progress on the way to accomplish their goals. We were able to (with some amazing help), render a progress bar on to the user's profile. Which took so much work and we are so proud of ourselves for getting to that point. Now we just need to connect it to the actual user's daily habits.
-
-    3. 
+    2. We wanted to allow the user to able to edit their to do list and habits. To create a place for the user to type in the new info, we came up with the idea of conditionally rendering an input field. After you type in the new info, the field disappears and the new text renders on the page. This took a lot of research and help from instructors.
     
-    
-    We had a lot of trouble with GitHub this week. After a while, we were all afraid to pull from the repository in case the added info broke our code. There were times when one or the other of us had to rebuild the same feature 2 or 3 times. But we are grateful for this issue. We were able to get to MVP and we learned a lot about correct github workflow. Knowledge that can only benefit us in the future. 
+    3. We wanted to be able to show the user's progress on the way to accomplish their goals. We were able to (with some amazing help), render a progress bar on to the user's profile. Which took so much work and we are so proud of ourselves for getting to that point. Now we just need to connect it to the actual user's daily habits.
 
     
+Not a feature, but we had a lot of trouble with GitHub this week. After a while, we were all afraid to pull from the main repository in case the added info broke our code. There were times when one or the other of us had to rebuild the same feature 2 or 3 times. We ended up feeling grateful for these issues. We were able to get to MVP and we learned a lot about correct github workflow. Knowledge that can only benefit us in the future. 
 
 
 
@@ -83,11 +81,12 @@ We had a couple of persistant bugs that followed us for most of the week. We spe
 ![User Profile Page]()
 
 # Unresolved issues
-* Unfortunately, within this time frame, we were unable to complete the full app functionality of a habit tracker. We do have functions that can count the number of days between the start and end dates of a user's goal. We would need to update state as false every day and count each true (each habit completed on each day) to show the user their progress.
+* Unfortunately, within this time frame, we were unable to complete the full app functionality of a habit tracker. We do have functions that is meant to count the number of days between the start and end dates of a user's goal. We would need to update state as false every day and count each true (each habit completed on each day) to show the user their progress.
+
+* The functions created are producing a number that is supposed to count the days from the start date of a user's goal to the end date. The number produced is supposed to 
 
 * We did want to implement cloudinary to give the user the ability to post pictures, but we ran out of time.
 
-* 
 
 # Future Enhancements
 
