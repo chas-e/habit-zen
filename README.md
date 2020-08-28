@@ -102,4 +102,4 @@ Link to [HabitZen](https://habit-zen.herokuapp.com/)
 * Diego Burgos
 
 ## Acknowledgments
-Thank you to anyone who helped us get the app to this point. We will take your criticisms and encouragements onto build future versions of this app.
+Thank you to anyone who helped us get the app to this point. We will take your criticisms and encouragements onto build future versions of this app.  
