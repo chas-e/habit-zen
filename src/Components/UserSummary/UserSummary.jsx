@@ -6,7 +6,6 @@ import habitService from '../../utils/habitService';
 import GoalTracker from '../GoalTracker/GoalTracker';
 import EditTodoButton from '../EditTodoButton/EditTodoButton';
 import EditHabitButton from '../EditHabitButton/EditHabitButton';
-import habit from '../../../models/habit';
 
 
 class UserSummary extends Component {
