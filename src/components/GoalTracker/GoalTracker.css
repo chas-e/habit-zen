@@ -1,0 +1,25 @@
+div.progress-bar {
+    height: 75%;
+    box-shadow: #ffffff;
+    border-radius: 1rem;
+    align-items: center;
+    justify-content: center;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+div.Card-Body {
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.bg-primary {
+    background-color: white !important;
+}
+
+div.bg-primary.progress {
+    line-height: 5px;
+    margin: 0 0 10px 0;
+}
