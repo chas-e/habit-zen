@@ -1,15 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-// import './LandingPage.css';
 
 const LandingPage = (props) => {
     return (
         <div className="LandingPage">
-            <h1>This is Our Landing Page!</h1>
+            <h1>Welcome to Habit-Zen!</h1>
 
-            {/* Need div elements for Goal tracking, habit 'checklist', todo 'checklist' */}
-            <Link to="/newtodo">Add New To Do</Link>
-            <Link to="/newhabit">Add New Habits</Link>
+            {props.user && <Link to="/newtodo" style={{
+                fontSize: "3vmin",
+                fontWeight: "bold"
+            }}
+            >Add New To Do</Link>}
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            {props.user && <Link to="/newhabit" style={{
+                fontSize: "3vmin",
+                fontWeight: "bold"
+            }}
+            >Add New Habit</Link>}
         </div>
     );
 }
