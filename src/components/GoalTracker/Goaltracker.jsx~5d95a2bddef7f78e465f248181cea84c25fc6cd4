@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import './GoalTracker.css';
-import goalTrackerService from '../../utils/goalTrackerService'
-
+import goalTrackerService from '../../utils/goalTrackerService';
 
 class GoalTracker extends Component {
     constructor(props) {
@@ -37,7 +36,7 @@ class GoalTracker extends Component {
     render() {
         return (
             <div className='GoalTracker'>
-                <ProgressBar now={Math.floor(this.now)} label={`${Math.floor(this.now)}%`}
+                <ProgressBar className="bg-primary" now={Math.floor(this.now)} label={`${Math.floor(this.now)}%`}
                     style={{
                         width: "15vmin",
                         height: "3vmin",

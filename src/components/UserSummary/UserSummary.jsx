@@ -10,7 +10,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 
 
-
 class UserSummary extends Component {
 
   constructor(props) {
@@ -119,7 +118,7 @@ class UserSummary extends Component {
       </ul>
     ));
 
-     const goalRows = this.props.habits.map((habit, idx) => (
+    const goalRows = this.props.habits.map((habit, idx) => (
       <tr key={idx}>
         <td><span className="badge">{idx + 1}</span></td>
         <td>{habit.goal}</td>
@@ -131,94 +130,93 @@ class UserSummary extends Component {
         </td>
       </tr>
     ));
-  return(
-  <div className='usersummary'>
-   
-    <br />
-  
-    <div className='user-cards' style={{ justifyContent: "center", }}>
-    <Card
-    style={{ width: '50rem', height: 'fit-content'}}
-    className="mb-2">
-    <div id='ToDoList' >
-    <Card.Header 
-    >
-      <h3 className='header-footer'>To Do List</h3>
-        <Link to="/newtodo">Add New To Do</Link>
-      </Card.Header>
-      <br />
-      <Card.Body>       
-        
-        {this.props.todos.length ? 
-       
-            [todoRows] 
-            : 
-            <h5 className='text-info'>No To Do List Items Yet</h5>
-          
-             }
-             </Card.Body>
-        </div>
-    <br />
-    </Card>
-   
-    <Card
-    style={{ width: '50rem', height: 'fit-content' }}
-    className='mb-2' 
-  >
-    <div id='HabitList'>
-    <Card.Header
-    >
-        <h3 className='header-footer'>Habits</h3>
-        <Link to="/newhabit">Add New Goal</Link>
-        </Card.Header>
-        <br />
-        <Card.Body>       
-          {this.props.habits.length ? 
-          [habitRows] 
-          :
-          <h5 className='text-info'>No Habits Yet</h5>
-        }
-        </Card.Body> 
+    return (
+      <div className='usersummary'>
 
-        </div>
         <br />
-        <br />
-        </Card>
-        <br />
-        <Card style={{ width: '100%', maxWidth: '100rem', height: 'fit-content' }}
-          className="mb-2">
-        <div id='GoalList'>
-        <Card.Header 
-          
+
+        <div className='user-cards' style={{ justifyContent: "center", }}>
+          <Card
+            style={{ width: '50rem', height: 'fit-content' }}
+            className="mb-2">
+            <div id='ToDoList' >
+              <Card.Header
+              >
+                <h3 className='header-footer'>To Do List</h3>
+                <Link to="/newtodo">Add New To Do</Link>
+              </Card.Header>
+              <br />
+              <Card.Body>
+
+                {this.props.todos.length ?
+
+                  [todoRows]
+                  :
+                  <h5 className='text-info'>No To Do List Items Yet</h5>
+
+                }
+              </Card.Body>
+            </div>
+            <br />
+          </Card>
+
+          <Card
+            style={{ width: '50rem', height: 'fit-content' }}
+            className='mb-2'
           >
-          <h3 className='header-footer'>Goals</h3></Card.Header>
+            <div id='HabitList'>
+              <Card.Header
+              >
+                <h3 className='header-footer'>Habits</h3>
+                <Link to="/newhabit">Add New Goal</Link>
+              </Card.Header>
+              <br />
+              <Card.Body>
+                {this.props.habits.length ?
+                  [habitRows]
+                  :
+                  <h5 className='text-info'>No Habits Yet</h5>
+                }
+              </Card.Body>
+
+            </div>
+            <br />
+            <br />
+          </Card>
           <br />
-        <Card.Body>       
+          <Card style={{ width: '100%', maxWidth: '100rem', height: 'fit-content' }}
+            className="mb-2">
+            <div id='GoalList'>
+              <Card.Header
+              >
+                <h3 className='header-footer'>Goals</h3></Card.Header>
+              <br />
+              <Card.Body>
 
-          {this.props.habits.length ?
-            <table>
-              <thead>
-                <tr><th width={100}>Goals</th></tr>
-              </thead>
-              <tbody>
+                {this.props.habits.length ?
+                  <table>
+                    <thead>
+                      <tr><th width={100}></th></tr>
+                    </thead>
+                    <tbody>
 
-                {goalRows}
-              </tbody>
-            </table>
-            :
-            <h5 className='text-info'>No Goals Yet</h5>
-          }
-          </Card.Body>
+                      {goalRows}
+                    </tbody>
+                  </table>
+                  :
+                  <h5 className='text-info'>No Goals Yet</h5>
+                }
+              </Card.Body>
+            </div>
+            <br />
+            <br />
+          </Card>
         </div>
+
         <br />
         <br />
-      </Card>
       </div>
 
-      <br />
-      <br />
-      </div>
-      
 
     );
   }
