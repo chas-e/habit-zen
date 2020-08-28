@@ -76,7 +76,7 @@ Not a feature, but we had a lot of trouble with GitHub this week. After a while,
 ### Input form for Habits and Goals
 ![Input form for Habits and Goals](./images/NewHabitPageScreenShot.png)
 ### User Profile Page
-![User Profile Page]()
+![User Profile Page](./images/UserSummaryPageScreenShot.png)
 
 # Unresolved issues
 * Unfortunately, within this time frame, we were unable to complete the full app functionality of a habit tracker. We do have functions that is meant to count the number of days between the start and end dates of a user's goal. We would need to update state as false every day and count each true (each habit completed on each day) to show the user their progress.

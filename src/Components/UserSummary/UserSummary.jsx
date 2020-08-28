@@ -5,9 +5,9 @@ import todoService from '../../utils/todoService';
 import habitService from '../../utils/habitService';
 import EditTodoButton from '../EditTodoButton/EditTodoButton';
 import EditHabitButton from '../EditHabitButton/EditHabitButton';
+import GoalTracker from '../GoalTracker/GoalTracker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
-
 
 
 class UserSummary extends Component {
@@ -111,7 +111,15 @@ if(update.done) {
      const goalRows = this.props.habits.map((habit, idg) => (
         <tr key={idg}>
           <td><span className="badge">{idg + 1}</span></td>
+          {/* <div> */}
           <td>{habit.goal}</td>
+          <td className="goalTracker">
+          <GoalTracker
+            {...this.props}
+            habit={habit}
+          />
+          </td>
+          {/* </div> */}
         </tr>
 
     ));
@@ -126,7 +134,6 @@ if(update.done) {
     className="mb-2">
     <div id='ToDoList' >
     <Card.Header 
-    // style={{ width: '35rem'}}
     >
       <h3 className='header-footer'>To Do List</h3>
         <Link to="/newtodo">Add New To Do</Link>
@@ -174,7 +181,6 @@ if(update.done) {
           className="mb-2">
         <div id='GoalList'>
         <Card.Header 
-          // style={{ width: '30rem'}}
           >
           <h3 className='header-footer'>Goals</h3></Card.Header>
           <br />
@@ -183,7 +189,7 @@ if(update.done) {
           {this.props.habits.length ?
             <table>
               <thead>
-                <tr><th width={100}>Goals</th></tr>
+                <tr><th width={100}></th></tr>
               </thead>
               <tbody>
 

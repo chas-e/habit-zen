@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -10,19 +11,20 @@ import UserSummaryPage from '..//UserSummaryPage/UserSummaryPage';
 import userService from '../../utils/userService';
 import { getRandomQ } from '../../utils/qrandom-api';
 import NavBar from '../../components/NavBar/NavBar';
+import GoalTracker from '../../components/GoalTracker/GoalTracker';
+
+
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      // ...this.getInitialState(),
       user: userService.getUser(),
       todos: [],
       habits: [],
       quotes: [],
     };
   }
-
 
   async componentDidMount() {
     const randomQ = await getRandomQ();
@@ -37,6 +39,7 @@ class App extends Component {
       user: userService.getUser()
     });
   }
+
   handleLogout = () => {
     userService.logout();
     this.setState({
@@ -45,24 +48,22 @@ class App extends Component {
   }
 
   handleUpdateTodos = (todos) => {
-    this.setState({ todos });
+    this.setState({ ...this.state.todos, todos });
   }
 
   handleUpdateHabits = (habits) => {
-    this.setState({ habits });
+    this.setState({ ...this.state.habits, habits });
   }
-  
-
 
 
   render() {
     return (
-      
+
       <div className="App">
         <header className="App-header" style={{ fontSize: "6rem", color: "#ffffff" }}>HabitZen<NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
-        /></header> 
+        /></header>
         <div id="App-Parent">
           <Switch>
             <Route exact path="/signup" render={({ history }) =>
@@ -92,31 +93,39 @@ class App extends Component {
               userService.getUser() ?
                 <NewHabitPage
                   history={history}
+                  user={this.state.user}
                 />
                 :
                 <Redirect to="/login" />
             )}
             />
 
-            <Route exact path='/newtodo' render={({ history }) =>
-              <NewToDoPage
-                history={history}
-              />
+            <Route exact path='/newtodo' render={({ history }) => (
+              userService.getUser() ?
+                <NewToDoPage
+                  history={history}
+                  user={this.state.user}
+                />
+                :
+                <Redirect to="/login" />
+            )
             }
             />
             <Route exact path='/user' render={({ history }) => (
               userService.getUser() ?
-              <UserSummaryPage
-                user={this.state.user}
-                {...this.props}
-                history={history}
-                todos={this.state.todos}
-                habits={this.state.habits}
-                handleUpdateTodos={this.handleUpdateTodos}
-                handleUpdateHabits={this.handleUpdateHabits}
-              />
-              :
-              <Redirect to="/login" />
+
+                <UserSummaryPage
+                  {...this.props}
+                  history={history}
+                  todos={this.state.todos}
+                  habits={this.state.habits}
+                  user={this.state.user}
+                  handleUpdateTodos={this.handleUpdateTodos}
+                  handleUpdateHabits={this.handleUpdateHabits}
+                  GoalTracker={GoalTracker}
+                />
+                :
+                <Redirect to="/login" />
             )
             }
             />
@@ -124,7 +133,7 @@ class App extends Component {
         </div>
         <footer id="sticky-footer">
           <div>{this.state.quotes}</div>
-          </footer>
+        </footer>
       </div >
     );
   }
