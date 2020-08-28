@@ -31,10 +31,11 @@ div.header {
 #App-Parent {
   background-image: url(../../habitzen2.png);
   background-position: center;
+  background-position: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   flex: 0 1 auto;
-  min-height: 100%
+  min-height: 75vh;
 }
 
 .App-link {
@@ -53,19 +54,12 @@ div.header {
   font-size: calc(10px + 2vmin);
   color: #ffffff;
   font-weight: bold;
-  /* padding-top: 12vh; */
-  
- 
 
-/* #footer {
-  /* padding-top: 20vh; */
-  /* background-color: transparent;
-  display: none; */
 } 
 
-div.NavBar {
-  width: 100rem;
+/* div.NavBar {
+  width: 130rem;
   justify-self: right;
   margin-right: 0;
   color: #ffffff;
-}
+} */

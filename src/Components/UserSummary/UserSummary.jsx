@@ -7,7 +7,6 @@ import EditTodoButton from '../EditTodoButton/EditTodoButton';
 import EditHabitButton from '../EditHabitButton/EditHabitButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
-// import { color, variant } from 'react-bootstrap/types';
 
 
 
@@ -79,7 +78,7 @@ if(update.done) {
   render() {
     const todoRows = this.props.todos.map((todo, idt) => (
       <ul  key={idt}> 
-      <li className="ToDoList " style={{ textDecoration: todo.done ? "line-through" : ""}}>
+      <li className="ToDoList " >
       <input type="checkbox" name="done" checked={todo.done} value={this.state.todos.done} onChange={() => this.handleUpdateToDo(todo)}/>&nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
       <EditTodoButton
@@ -119,7 +118,6 @@ if(update.done) {
   return(
   <div className='usersummary'>
    
-    {/* <h3> {this.props.user.name} Profile </h3> */}
     <br />
   
     <div className='user-cards' style={{ justifyContent: "center", }}>
@@ -128,7 +126,8 @@ if(update.done) {
     className="mb-2">
     <div id='ToDoList' >
     <Card.Header 
-    style={{ width: '35rem'}}>
+    // style={{ width: '35rem'}}
+    >
       <h3 className='header-footer'>To Do List</h3>
         <Link to="/newtodo">Add New To Do</Link>
       </Card.Header>
@@ -153,7 +152,8 @@ if(update.done) {
   >
     <div id='HabitList'>
     <Card.Header 
-    style={{ width: '35rem'}}>
+    // style={{ width: '35rem'}}
+    >
         <h3 className='header-footer'>Habits</h3>
         <Link to="/newhabit">Add New Goal</Link>
         </Card.Header>
@@ -174,7 +174,8 @@ if(update.done) {
           className="mb-2">
         <div id='GoalList'>
         <Card.Header 
-          style={{ width: '30rem'}}>
+          // style={{ width: '30rem'}}
+          >
           <h3 className='header-footer'>Goals</h3></Card.Header>
           <br />
         <Card.Body>       

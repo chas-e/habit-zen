@@ -6,8 +6,6 @@ import './NewHabitForm.css';
 import Card from 'react-bootstrap/Card';
 
 
-
-
 class NewHabitForm extends Component {
 
     state = {
@@ -86,7 +84,7 @@ class NewHabitForm extends Component {
                     <div className="form-group">
                         <div className="col-sm-12">
                             <br />
-                            <div>Habits you will do to complete your goal:</div>
+                            <div>What you will do daily to complete your goal:</div>
                             <br />
                             <input type="habit" className="form-control" placeholder="Habit"
                                 name="habit"
@@ -98,7 +96,7 @@ class NewHabitForm extends Component {
                     <div className="form-group">
                         <div className="col-sm-12 text-center">
                             <button className="btn btn-default" disabled={this.isFormInvalid()}>Submit Habit</button>&nbsp;&nbsp;
-                    <Link to='/user'>Cancel</Link>
+                    <Link className="habitLink" to='/user'>Cancel</Link>
                         </div>
                     </div>
                 </form>

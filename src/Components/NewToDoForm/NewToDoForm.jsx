@@ -52,7 +52,7 @@ class ToDoForm extends Component {
                     <div className="form-group">
                         <div className="col-sm-12 text-center">
                             <button className="btn btn-default" disabled={this.isFormInvalid()}>Save</button>&nbsp;&nbsp;&nbsp;
-                            <Link to='/user'>Cancel</Link>
+                            <Link className="todoLink" to='/user'>Cancel</Link>
                         </div>
                     </div>
                 </form>

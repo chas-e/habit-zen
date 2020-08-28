@@ -82,6 +82,7 @@ class App extends Component {
 
             <Route exact path="/" render={({ history }) =>
               <LandingPage
+                user={this.state.user}
                 history={history}
               />
             }

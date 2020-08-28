@@ -4,4 +4,40 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
+    padding: 10rem;
 }
+
+div.mb-25.card {
+    box-shadow: 10px 15px 25px 1px rgba(0,0,0, 0.253);
+    margin: 20px;
+    border-radius: 1em;
+    padding: 2rem;
+    font-size: 1.50rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-body {
+    font-size: 1.25rem;
+}
+
+div.col-sm-12 {
+    display: inline;
+    align-items: center;
+    margin: 3px 0 0 0;
+}
+
+button.btn.btn-default {
+    border: 1px solid grey;
+    border-radius: .5rem;
+    margin: 2px 15px 0 0;
+}
+
+
+.loginLink{
+    margin-top: 15px 0 0 0;
+    color: #5c90aa;
+}
+
+

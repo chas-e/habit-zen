@@ -1,9 +1,13 @@
 .LandingPage {
-    flex: 1 0 auto;
-    height: 100%;
+    min-height: 100%;
+    margin: 0 auto;
 }
 
-a {
-    color: #5c90aa;
-    margin-bottom: 50rem;
+a.LandLink {
+    font-size: 4rem;
+    margin-top: 10rem;
 }
+
+p#title {
+  padding-top: 15rem;
+} 

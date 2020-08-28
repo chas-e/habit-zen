@@ -6,8 +6,11 @@ div.mb-2-todo.card {
     font-size: 1.50rem;
     display: flex;
     justify-content: center;
-    text-align: center;
-    margin-bottom: 20rem;
+    margin-bottom: 10rem;
+}
+
+div.mb-2-todo.card:hover {
+    box-shadow: 30px 25px 30px 3px rgba(0,0,0, 0.253);
 }
 
 .card-body {
@@ -21,12 +24,22 @@ input.form-control {
 }
 
 div.col-sm-12.text-center {
+    display: flex;
     display: inline;
+    align-items: center;
 }
 
 button.btn.btn-default {
     border: 1px solid grey;
     border-radius: .5rem;
-    margin-right: 15px;
+    margin: 10px 15px 0 0;
     font-size: 1.5rem;
+}
+
+div.NewToDo-Form {
+    margin-top: 15rem;
+}
+
+.todoLink {
+    color: #5c90aa;
 }

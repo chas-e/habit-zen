@@ -28,4 +28,8 @@ Link:hover {
 div.NavBar {
     display: flex;
     flex-direction: row-reverse;
+    width: 100%;
+    justify-self: right;
+    margin-right: 6rem;
+    color: #ffffff;
 }
