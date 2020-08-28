@@ -9,6 +9,7 @@ router.put('/:id', habitsCtrl.editHabit);
 router.put('/update/:id', habitsCtrl.update);
 
 
+// custom middleware to check auth 
 function checkAuth(req, res, next) {
     if (req.user) return next();
     return res.status(401).json({

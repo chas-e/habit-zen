@@ -8,7 +8,7 @@ module.exports = {
     editHabit
 };
 
-
+// update a habit using its id
 async function update(req, res) {
     await Habit.findByIdAndUpdate(req.params.id, req.body, {
         new: true
@@ -19,6 +19,7 @@ async function update(req, res) {
 };
 
 
+// allow a user to create a habit
 async function create(req, res) {
     try {
         const habit = new Habit(req.body);
@@ -33,6 +34,7 @@ async function create(req, res) {
     }
 }
 
+// show habits that were created by a user
 async function show(req, res) {
     const habits = await Habit.find({
         user: req.params.userid
@@ -40,13 +42,14 @@ async function show(req, res) {
     res.json(habits);
 };
 
+// allow a user to delete a habit
 async function deleteHabit(req, res) {
     await Habit.findByIdAndDelete(req.params.id);
     show(req, res);
 }
 
+// allow a user to edit a habit
 async function editHabit(req, res) {
     await Habit.findByIdAndUpdate(req.params.id, req.body);
     show(req, res);
 }
-

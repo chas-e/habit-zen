@@ -39,6 +39,7 @@ app.get('/*', function (req, res) {
 // configure to use port 3001 to avoid collision w react's dev server
 const port = process.env.PORT || 3001;
 
+// function to tell express which port to listen to , and log the port
 app.listen(port, () => {
     console.log(`Express is listening on port:${port}`);
 });

@@ -8,7 +8,7 @@ module.exports = {
   updateToDo
 };
 
-
+// allow a user to update their todo 
 async function updateToDo(req, res) {
   await Todo.findByIdAndUpdate(req.params.id, req.body, {
     new: true
@@ -18,6 +18,7 @@ async function updateToDo(req, res) {
   })
 };
 
+// allow a user to create a todo
 async function create(req, res) {
   try {
     const todo = new Todo(req.body);
@@ -31,6 +32,7 @@ async function create(req, res) {
   }
 }
 
+// get and show a user's todos
 async function show(req, res) {
   const todos = await Todo.find({
     user: req.params.userid
@@ -38,11 +40,13 @@ async function show(req, res) {
   res.json(todos);
 }
 
+// allow a user to delete a specific todo
 async function deleteTodo(req, res) {
   await Todo.findByIdAndDelete(req.params.id);
   show(req, res);
 }
 
+// allow a user to edit a todo
 async function editTodo(req, res) {
   await Todo.findByIdAndUpdate(req.params.id, req.body);
   show(req, res);

@@ -9,6 +9,7 @@ export default {
   doneToDo
 };
 
+// client side function to create a habit
 function create(todo, user) {
   const options = {
     method: "POST",
@@ -22,10 +23,12 @@ function create(todo, user) {
 }
 
 
+// client side function to get/ render todos for a specific user
 function index(user) {
   return fetch(BASE_URL + `/${user._id}`).then(res => res.json());
 }
 
+// client side function to delete a todo
 function deleteToDo(todo) {
   const options = {
     method: "DELETE",
@@ -38,6 +41,7 @@ function deleteToDo(todo) {
   return fetch(BASE_URL + `/${todo._id}`, options).then(res => res.json());
 }
 
+// client side function to toggle a todo done or not done
 function doneToDo(todo) {
   const options = {
     method: "PUT",
@@ -50,7 +54,7 @@ function doneToDo(todo) {
   return fetch(BASE_URL + `/update/${todo._id}`, options).then(res => res.json());
 }
 
-
+// client side function to edit a todo
 function editToDo(todo, updatedTodo) {
   const options = {
     method: "PUT",

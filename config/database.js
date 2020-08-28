@@ -9,6 +9,7 @@ mongoose.connect(process.env.DATABASE_URL, {
     useCreateIndex: true
 });
 
+// set up listener to check MongoDB is connected
 db.on('connected', () => {
     console.log(`MongoDB is connected to ${db.host}:${db.port}`);
 });

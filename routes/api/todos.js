@@ -11,6 +11,7 @@ router.put('/:id', todosCtrl.editTodo);
 router.put('/update/:id', todosCtrl.updateToDo);
 
 
+// custom middleware to check auth
 function checkAuth(req, res, next) {
     if (req.user) return next();
     return res.status(401).json({

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import './GoalTracker.css';
 import goalTrackerService from '../../utils/goalTrackerService'
 
 
@@ -30,8 +29,11 @@ class GoalTracker extends Component {
     componentDidMount() {
         this.handleNewDay();
         this.totalDays = this.calculateDays(this.props.habit.sDate, this.props.habit.eDate);
+        console.log(this.totalDays);
         this.daysRemaining = this.calculateDaysLeft(this.props.habit.eDate);
+        console.log(this.daysRemaining);
         this.now = Math.abs(1 - this.daysRemaining) / this.totalDays * 100;
+        console.log(this.now);
     }
 
     render() {
@@ -48,7 +50,5 @@ class GoalTracker extends Component {
         );
     }
 }
-
-
 
 export default GoalTracker;
