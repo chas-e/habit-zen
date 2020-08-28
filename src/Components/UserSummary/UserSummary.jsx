@@ -59,7 +59,7 @@ if(update.done) {
   update.done = true
 }
   await habitService.doneHabit(update);
-    const habits = await habitService.index();
+    const habits = await habitService.index(this.props.user);
     this.props.handleUpdateHabits(habits);
 }
 
@@ -71,17 +71,15 @@ if(update.done) {
   update.done = true
 }
   await todoService.doneToDo(todo);
-    const todos = await todoService.index();
+    const todos = await todoService.index(this.props.user);
     this.props.handleUpdateTodos(todos);  
 }
 
 
   render() {
-    // const idx={value.toString()};
-    const todoRows = this.props.todos.map((todo, idx) => (
-     
-      <ul> 
-      <li className="ToDoList " style={{ textDecoration: todo.done ? "line-through" : ""}} key={idx}>
+    const todoRows = this.props.todos.map((todo, idt) => (
+      <ul  key={idt}> 
+      <li className="ToDoList " style={{ textDecoration: todo.done ? "line-through" : ""}}>
       <input type="checkbox" name="done" checked={todo.done} value={this.state.todos.done} onChange={() => this.handleUpdateToDo(todo)}/>&nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
       <EditTodoButton
@@ -89,16 +87,16 @@ if(update.done) {
         refreshContent={this.refreshContent}
         handleEditToDo={this.handleEditToDo}
         todo={todo}/>&nbsp;&nbsp;
-        <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span className="badge">{idt + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
         {todo.text}&nbsp;&nbsp;
         {todo.done}&nbsp;&nbsp;
       </li>
     </ul>
    
     ));
-    const habitRows = this.props.habits.map((habit, idx, id) => (
-      <ul> 
-      <li className="HabitList" key1={idx} key={idx}>
+    const habitRows = this.props.habits.map((habit, idr) => (
+      <ul key={idr}> 
+      <li className="HabitList" key={idr}>
       <input type="checkbox" name="done" checked={habit.done}  value={this.state.habits.done} onChange={() => this.handleUpdateHabit(habit)}/> &nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteHabit(habit)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
         <EditHabitButton
@@ -106,14 +104,14 @@ if(update.done) {
         refreshContent={this.refreshContent}
         handleEditHabit={this.handleEditHabit}
         habit={habit}/>&nbsp;&nbsp;
-        <span className="badge">{idx + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span className="badge">{idr + 1}</span>&nbsp;&nbsp;&nbsp;&nbsp;
         {habit.habit}&nbsp;&nbsp;
       </li>
         </ul>
     ));
-     const goalRows = this.props.habits.map((habit, idx, index) => (
-        <tr key1={idx} key={index}>
-          <td><span className="badge">{idx + 1}</span></td>
+     const goalRows = this.props.habits.map((habit, idg) => (
+        <tr key={idg}>
+          <td><span className="badge">{idg + 1}</span></td>
           <td>{habit.goal}</td>
         </tr>
 
@@ -124,9 +122,9 @@ if(update.done) {
     {/* <h3> {this.props.user.name} Profile </h3> */}
     <br />
   
-    <div className='user-cards'>
+    <div className='user-cards' style={{ justifyContent: "center", }}>
     <Card
-    style={{ width: '40rem', height: 'fit-content'}}
+    style={{ width: '50rem', height: 'fit-content'}}
     className="mb-2">
     <div id='ToDoList' >
     <Card.Header 
@@ -150,14 +148,14 @@ if(update.done) {
     </Card>
    
     <Card
-    style={{ width: '40rem', height: 'fit-content' }}
+    style={{ width: '50rem', height: 'fit-content' }}
     className='mb-2' 
   >
     <div id='HabitList'>
     <Card.Header 
     style={{ width: '35rem'}}>
         <h3 className='header-footer'>Habits</h3>
-        <Link to="/newhabit" idx>Add New Goal</Link>
+        <Link to="/newhabit">Add New Goal</Link>
         </Card.Header>
         <br />
         <Card.Body>       
@@ -173,10 +171,10 @@ if(update.done) {
         </Card>
         <br />
         <Card style={{ width: '100%', maxWidth: '100rem', height: 'fit-content' }}
-    className="mb-2">
+          className="mb-2">
         <div id='GoalList'>
         <Card.Header 
-    style={{ width: '30rem'}}>
+          style={{ width: '30rem'}}>
           <h3 className='header-footer'>Goals</h3></Card.Header>
           <br />
         <Card.Body>       
