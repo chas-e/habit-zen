@@ -1,7 +1,6 @@
 // require modules
 const express = require('express');
 const path = require('path');
-// const methodOverride = require('method-override');
 const favicon = require('serve-favicon');
 const morgan = require('morgan');
 
