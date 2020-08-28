@@ -84,6 +84,7 @@ class App extends Component {
             <Route exact path="/" render={({ history }) =>
               <LandingPage
                 history={history}
+                user={this.state.user}
               />
             }
             />
@@ -99,11 +100,15 @@ class App extends Component {
             )}
             />
 
-            <Route exact path='/newtodo' render={({ history }) =>
-              <NewToDoPage
-                history={history}
-                user={this.state.user}
-              />
+            <Route exact path='/newtodo' render={({ history }) => (
+              userService.getUser() ?
+                <NewToDoPage
+                  history={history}
+                  user={this.state.user}
+                />
+                :
+                <Redirect to="/login" />
+            )
             }
             />
             <Route exact path='/user' render={({ history }) => (

@@ -1,5 +1,4 @@
 const Habit = require('../models/habit');
-// const User = require('../models/user');
 
 module.exports = {
     show,
@@ -34,7 +33,6 @@ async function create(req, res) {
     }
 }
 
-// IDK if this will actually work or not, idea is to get/ render habits associated with the logged in user
 async function show(req, res) {
     const habits = await Habit.find({
         user: req.params.userid
