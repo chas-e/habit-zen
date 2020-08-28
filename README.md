@@ -44,8 +44,6 @@ We had a couple of persistant bugs that followed us for most of the week. We spe
     
 Not a feature, but we had a lot of trouble with GitHub this week. After a while, we were all afraid to pull from the main repository in case the added info broke our code. There were times when one or the other of us had to rebuild the same feature 2 or 3 times. We ended up feeling grateful for these issues. We were able to get to MVP and we learned a lot about correct github workflow. Knowledge that can only benefit us in the future. 
 
-
-
 # ERD
 ![ERD](./images/HabitTrackerERD.jpeg)
 
@@ -96,7 +94,7 @@ Not a feature, but we had a lot of trouble with GitHub this week. After a while,
 
 
 # Link to Live App
-Link to [Live App]()
+Link to [HabitZen](https://habit-zen.herokuapp.com/)
 
 # Authors who worked on Version 1
 * Chengusoyane Kargbo 
@@ -104,4 +102,4 @@ Link to [Live App]()
 * Diego Burgos
 
 ## Acknowledgments
-Thank you to anyone who helped us get the app to this point. 
+Thank you to anyone who helped us get the app to this point. We will take your criticisms and encour
