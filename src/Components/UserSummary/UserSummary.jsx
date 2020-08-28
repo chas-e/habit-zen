@@ -6,6 +6,7 @@ import habitService from '../../utils/habitService';
 import GoalTracker from '../GoalTracker/GoalTracker';
 import EditTodoButton from '../EditTodoButton/EditTodoButton';
 import EditHabitButton from '../EditHabitButton/EditHabitButton';
+import habit from '../../../models/habit';
 
 
 class UserSummary extends Component {
@@ -83,7 +84,7 @@ class UserSummary extends Component {
     const todoRows = this.props.todos.map((todo, idx) => (
 
       <ul>
-        <li className="ToDoList" key={idx}>
+        <li className="ToDoList" key={todo._id}>
           <input type="checkbox" name="done" checked={todo.done} onChange={() => this.handleUpdateToDo(todo)} />&nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteToDo(todo)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
       <EditTodoButton
@@ -99,7 +100,7 @@ class UserSummary extends Component {
     ));
     const habitRows = this.props.habits.map((habit, idx) => (
       <ul>
-        <li className="HabitList" key={idx}>
+        <li className="HabitList" key={habit._id}>
           <input type="checkbox" name="done" value={this.state.done} checked={habit.done} onChange={() => this.handleUpdateHabit(habit)} /> &nbsp;&nbsp;Done&nbsp;&nbsp;
         <button onClick={() => this.handleDeleteHabit(habit)}><span role="img" aria-label="delete">🚯</span></button> &nbsp;&nbsp;
         <EditHabitButton
