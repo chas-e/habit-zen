@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -56,16 +56,16 @@ class App extends Component {
   handleUpdateHabits = (habits) => {
     this.setState({ ...this.state.habits, habits });
   }
-  
+
 
   render() {
     return (
-      
+
       <div className="App">
         <header className="App-header" style={{ fontSize: "6rem", color: "#ffffff" }}>HabitZen<NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
-        /></header> 
+        /></header>
         <div id="App-Parent">
           <Switch>
             <Route exact path="/signup" render={({ history }) =>
@@ -87,7 +87,6 @@ class App extends Component {
               <LandingPage
                 user={this.state.user}
                 history={history}
-                user={this.state.user}
               />
             }
             />
@@ -136,7 +135,7 @@ class App extends Component {
         </div>
         <footer id="sticky-footer">
           <div>{this.state.quotes}</div>
-          </footer>
+        </footer>
       </div >
     );
   }
