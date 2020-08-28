@@ -3,9 +3,9 @@ const router = express.Router();
 const todosCtrl = require('../../controllers/todos');
 
 
-router.get('/', todosCtrl.show);
 require('../../config/auth');
-router.post('/', checkAuth, todosCtrl.create);
+router.get('/:userid', todosCtrl.show);
+router.post('/:userid', checkAuth, todosCtrl.create);
 router.delete('/:id', todosCtrl.deleteTodo);
 router.put('/:id', todosCtrl.editTodo);
 router.put('/update/:id', todosCtrl.updateToDo);

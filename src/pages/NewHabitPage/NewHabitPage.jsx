@@ -4,12 +4,7 @@ import NewHabitForm from '../../components/NewHabitForm/NewHabitForm';
 import './NewHabitPage.css';
 
 class NewHabitPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
 
-        };
-    }
     render() {
         return (
             <div className="NewHabitPage">

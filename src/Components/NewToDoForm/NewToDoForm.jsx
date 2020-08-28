@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card';
 class ToDoForm extends Component {
     state = {
         text: '',
-        done: '',
+
     };
 
     // need to get checked to mean true
@@ -26,7 +26,7 @@ class ToDoForm extends Component {
     handleAddToDo = async (e) => {
         e.preventDefault();
         try {
-            await todoService.create(this.state);
+            await todoService.create(this.state, this.props.user);
             this.props.history.push('/user');
         } catch (err) {
             console.log(err);
@@ -40,6 +40,7 @@ class ToDoForm extends Component {
                 className="mb-2-todo">
                 <Card-Header className='todo-header'><h3 className="header-footer">New To Do List Item</h3>
                 <br />
+
                 </Card-Header>
                 <Card-Body className='todo-form'>
                 <form className="form-horizontal" onSubmit={this.handleAddToDo} >
@@ -47,6 +48,7 @@ class ToDoForm extends Component {
                         <div className="col-sm-12">
                             <input className="form-control-todo" name="text" placeholder="New To Do List Item" value={this.state.text} onChange={this.handleChange}
                                 required />
+
                         </div>
                     </div>
                     <div className="form-group">

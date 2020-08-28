@@ -13,7 +13,6 @@ class NewHabitForm extends Component {
         habit: '',
         sDate: '',
         eDate: ''
-        // do we need to attach a user here? or can we do that?
     };
 
     handleChange = (e) => {
@@ -27,7 +26,7 @@ class NewHabitForm extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await habitService.create(this.state);
+            await habitService.create(this.state, this.props.user);
             this.props.history.push('/user');
         } catch (err) {
             // this.props.updateMessage(err.message);
@@ -42,17 +41,19 @@ class NewHabitForm extends Component {
     render() {
         return (
 
+
             <div className="HabitForm">
                 <Card style={{ width: '35rem' }}
                     className="mb-2">
                     <Card-Header>
                 <h3 className="header-footer">New Goal</h3></Card-Header>
                 <Card-Body><form className="form-horizontal" onSubmit={this.handleSubmit} >
+
                     <div className="form-group">
                         <div className="col-sm-12">
                             <input type="text" className="form-control" placeholder="Future Accomplishment"
-                                value={this.state.goal}
                                 name="goal"
+                                value={this.state.goal}
                                 onChange={this.handleChange}
                             />
                         </div>
@@ -86,8 +87,9 @@ class NewHabitForm extends Component {
                             <br />
                             <div>What you will do daily to complete your goal:</div>
                             <br />
-                            <input type="habit" className="form-control" placeholder="Habit"
+                            <input type="text"
                                 name="habit"
+                                className="form-control" placeholder="Habit"
                                 value={this.state.habit}
                                 onChange={this.handleChange}
                             />
@@ -103,7 +105,7 @@ class NewHabitForm extends Component {
                 </Card-Body>
                 </Card>
             </div>
-          
+
         );
     }
 }

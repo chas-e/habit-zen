@@ -3,9 +3,7 @@ import UserSummary from '../../components/UserSummary/UserSummary';
 
 
 class UserSummaryPage extends Component {
-        
-  
- 
+
     render() {
         return (
             <div className="UserSummaryPage">
@@ -16,13 +14,12 @@ class UserSummaryPage extends Component {
                     habits={this.props.habits}
                     handleUpdateTodos={this.props.handleUpdateTodos}
                     handleUpdateHabits={this.props.handleUpdateHabits}
+
                 />
             </div>
         );
     }
 }
-
-
 
 
 export default UserSummaryPage;
