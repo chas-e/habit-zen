@@ -8,7 +8,7 @@ Every person has goals that they've always wanted to accomplish. But as Charles 
 
 To create this app, we started by planning out our goals and hopes for this app. This was accomplished using wireframes, an Entity Relationship Diagram (ERD), a Trello Board as well as collaborative word documents to make sure everyone had all information and opportunities to have their mark on the project.
 
-To deploy this app, you will need to open your favorite coding program, you can build the basics of the app with [Create React App.](https://github.com/facebook/create-react-app) Then fork the repository and clone to open. Then install all requires programs.
+To deploy this app, you will need to open your favorite coding program, you can build the basics of the app with [Create React App.](https://github.com/facebook/create-react-app) Then fork the repository and clone to open. Then install all required programs.
 
 # App Inspiration
 
@@ -16,7 +16,7 @@ Having read Charles Duhigg’s <ins>The Power of Habit</ins> and studied kaizen-
 
 # Design Inspiration
 
-Since we are buildiing a place where users can plan for a better future, the design of the app references spas and message parlors. This creates a calming, beautiful place where a user can feel like they're taking special time for themselves and making the kind of decisions that can improve their lives for years to come. 
+Since we are building a place where users can plan for a better future, the design of the app references spas and message parlors. This creates a calming, beautiful place where a user can feel like they're taking special time for themselves and making the kind of decisions that can improve their lives for years to come. 
 
 There are also quotes included at the bottom of every page to inspire you or make you laugh. 
 
