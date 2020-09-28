@@ -31,7 +31,6 @@ class App extends Component {
   // fetch quotes from api when the app mounts
   async componentDidMount() {
     const randomQ = await getRandomQ();
-    console.log(randomQ);
     this.setState({
       quotes: randomQ.contents.quote,
     });
